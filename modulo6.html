@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 6: IA y Desarrollo Profesional - Presentación</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #fefefe 0%, #f0f9ff 100%);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .slide-title-main {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8rem;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .slide-info {
+            font-size: 1.2rem;
+            color: #4299e1;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .slide-content-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accent-line {
+            height: 4px;
+            background: linear-gradient(90deg, #4299e1, #667eea);
+            border-radius: 2px;
+            width: 120px;
+            margin: 0 auto 35px auto;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1400px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1d4ed8;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .content-card h3 i {
+            margin-right: 15px;
+            color: #4299e1;
+            font-size: 2rem;
+        }
+        
+        .content-card p,
+        .content-card ul {
+            font-size: 1.2rem;
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .content-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .content-card ul li {
+            padding: 12px 0 12px 2.5em;
+            position: relative;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+        }
+        
+        .content-card ul li:hover {
+            transform: translateX(8px);
+            color: #1d4ed8;
+            background: rgba(66, 153, 225, 0.05);
+        }
+        
+        .content-card ul li i {
+            position: absolute;
+            left: 0;
+            top: 16px;
+            color: #4299e1;
+            font-size: 1.3rem;
+        }
+        
+        .decorative-shape {
+            position: absolute;
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .shape-top-left {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        .shape-bottom-right {
+            width: 250px;
+            height: 250px;
+            bottom: -125px;
+            right: -125px;
+        }
+        
+        .nav-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .nav-button-home {
+            background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+            font-size: 1.1rem;
+        }
+        
+        .nav-button-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(66, 153, 225, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-button-home i {
+            margin-right: 10px;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 1.1rem;
+            color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-icon {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 40px rgba(66, 153, 225, 0.4);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 6px solid #4299e1;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1);
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .icon-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(66, 153, 225, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .icon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .icon-card i {
+            font-size: 2.5rem;
+            color: #4299e1;
+            margin-bottom: 15px;
+        }
+        
+        .icon-card h4 {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .icon-card p {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .wide-content {
+            max-width: 1600px;
+            width: 100%;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            border: 2px dashed #4299e1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(66, 153, 225, 0.2);
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .image-placeholder span {
+            color: #4299e1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+        
+        .split-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .tool-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 1px solid #cbd5e0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            border-left: 4px solid #4299e1;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .prompt-example {
+            background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+            border: 1px solid #fbbf24;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .activity-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 2px solid rgba(66, 153, 225, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 6px solid #4299e1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(66, 153, 225, 0.1);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .ethics-alert {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #fca5a5;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(248, 113, 113, 0.1);
+        }
+        
+        .ethics-alert::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: #fee2e2;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 1.4rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .slide-title-main {
+                font-size: 3rem;
+            }
+            .content-card {
+                max-width: 1000px;
+            }
+            .split-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .icon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide-title-main {
+                font-size: 2.5rem;
+            }
+            .slide-content-title {
+                font-size: 2rem;
+            }
+            .content-card {
+                padding: 25px;
+                margin: 0 15px 20px 15px;
+            }
+            .icon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal de Imagen */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            display: block;
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Modal para imágenes -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="slide">
+        <div class="decorative-shape shape-top-left"></div>
+        <div class="module-icon">
+            <i class="fas fa-user-graduate"></i>
+        </div>
+        <h1 class="slide-title-main">Módulo 6:<br>IA como Aliada del<br>Desarrollo Profesional Docente</h1>
+        <p class="slide-subtitle">Diplomado: Herramientas de Inteligencia Artificial para Educadores Innovadores</p>
+        <div class="accent-line"></div>
+
+        <div style="max-width: 600px; height: 200px; text-align: center;">
+            <img src="imagenes/modulo6/imagen1.png" alt="Portada del Módulo" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+        </div>
+
+        <p class="slide-info">
+            <i class="fas fa-chalkboard-teacher"></i> Dr. Salvador Tututi Ávila &nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-laptop-code"></i> I.Q. Juan José Alonso Tijerina
+        </p>
+        <p class="slide-info">
+            <i class="fas fa-clock"></i> Duración del Módulo: 8 horas (3 Síncronas / 5 Asíncronas)
+        </p>
+
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">1 / 21</div>
+        <div class="decorative-shape shape-bottom-right"></div>
+    </div>
+
+    <!-- Slide 2: Agenda del Módulo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Agenda del Módulo 6</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-list-ul"></i> Contenidos Principales</h3>
+                    <ul>
+                        <li><i class="fas fa-search"></i> Búsqueda y síntesis inteligente de información para investigación educativa</li>
+                        <li><i class="fas fa-pencil-alt"></i> Asistencia en redacción académica: artículos, propuestas y comunicaciones</li>
+                        <li><i class="fas fa-language"></i> Traducción y adaptación de recursos educativos con IA</li>
+                        <li><i class="fas fa-newspaper"></i> Estrategias para mantenerse actualizado con nuevas tendencias y herramientas</li>
+                        <li><i class="fas fa-user-graduate"></i> Personalización del aprendizaje profesional continuo</li>
+                        <li><i class="fas fa-users"></i> Taller práctico: Síntesis de artículos y redacción profesional</li>
+                        <li><i class="fas fa-flask"></i> Proyecto asíncrono: Investigación y evaluación de herramientas emergentes</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen2.png" alt="Agenda Visual" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">2 / 21</div>
+    </div>
+
+    <!-- Slide 3: IA para Investigación Educativa - Revolución en la Búsqueda -->
+    <div class="slide">
+        <h2 class="slide-content-title">Revolución en Investigación Educativa con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-microscope"></i> Potenciando la Investigación Docente del Siglo XXI</h3>
+                    <p>La inteligencia artificial está transformando radicalmente la forma en que los educadores realizan investigación, democratizando el acceso a herramientas sofisticadas que antes estaban reservadas para instituciones de investigación
+                        especializadas.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p><strong>Paradigma transformador:</strong> Los docentes pueden ahora realizar investigación de calidad académica con recursos limitados, optimizando procesos que tradicionalmente requerían equipos especializados y meses de trabajo
+                            manual.
+                        </p>
+                    </div>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 20px;">
+                        <div class="icon-card">
+                            <i class="fas fa-search-plus"></i>
+                            <h4>Búsqueda Inteligente</h4>
+                            <p>Acceso optimizado a bases de datos académicas</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <h4>Síntesis Automática</h4>
+                            <p>Resúmenes y extracción de patrones clave</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-chart-bar"></i>
+                            <h4>Análisis Asistido</h4>
+                            <p>Interpretación de datos cualitativos y cuantitativos</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen3.png" alt="Investigación IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3 / 21</div>
+    </div>
+
+    <!-- Slide 4: Herramientas y Ecosistema de Investigación IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Herramientas y Ecosistema de Investigación IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen4.png" alt="Herramientas Investigación" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-tools"></i> Plataformas Especializadas en Investigación Académica</h3>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-search"></i> Perplexity AI</h4>
+                        <p><strong>Especialización:</strong> Búsqueda académica con fuentes<br>
+                            <strong>Fortalezas:</strong> Acceso en tiempo real, citación automática, síntesis de múltiples fuentes</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-microscope"></i> Elicit / Consensus</h4>
+                        <p><strong>Especialización:</strong> Bases de datos de investigación<br>
+                            <strong>Fortalezas:</strong> Revisiones sistemáticas, extracción de datos, análisis de metodologías</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-robot"></i> LLMs Generales (ChatGPT, Claude, Gemini)</h4>
+                        <p><strong>Especialización:</strong> Síntesis y análisis de contenido<br>
+                            <strong>Fortalezas:</strong> Flexibilidad, procesamiento de grandes volúmenes, generación de hipótesis</p>
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Prompt de Síntesis Académica:</strong><br> "Analiza estos 5 artículos sobre [tema educativo] y: 1) Identifica patrones comunes en metodologías, 2) Resume hallazgos convergentes y divergentes, 3) Sugiere gaps de investigación,
+                        4) Propón una pregunta de investigación innovadora"
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">4 / 21</div>
+    </div>
+
+    <!-- Slide 5: Actividad asincrona: Explorando NotebookLM -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad asincrona: Explorando NotebookLM</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <h3><i class="fas fa-laptop-code"></i> Uso de NotebookLM para Investigación y Síntesis</h3>
+            <p>En esta actividad, experimentarás con <strong>NotebookLM</strong>, una herramienta de inteligencia artificial diseñada para ayudarte a organizar, analizar y sintetizar información a partir de artículos y documentos académicos.</p>
+            <div class="activity-card">
+                <h4><i class="fas fa-tasks"></i> Instrucciones de la Actividad</h4>
+                <ol style="font-size: 1.1rem; line-height: 1.8; color: #374151; margin-left: 20px;">
+                    <li><strong>Paso 1:</strong> Accede a <a href="https://notebooklm.google/" target="_blank" style="color: #4299e1; text-decoration: underline;">NotebookLM</a> con tu cuenta de Google.</li>
+                    <li><strong>Paso 2:</strong> Carga uno o más artículos académicos o recursos educativos que conozcas o te interesen.</li>
+                    <li><strong>Paso 3:</strong> Crea un <strong>notebook</strong> en la plataforma y utiliza la inteligencia artificial para generar notas, resúmenes y conexiones entre los documentos.</li>
+                    <li><strong>Paso 4:</strong> Explora las funcionalidades de IA para hacer preguntas sobre los artículos y obtener respuestas automáticas.</li>
+                    <li><strong>Paso 5:</strong> Guarda tus notas y reflexiones generadas con ayuda de la IA.</li>
+                </ol>
+            </div>
+            <div class="tool-card" style="border-left: 6px solid #10b981;">
+                <h4><i class="fas fa-lightbulb"></i> Sugerencias de Preguntas y Prompts para tu Notebook</h4>
+                <ul>
+                    <li><i class="fas fa-question-circle"></i> ¿Cuáles son las ideas principales de este artículo?</li>
+                    <li><i class="fas fa-search"></i> Resume los hallazgos clave y su relevancia educativa.</li>
+                    <li><i class="fas fa-link"></i> ¿Qué conexiones existen entre los diferentes artículos cargados?</li>
+                    <li><i class="fas fa-brain"></i> ¿Qué conceptos o términos requieren mayor explicación?</li>
+                    <li><i class="fas fa-lightbulb"></i> Sugiere posibles aplicaciones prácticas de los resultados presentados.</li>
+                    <li><i class="fas fa-balance-scale"></i> ¿Existen limitaciones o controversias en los enfoques de los artículos?</li>
+                    <li><i class="fas fa-pen"></i> Genera una nota de síntesis que integre los puntos más relevantes de todos los documentos.</li>
+                </ul>
+            </div>
+            <div class="highlight-box">
+                <p><strong>Consejo:</strong> Aprovecha la IA de NotebookLM para profundizar en la comprensión de los textos, generar preguntas propias y organizar tus aprendizajes de manera visual y estructurada.</p>
+            </div>
+        </div>
+        <div class="slide-number">5 / 21</div>
+    </div>
+
+    <!-- Slide 5: Consideraciones Éticas en Investigación con IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Ética e Integridad en Investigación con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-balance-scale"></i> Principios Fundamentales de Investigación Responsable</h3>
+                    <p>La integración de IA en procesos de investigación educativa requiere adherencia estricta a principios éticos que preserven la integridad académica y la confiabilidad de los hallazgos científicos.</p>
+
+                    <div class="icon-grid" style="grid-template-columns: 1fr;">
+                        <div class="tool-card" style="border-left: 4px solid #ef4444;">
+                            <h4><i class="fas fa-shield-check"></i> Validación y Verificación de Fuentes</h4>
+                            <p>Verificar la exactitud y credibilidad de toda información generada por IA, contrastar con fuentes primarias, y mantener escepticismo crítico sobre datos no verificables</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #f59e0b;">
+                            <h4><i class="fas fa-copyright"></i> Prevención de Plagio Intelectual</h4>
+                            <p>Distinguir claramente entre asistencia de IA y autoría humana, citar adecuadamente el uso de herramientas, evitar la apropiación de ideas generadas automáticamente</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #10b981;">
+                            <h4><i class="fas fa-eye"></i> Transparencia Metodológica</h4>
+                            <p>Documentar y reportar explícitamente el uso de IA en procesos de investigación, especificar herramientas utilizadas y su papel en el análisis</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #3b82f6;">
+                            <h4><i class="fas fa-brain"></i> Primacía del Juicio Humano</h4>
+                            <p>Mantener la interpretación crítica, el análisis profundo y las conclusiones como dominio exclusivo del investigador humano experto</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen5.png" alt="Ética Investigación" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">6 / 21</div>
+    </div>
+
+    <!-- Slide 6: Revolución en Redacción Académica con IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Revolución en Redacción Académica con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen6.png" alt="Redacción Académica IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-pen-fancy"></i> Transformación del Proceso de Escritura Profesional</h3>
+                    <p>La inteligencia artificial está revolucionando la redacción académica y profesional, no reemplazando la creatividad humana sino potenciando exponencialmente la eficiencia, claridad y coherencia en la comunicación escrita especializada.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Impacto cuantificable:</strong> Reducción del 60-80% en tiempo de redacción inicial, mejora significativa en coherencia textual, y optimización automática de estilo académico y profesional.</p>
+                    </div>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="icon-card">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>Artículos Académicos</h4>
+                            <p>Estructura, argumentación, revisión estilística</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-project-diagram"></i>
+                            <h4>Propuestas de Proyecto</h4>
+                            <p>Objetivos, justificación, metodología</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Comunicación Profesional</h4>
+                            <p>Correos, informes, comunicados oficiales</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Material Académico</h4>
+                            <p>Conferencias, ponencias, publicaciones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">7 / 21</div>
+    </div>
+
+    <!-- Slide 7: Prompts Especializados para Redacción Académica -->
+    <div class="slide">
+        <h2 class="slide-content-title">Prompts Especializados para Redacción Académica</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-terminal"></i> Framework Avanzado de Prompts Académicos</h3>
+
+                    <div class="prompt-example">
+                        <strong>Estructura de Artículo Académico:</strong><br> "Actúa como un experto en redacción académica. Diseña una estructura detallada para un artículo de investigación sobre [TEMA] dirigido a [REVISTA/AUDIENCIA]. Incluye: 1) Esquema
+                        de introducción con hooks efectivos, 2) Marco teórico organizado, 3) Metodología apropiada, 4) Estructura de resultados, 5) Discusión y conclusiones impactantes."
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Propuesta de Proyecto Académico:</strong><br> "Redacta una propuesta de proyecto de investigación educativa sobre [TEMA] para [INSTITUCIÓN/FONDO]. Incluye: problema claramente definido, justificación con base teórica, objetivos
+                        SMART, metodología detallada, cronograma realista, y presupuesto. Tono: profesional, persuasivo, riguroso académicamente."
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Mejora de Estilo Académico:</strong><br> "Revisa este párrafo académico: [TEXTO]. Mejora: 1) Claridad y concisión, 2) Fluidez entre oraciones, 3) Precisión terminológica, 4) Estructura argumentativa, 5) Cumplimiento de
+                        estándares académicos. Mantén el significado original y la voz del autor."
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://promptsaihub.com/chatgpt-prompts-for-academic-research/" target="_blank" style="display: inline-block; transition: transform 0.3s ease;">
+                        <img src="imagenes/modulo6/imagen7.png" alt="Prompts Académicos" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">8 / 21</div>
+    </div>
+
+    <!-- Slide 8: Ética y Originalidad en Redacción Asistida por IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Ética y Originalidad en Redacción con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen8.png" alt="Ética Redacción IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-balance-scale"></i> Integridad Académica en la Era de la IA</h3>
+                    <p>La redacción asistida por IA requiere un nuevo paradigma ético que equilibre la eficiencia tecnológica con la autenticidad intelectual y la responsabilidad académica.</p>
+
+                    <div class="icon-grid" style="grid-template-columns: 1fr;">
+                        <div class="tool-card" style="border-left: 4px solid #ef4444;">
+                            <h4><i class="fas fa-user-edit"></i> Preservación de la Voz Autoral</h4>
+                            <p>Mantener la perspectiva personal, el estilo único, y la originalidad del pensamiento como elementos irreemplazables del proceso académico</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #f59e0b;">
+                            <h4><i class="fas fa-quote-right"></i> Transparencia en el Uso de IA</h4>
+                            <p>Declarar explícitamente cuándo y cómo se utilizó asistencia de IA en el proceso de redacción, especificando herramientas y alcance de uso</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #10b981;">
+                            <h4><i class="fas fa-clipboard-check"></i> Revisión Crítica Obligatoria</h4>
+                            <p>Todo contenido generado por IA debe ser revisado, validado y mejorado por el autor humano antes de su publicación o presentación</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Principio rector:</strong> La IA debe amplificar la capacidad humana de comunicación, no sustituir el pensamiento crítico, la creatividad intelectual o la responsabilidad autoral.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">9 / 21</div>
+    </div>
+
+    <!-- Slide 9: Actividad Práctica - Deep Research con IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Práctica: Deep Research con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-search-plus"></i> Laboratorio de Investigación Comparativa</h3>
+                    <p>Experimenta con herramientas de IA especializadas para realizar investigación profunda y comparar la efectividad de diferentes modelos en tareas académicas reales.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-flask"></i> Instrucciones de la Actividad</h4>
+                        <ol style="font-size: 1.1rem; line-height: 1.8; color: #374151; margin-left: 20px;">
+                            <li><strong>Paso 1:</strong> Accede a Lyra y genera un prompt optimizado para investigación profunda sobre un tema de tu interés profesional</li>
+                            <li><strong>Paso 2:</strong> Utiliza ese prompt en <strong>Perplexity AI</strong> para realizar tu investigación</li>
+                            <li><strong>Paso 3:</strong> Ejecuta el mismo prompt en <strong>ChatGPT</strong> para comparar resultados</li>
+                            <li><strong>Paso 4:</strong> Analiza y documenta las diferencias en profundidad, fuentes y utilidad</li>
+                        </ol>
+                    </div>
+
+                    <div class="tool-card" style="border-left: 6px solid #10b981;">
+                        <h4><i class="fas fa-clipboard-list"></i> Entregable Requerido</h4>
+                        <p>Documento comparativo que incluya:</p>
+                        <ul>
+                            <li><i class="fas fa-question-circle"></i> <strong>Prompt utilizado:</strong> Transcripción exacta del prompt generado con Lyra</li>
+                            <li><i class="fas fa-robot"></i> <strong>Resultados Perplexity:</strong> Captura de pantalla y análisis de la respuesta</li>
+                            <li><i class="fas fa-brain"></i> <strong>Resultados ChatGPT:</strong> Captura de pantalla y análisis de la respuesta</li>
+                            <li><i class="fas fa-balance-scale"></i> <strong>Análisis comparativo:</strong> Fortalezas y debilidades de cada modelo</li>
+                            <li><i class="fas fa-star"></i> <strong>Recomendación:</strong> Cuál usarías para este tipo de investigación y por qué</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Imagen eliminada aquí (imagen9.png) -->
+            </div>
+
+            <div class="prompt-example" style="margin-top: 20px;">
+                <strong>Ejemplo de Prompt para Deep Research:</strong><br>
+                "Actúa como un investigador académico experto en [TU TEMA DE INTERÉS]. Realiza un análisis profundo y estructurado sobre [PREGUNTA ESPECÍFICA]. Proporciona: 1) Contexto histórico y actual, 2) Principales teorías y enfoques, 3) Investigaciones recientes (últimos 3 años), 4) Controversias o debates actuales, 5) Implicaciones prácticas para educadores, 6) Tendencias futuras. Incluye fuentes académicas relevantes y utiliza un enfoque crítico y analítico."
+            </div>
+        </div>
+        <div class="slide-number">10 / 21</div>
+    </div>
+
+    <!-- Slide 10: Revolución en Traducción y Adaptación Educativa -->
+    <div class="slide">
+        <h2 class="slide-content-title">Revolución en Traducción y Adaptación Educativa</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-language"></i> Democratización del Acceso Multilingüe a Recursos</h3>
+                    <p>La IA está transformando radicalmente la traducción y adaptación de recursos educativos, permitiendo que contenido de alta calidad trascienda barreras lingüísticas y culturales con precisión y contexto educativo apropiado.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Impacto global:</strong> Reducción del 90% en tiempo de traducción, acceso instantáneo a recursos internacionales, y personalización cultural automática de materiales educativos.</p>
+                    </div>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="tool-card">
+                            <h4><i class="fas fa-globe"></i> DeepL / Google Translate Advanced</h4>
+                            <p><strong>Fortaleza:</strong> Traducción contextual precisa<br>
+                                <strong>Uso:</strong> Textos académicos y técnicos</p>
+                        </div>
+
+                        <div class="tool-card">
+                            <h4><i class="fas fa-brain"></i> LLMs Multilingües</h4>
+                            <p><strong>Fortaleza:</strong> Adaptación cultural y pedagógica<br>
+                                <strong>Uso:</strong> Contenido educativo contextualizado</p>
+                        </div>
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Prompt de Adaptación Cultural:</strong><br> "Traduce este recurso educativo de [IDIOMA ORIGEN] a [IDIOMA DESTINO] para estudiantes de [EDAD/NIVEL] en [PAÍS/REGIÓN]. Adapta: ejemplos culturales, referencias locales, sistema
+                        educativo, y metodología pedagógica. Mantén rigor académico y objetivos de aprendizaje."
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen9.png" alt="Traducción IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11 / 21</div>
+    </div>
+
+    <!-- Slide 11: Calidad y Precisión en Traducción Educativa IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Calidad y Precisión en Traducción Educativa IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <h3><i class="fas fa-shield-check"></i> Framework de Validación y Control de Calidad</h3>
+            <p>La traducción educativa con IA requiere protocolos rigurosos de verificación que aseguren no solo exactitud lingüística, sino también precisión conceptual y adecuación pedagógica.</p>
+
+            <div class="tool-card" style="border-left: 4px solid #ef4444;">
+                <h4><i class="fas fa-user-check"></i> Revisión Humana Especializada</h4>
+                <p>Validación por expertos bilingües con dominio tanto del idioma como del área temática específica, asegurando precisión terminológica</p>
+            </div>
+
+            <div class="tool-card" style="border-left: 4px solid #f59e0b;">
+                <h4><i class="fas fa-culture"></i> Sensibilidad Cultural</h4>
+                <p>Adaptación de ejemplos, referencias y contextos para que sean relevantes y apropiados en la cultura de destino</p>
+            </div>
+
+            <div class="tool-card" style="border-left: 4px solid #10b981;">
+                <h4><i class="fas fa-graduation-cap"></i> Coherencia Pedagógica</h4>
+                <p>Verificación de que los objetivos de aprendizaje, metodología y evaluación mantengan su efectividad en el contexto traducido</p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Protocolo recomendado:</strong> 1) Traducción inicial con IA, 2) Revisión técnica especializada, 3) Validación cultural, 4) Prueba piloto con audiencia objetivo, 5) Refinamiento final.</p>
+            </div>
+        </div>
+        <div class="slide-number">12 / 21</div>
+    </div>
+
+    <!-- Slide 12: Actividad Asíncrona - Creación de Asistente de Traducción -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Asíncrona: Creación de Asistente de Traducción</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-robot"></i> Desarrollo de Asistente IA Personalizado</h3>
+                    <p>Crea tu propio asistente de inteligencia artificial especializado en traducción de lenguaje para optimizar tu trabajo académico y profesional con recursos multilingües.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-cogs"></i> Instrucciones de la Actividad</h4>
+                        <div style="margin-top: 20px;">
+                            <p style="font-size: 1.1rem; color: #374151; margin-bottom: 20px;">
+                                <strong>Objetivo:</strong> Desarrollar un asistente de IA personalizado que te ayude con tareas de traducción de lenguaje en contextos educativos y profesionales.
+                            </p>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Opciones disponibles:</strong></p>
+                                <ul style="margin-top: 10px;">
+                                    <li><i class="fas fa-gem"></i> <strong>Gemini:</strong> Crear una <strong>Gema</strong> especializada en traducción</li>
+                                    <li><i class="fas fa-comment-dots"></i> <strong>ChatGPT:</strong> Desarrollar un <strong>GPT personalizado</strong> para traducción</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card" style="border-left: 6px solid #10b981;">
+                        <h4><i class="fas fa-list-check"></i> Características Sugeridas para tu Asistente</h4>
+                        <ul>
+                            <li><i class="fas fa-language"></i> <strong>Traducción contextual:</strong> Adaptada al ámbito educativo y académico</li>
+                            <li><i class="fas fa-graduation-cap"></i> <strong>Terminología especializada:</strong> Manejo de vocabulario técnico pedagógico</li>
+                            <li><i class="fas fa-globe"></i> <strong>Sensibilidad cultural:</strong> Adaptación a contextos regionales específicos</li>
+                            <li><i class="fas fa-file-alt"></i> <strong>Múltiples formatos:</strong> Textos académicos, recursos didácticos, comunicaciones formales</li>
+                            <li><i class="fas fa-quality"></i> <strong>Control de calidad:</strong> Verificación de precisión y coherencia</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen12.png" alt="Asistente Traducción IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                    <h4><i class="fas fa-gem" style="color: #3b82f6; margin-right: 10px;"></i> Opción 1: Gema en Gemini</h4>
+                    <p>Utiliza las capacidades de personalización de Gemini para crear una gema especializada en traducción educativa con instrucciones específicas para tu contexto profesional.</p>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
+                    <h4><i class="fas fa-comment-dots" style="color: #8b5cf6; margin-right: 10px;"></i> Opción 2: GPT Personalizado</h4>
+                    <p>Desarrolla un GPT personalizado en ChatGPT con instrucciones específicas para traducción de contenidos educativos y comunicación académica profesional.</p>
+                </div>
+            </div>
+
+            <div class="prompt-example" style="margin-top: 20px;">
+                <strong>Ejemplo de Instrucciones Base:</strong><br>
+                "Eres un asistente especializado en traducción de contenidos educativos. Tu función es traducir textos académicos, recursos didácticos y comunicaciones profesionales manteniendo: 1) Precisión terminológica, 2) Coherencia pedagógica, 3) Sensibilidad cultural, 4) Formato apropiado. Siempre pregunta por el contexto específico (nivel educativo, región, audiencia) antes de traducir."
+            </div>
+        </div>
+        <div class="slide-number">13 / 21</div>
+    </div>
+
+    <!-- Slide 13: Gestión Inteligente de Actualización Profesional -->
+    <div class="slide">
+        <h2 class="slide-content-title">Gestión Inteligente de Actualización Profesional</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-sync-alt"></i> Navegando el Tsunami de Información Educativa</h3>
+                    <p>El campo de la IA educativa evoluciona exponencialmente. Cada día emergen nuevas herramientas, investigaciones y enfoques pedagógicos. La paradoja es que la misma IA puede ser nuestra aliada para gestionar este flujo abrumador de información.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Desafío cuantificado:</strong> Se publican más de 1,000 artículos sobre IA educativa mensualmente, lanzan 50+ herramientas nuevas, y surgen tendencias pedagógicas semanalmente. La IA puede filtrar el 95% del ruido informativo.</p>
+                    </div>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 20px;">
+                        <div class="icon-card">
+                            <i class="fas fa-newspaper"></i>
+                            <h4>Síntesis Inteligente</h4>
+                            <p>Resúmenes automáticos de artículos y reportes</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-filter"></i>
+                            <h4>Curación Personalizada</h4>
+                            <p>Filtrado de contenido según intereses específicos</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-search-plus"></i>
+                            <h4>Detección de Tendencias</h4>
+                            <p>Identificación temprana de herramientas emergentes</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen11.png" alt="Actualización IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">14 / 21</div>
+    </div>
+
+    <!-- Slide 14: Mantenerse Actualizado con IA (2/3) - Estrategias y Herramientas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Estrategias Inteligentes de Actualización Profesional</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen12.png" alt="Estrategias Actualización" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-cogs"></i> Automatización Inteligente del Flujo Informativo</h3>
+                    <p>Implementa sistemas automatizados que trabajan 24/7 para filtrar, sintetizar y entregar información relevante directamente a tu flujo de trabajo, eliminando el ruido y maximizando el valor de cada minuto invertido en actualización.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Eficiencia comprobada:</strong> Reducción del 85% en tiempo de búsqueda manual, aumento del 300% en información relevante procesada, y detección temprana de tendencias emergentes con 2-3 meses de anticipación.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #10b981;">
+                    <h4><i class="fas fa-bell" style="color: #10b981; margin-right: 10px;"></i> Alertas Personalizadas Inteligentes</h4>
+                    <ul style="margin-top: 10px;">
+                        <li><i class="fas fa-google"></i> <strong>Google Alerts:</strong> "AI education tools", "EdTech trends", "pedagogical innovation"</li>
+                        <li><i class="fas fa-rss-square"></i> <strong>Feedly + IA:</strong> Curación automática de blogs especializados</li>
+                        <li><i class="fas fa-twitter"></i> <strong>Twitter Lists:</strong> Seguimiento de líderes en IA educativa</li>
+                        <li><i class="fas fa-linkedin"></i> <strong>LinkedIn:</strong> Hashtags #AIEducation #EdTech #FutureOfLearning</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                    <h4><i class="fas fa-newspaper" style="color: #3b82f6; margin-right: 10px;"></i> Síntesis Automática con LLMs</h4>
+                    <div class="prompt-example" style="margin-top: 15px; font-size: 0.9rem;">
+                        <strong>Prompt para Resumen de Artículos:</strong><br>
+                        "Actúa como consultor educativo experto. Resume este artículo sobre [nueva herramienta IA] enfocándote en: 1) Aplicaciones educativas prácticas, 2) Beneficios para docentes, 3) Limitaciones importantes, 4) Pasos para implementación. Formato: párrafos concisos para lectura rápida."
+                    </div>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
+                    <h4><i class="fas fa-filter" style="color: #8b5cf6; margin-right: 10px;"></i> Plataformas de Curación IA</h4>
+                    <ul style="margin-top: 10px;">
+                        <li><i class="fas fa-star"></i> <strong>Pocket + IA:</strong> Lecturas recomendadas basadas en historial</li>
+                        <li><i class="fas fa-brain"></i> <strong>Perplexity Discovery:</strong> Tendencias emergentes personalizadas</li>
+                        <li><i class="fas fa-graduation-cap"></i> <strong>EdSurge:</strong> Noticias EdTech con análisis IA</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Trend Hunter AI:</strong> Detección temprana de innovaciones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">15 / 21</div>
+    </div>
+
+    <!-- Slide 15: Mantenerse Actualizado con IA (3/3) - Evaluación Crítica -->
+    <div class="slide">
+        <h2 class="slide-content-title">Evaluación Crítica de Información IA-Curada</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-search-plus"></i> Criterio Profesional en la Era de la Información Automatizada</h3>
+                    <p>La curación inteligente de información es solo el primer paso. El verdadero valor profesional radica en desarrollar la capacidad de evaluar críticamente, contrastar fuentes y aplicar juicio experto para transformar información en conocimiento accionable.</p>
+
+                    <div class="ethics-alert">
+                        <p><strong>Responsabilidad crítica:</strong> La IA puede curar y sintetizar, pero nunca debe sustituir el pensamiento crítico profesional. El educador sigue siendo el filtro final de calidad, relevancia y aplicabilidad.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://feedly.com/ai" target="_blank" style="display: inline-block; transition: transform 0.3s ease;">
+                        <img src="imagenes/modulo6/imagen13.png" alt="Evaluación Crítica IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
+                    </a>
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                    <i class="fas fa-shield-check" style="color: #ef4444;"></i>
+                    <h4>Verificación de Fuentes Primarias</h4>
+                    <p>Siempre consultar el documento original, validar credibilidad del autor, verificar fecha de publicación y contexto institucional</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f97316;">
+                    <i class="fas fa-balance-scale" style="color: #f97316;"></i>
+                    <h4>Contraste Multi-Fuente</h4>
+                    <p>Comparar información con al menos 2-3 fuentes independientes, identificar consensos y divergencias significativas</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #eab308;">
+                    <i class="fas fa-user-graduate" style="color: #eab308;"></i>
+                    <h4>Aplicabilidad Contextual</h4>
+                    <p>Evaluar relevancia para su contexto específico: nivel educativo, recursos disponibles, cultura institucional</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #dc2626;">
+                    <i class="fas fa-clock" style="color: #dc2626;"></i>
+                    <h4>Actualidad y Vigencia</h4>
+                    <p>Verificar que la información siga siendo relevante, especialmente en un campo de evolución tan rápida como la IA</p>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-left: 6px solid #8b5cf6; margin-top: 30px;">
+                <h4><i class="fas fa-clipboard-check" style="color: #8b5cf6; margin-right: 10px;"></i> Protocolo de Validación Profesional</h4>
+                <div style="margin-top: 15px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; text-align: center;">
+                    <div style="background: rgba(66, 153, 225, 0.1); padding: 15px; border-radius: 8px;">
+                        <strong>1. Curar</strong><br>IA filtra información
+                    </div>
+                    <div style="background: rgba(66, 153, 225, 0.2); padding: 15px; border-radius: 8px;">
+                        <strong>2. Verificar</strong><br>Consultar fuentes originales
+                    </div>
+                    <div style="background: rgba(66, 153, 225, 0.3); padding: 15px; border-radius: 8px;">
+                        <strong>3. Contrastar</strong><br>Múltiples perspectivas
+                    </div>
+                    <div style="background: rgba(66, 153, 225, 0.4); padding: 15px; border-radius: 8px;">
+                        <strong>4. Contextualizar</strong><br>Aplicar criterio profesional
+                    </div>
+                    <div style="background: rgba(66, 153, 225, 0.5); padding: 15px; border-radius: 8px; color: white;">
+                        <strong>5. Actuar</strong><br>Implementar aprendizaje
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">16 / 21</div>
+    </div>
+
+    <!-- Slide 16: Actividad Práctica - Comparación de Búsqueda con y sin Web Search -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Práctica: Comparación de Búsqueda con y sin Web Search</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-search"></i> Análisis Comparativo de Capacidades de Búsqueda</h3>
+                    <p>Experimenta con las diferencias entre las capacidades de búsqueda básicas de una IA y sus funcionalidades avanzadas cuando tiene acceso a búsqueda web en tiempo real.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-tasks"></i> Instrucciones de la Actividad</h4>
+                        <ol style="font-size: 1.1rem; line-height: 1.8; color: #374151; margin-left: 20px;">
+                            <li><strong>Paso 1:</strong> Selecciona una herramienta de IA (ChatGPT, Claude, Gemini, etc.)</li>
+                            <li><strong>Paso 2:</strong> Realiza una consulta <strong>sin usar Web Search</strong> sobre un tema educativo</li>
+                            <li><strong>Paso 3:</strong> Repite la misma consulta <strong>activando Web Search</strong> o herramientas de búsqueda</li>
+                            <li><strong>Paso 4:</strong> Documenta y compara ambos resultados</li>
+                        </ol>
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Ejemplo de Prompt Sugerido:</strong><br>
+                        "Provee nuevas tendencias en educación que estén impactando el aprendizaje en 2024. Incluye ejemplos específicos, tecnologías emergentes y cambios metodológicos significativos."
+                    </div>
+
+                    <div class="tool-card" style="border-left: 6px solid #10b981;">
+                        <h4><i class="fas fa-clipboard-list"></i> Entregable Requerido</h4>
+                        <p>Documento comparativo que incluya:</p>
+                        <ul>
+                            <li><i class="fas fa-robot"></i> <strong>Modelo utilizado:</strong> Especificar qué herramienta de IA se usó</li>
+                            <li><i class="fas fa-terminal"></i> <strong>Prompt exacto:</strong> Transcripción completa del prompt utilizado</li>
+                            <li><i class="fas fa-ban"></i> <strong>Resultados sin Web Search:</strong> Respuesta obtenida sin búsqueda web</li>
+                            <li><i class="fas fa-globe"></i> <strong>Resultados con Web Search:</strong> Respuesta obtenida con búsqueda web activada</li>
+                            <li><i class="fas fa-balance-scale"></i> <strong>Análisis comparativo:</strong> Diferencias en actualidad, especificidad, fuentes y utilidad</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen13.png" alt="Comparación Web Search" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #ef4444;">
+                    <h4><i class="fas fa-exclamation-triangle" style="color: #ef4444; margin-right: 10px;"></i> Aspectos Clave a Analizar</h4>
+                    <ul>
+                        <li><i class="fas fa-calendar-alt"></i> <strong>Actualidad:</strong> ¿Qué resultados incluyen información más reciente?</li>
+                        <li><i class="fas fa-link"></i> <strong>Fuentes:</strong> ¿Cuál proporciona referencias y fuentes verificables?</li>
+                        <li><i class="fas fa-chart-bar"></i> <strong>Especificidad:</strong> ¿Qué respuesta es más detallada y específica?</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Utilidad práctica:</strong> ¿Cuál es más útil para aplicación educativa?</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                    <h4><i class="fas fa-lightbulb" style="color: #3b82f6; margin-right: 10px;"></i> Temas Alternativos de Consulta</h4>
+                    <ul>
+                        <li><i class="fas fa-graduation-cap"></i> "Nuevas metodologías de enseñanza en matemáticas"</li>
+                        <li><i class="fas fa-laptop"></i> "Herramientas digitales innovadoras para educación"</li>
+                        <li><i class="fas fa-brain"></i> "Avances en neuroeducación y aprendizaje"</li>
+                        <li><i class="fas fa-globe"></i> "Tendencias en educación a distancia post-pandemia"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">17 / 21</div>
+    </div>
+
+    <!-- Slide 17: Personalización del Aprendizaje Profesional con IA (1/3) -->
+    <div class="slide">
+        <h2 class="slide-content-title">Networking Profesional Potenciado por IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-network-wired"></i> Estrategias Inteligentes de Conexión Profesional</h3>
+                    <p>La IA revoluciona el networking educativo al identificar oportunidades relevantes, personalizar interacciones y optimizar el desarrollo de relaciones profesionales estratégicas. Transforma networking reactivo en crecimiento proactivo e intencional.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Impacto transformador:</strong> Aumento del 200% en conexiones relevantes, reducción del 60% en tiempo de investigación previa, y mejora del 150% en tasa de respuesta a comunicaciones profesionales.</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-lightbulb"></i> Beneficios Estratégicos del Networking IA:</h4>
+                        <ul>
+                            <li><i class="fas fa-crosshairs"></i> <strong>Precisión en targeting:</strong> Identificación de contactos alineados con objetivos específicos</li>
+                            <li><i class="fas fa-clock"></i> <strong>Eficiencia temporal:</strong> Automatización de tareas rutinarias de networking</li>
+                            <li><i class="fas fa-chart-bar"></i> <strong>Análisis de tendencias:</strong> Identificación de líderes emergentes en áreas de interés</li>
+                            <li><i class="fas fa-handshake"></i> <strong>Personalización escalable:</strong> Comunicaciones auténticas en gran volumen</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://chatgptaihub.com/chatgpt-prompts-for-linkedin/" target="_blank" style="display: inline-block; transition: transform 0.3s ease;">
+                        <img src="imagenes/modulo6/imagen14.png" alt="Networking IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
+                    </a>
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #10b981;">
+                    <h4><i class="fas fa-search" style="color: #10b981; margin-right: 10px;"></i> Identificación Inteligente de Oportunidades</h4>
+                    <ul style="margin-top: 10px;">
+                        <li><i class="fas fa-linkedin"></i> <strong>LinkedIn + IA:</strong> Sales Navigator para identificar educadores por especialización</li>
+                        <li><i class="fas fa-twitter"></i> <strong>Twitter Analytics:</strong> Identificar influencers educativos emergentes</li>
+                        <li><i class="fas fa-university"></i> <strong>Research Gate:</strong> Colaboradores potenciales en investigación educativa</li>
+                        <li><i class="fas fa-calendar-alt"></i> <strong>Eventbrite + IA:</strong> Eventos relevantes y asistentes clave</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                    <h4><i class="fas fa-user-tie" style="color: #3b82f6; margin-right: 10px;"></i> Optimización de Perfil Profesional</h4>
+                    <div class="prompt-example" style="margin-top: 15px; font-size: 0.9rem;">
+                        <strong>Prompt para LinkedIn Headline:</strong><br>
+                        "Crea 5 opciones de headline profesional para LinkedIn de un docente especializado en [área], con experiencia en IA educativa. Debe ser atractivo, específico y orientado a colaboración e innovación. Máximo 120 caracteres."
+                    </div>
+                    <ul style="margin-top: 15px;">
+                        <li><i class="fas fa-edit"></i> <strong>Bio inteligente:</strong> Resúmenes personalizados por audiencia</li>
+                        <li><i class="fas fa-tags"></i> <strong>Keywords estratégicas:</strong> Optimización para búsquedas relevantes</li>
+                        <li><i class="fas fa-image"></i> <strong>Contenido visual:</strong> Infografías de logros y competencias</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
+                    <h4><i class="fas fa-comments" style="color: #8b5cf6; margin-right: 10px;"></i> Personalización de Comunicaciones</h4>
+                    <ul style="margin-top: 10px;">
+                        <li><i class="fas fa-envelope"></i> <strong>Cold outreach inteligente:</strong> Mensajes personalizados basados en intereses comunes</li>
+                        <li><i class="fas fa-reply"></i> <strong>Follow-up automático:</strong> Secuencias de seguimiento contextuales</li>
+                        <li><i class="fas fa-gift"></i> <strong>Value proposition:</strong> Ofertas de colaboración mutuamente beneficiosas</li>
+                        <li><i class="fas fa-calendar-check"></i> <strong>Meeting optimization:</strong> Agendas personalizadas para cada contacto</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">18 / 21</div>
+    </div>
+
+
+
+    <!-- Slide 16: Personalización del Aprendizaje Profesional con IA (3/3) - Creando Rutas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Rutas de Aprendizaje Profesional Personalizadas</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-route"></i> Diseño de Trayectorias de Desarrollo Inteligentes</h3>
+                    <p>La IA puede crear planes de aprendizaje profesional completamente personalizados, identificando necesidades específicas, sugiriendo recursos apropiados y diseñando secuencias de desarrollo que se adapten al ritmo y estilo individual de cada educador.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Enfoque transformador:</strong> Evolución del desarrollo profesional reactivo hacia crecimiento proactivo y estratégicamente diseñado con asistencia inteligente para maximizar impacto y eficiencia.</p>
+                    </div>
+
+                    <div class="tool-card" style="border-left: 6px solid #10b981;">
+                        <h4><i class="fas fa-search-plus"></i> Diagnóstico de Necesidades con IA</h4>
+                        <div class="prompt-example" style="margin-top: 15px; font-size: 0.9rem;">
+                            <strong>Prompt de Autoanálisis:</strong><br>
+                            "Soy docente de [ASIGNATURA] con [X años] de experiencia. Quiero mejorar en [ÁREA ESPECÍFICA]. Analiza mis fortalezas actuales, identifica 3 habilidades clave que necesito desarrollar, y sugiere una ruta de aprendizaje de 6 meses con recursos específicos y objetivos medibles."
+                        </div>
+                    </div>
+                </div>
+                <!-- Imagen eliminada aquí (imagen16.png) -->
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                    <h4><i class="fas fa-map-marked-alt" style="color: #3b82f6; margin-right: 10px;"></i> Componentes de una Ruta Personalizada</h4>
+                    <ul style="margin-top: 10px;">
+                        <li><i class="fas fa-bullseye"></i> <strong>Objetivos SMART:</strong> Metas específicas, medibles y temporalizadas</li>
+                        <li><i class="fas fa-books"></i> <strong>Recursos curados:</strong> Artículos, cursos, videos seleccionados por relevancia</li>
+                        <li><i class="fas fa-users"></i> <strong>Comunidades sugeridas:</strong> Grupos profesionales alineados con intereses</li>
+                        <li><i class="fas fa-tasks"></i> <strong>Actividades prácticas:</strong> Proyectos y ejercicios para aplicar conocimiento</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Métricas de progreso:</strong> Indicadores de avance y logro</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
+                    <h4><i class="fas fa-brain" style="color: #8b5cf6; margin-right: 10px;"></i> Ejercicios de Auto-reflexión Generados por IA</h4>
+                    <ul style="margin-top: 10px;">
+                        <li><i class="fas fa-mirror"></i> <strong>Journaling dirigido:</strong> Preguntas específicas para reflexión profunda</li>
+                        <li><i class="fas fa-clipboard-list"></i> <strong>Autoevaluaciones:</strong> Instrumentos personalizados de diagnóstico</li>
+                        <li><i class="fas fa-lightbulb"></i> <strong>Análisis de casos:</strong> Escenarios relevantes para práctica reflexiva</li>
+                        <li><i class="fas fa-target"></i> <strong>Goal setting:</strong> Establecimiento de objetivos basado en autoanálisis</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #f59e0b;">
+                    <h4><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 10px;"></i> Adaptación Continua</h4>
+                    <ul style="margin-top: 10px;">
+                        <li><i class="fas fa-chart-bar"></i> <strong>Monitoreo inteligente:</strong> Ajuste automático basado en progreso</li>
+                        <li><i class="fas fa-route"></i> <strong>Recalibración de rutas:</strong> Modificación según nuevos intereses</li>
+                        <li><i class="fas fa-bell"></i> <strong>Recordatorios contextuales:</strong> Notificaciones de oportunidades relevantes</li>
+                        <li><i class="fas fa-award"></i> <strong>Reconocimiento de logros:</strong> Celebración automática de hitos alcanzados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">19 / 21</div>
+    </div>
+
+    <!-- Slide 19: Actividad Práctica - Resumen de Artículo Educativo con IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Práctica: Resumen de Artículo Educativo con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-file-pdf"></i> Síntesis Académica Especializada</h3>
+                    <p>Desarrolla competencias para resumir literatura académica de forma eficiente y profesional, utilizando IA para optimizar tu proceso de actualización y investigación educativa.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-tasks"></i> Instrucciones de la Actividad</h4>
+                        <ol style="font-size: 1.1rem; line-height: 1.8; color: #374151; margin-left: 20px;">
+                            <li><strong>Paso 1:</strong> Selecciona un artículo de educación en formato PDF</li>
+                            <li><strong>Paso 2:</strong> Sube el PDF a tu herramienta de IA favorita (ChatGPT, Claude, etc.)</li>
+                            <li><strong>Paso 3:</strong> Utiliza el prompt especializado proporcionado</li>
+                            <li><strong>Paso 4:</strong> Revisa y refina el resumen generado</li>
+                        </ol>
+                    </div>
+
+                    <div class="prompt-example" style="margin-top: 20px;">
+                        <strong>Prompt Específico a Utilizar:</strong><br>
+                        "Actúa como consultor educativo experto. Resume este artículo sobre [nueva herramienta IA] enfocándote en: 1) Aplicaciones educativas prácticas, 2) Beneficios para docentes, 3) Limitaciones importantes, 4) Pasos para implementación. Formato: párrafos concisos para lectura rápida."
+                    </div>
+
+                    <div class="tool-card" style="border-left: 6px solid #10b981;">
+                        <h4><i class="fas fa-bullseye"></i> Objetivo de Aprendizaje</h4>
+                        <p>Dominar la técnica de síntesis académica asistida por IA para optimizar tu proceso de actualización profesional y generar resúmenes de alta calidad en formato ejecutivo.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen7.png" alt="Resumen Artículo PDF" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                    <h4><i class="fas fa-search" style="color: #3b82f6; margin-right: 10px;"></i> Criterios de Selección del Artículo</h4>
+                    <ul>
+                        <li><i class="fas fa-calendar-alt"></i> <strong>Actualidad:</strong> Publicación reciente (últimos 2-3 años)</li>
+                        <li><i class="fas fa-graduation-cap"></i> <strong>Relevancia:</strong> Tema relacionado con herramientas de IA educativa</li>
+                        <li><i class="fas fa-university"></i> <strong>Rigor académico:</strong> Fuente confiable o revista especializada</li>
+                        <li><i class="fas fa-file-alt"></i> <strong>Extensión:</strong> Entre 8-20 páginas para análisis completo</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
+                    <h4><i class="fas fa-check-circle" style="color: #8b5cf6; margin-right: 10px;"></i> Componentes del Resumen Esperado</h4>
+                    <ul>
+                        <li><i class="fas fa-cogs"></i> <strong>Aplicaciones prácticas:</strong> Usos específicos en contextos educativos</li>
+                        <li><i class="fas fa-user-graduate"></i> <strong>Beneficios docentes:</strong> Ventajas para el profesorado</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> <strong>Limitaciones:</strong> Restricciones y consideraciones importantes</li>
+                        <li><i class="fas fa-road"></i> <strong>Pasos implementación:</strong> Guía práctica para adopción</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #f59e0b;">
+                    <h4><i class="fas fa-lightbulb" style="color: #f59e0b; margin-right: 10px;"></i> Consejos para Optimizar el Proceso</h4>
+                    <ul>
+                        <li><i class="fas fa-eye"></i> <strong>Lectura previa:</strong> Revisa el artículo antes de usar IA</li>
+                        <li><i class="fas fa-edit"></i> <strong>Personalización:</strong> Adapta el prompt según tu contexto específico</li>
+                        <li><i class="fas fa-shield-check"></i> <strong>Verificación:</strong> Contrasta la información con el texto original</li>
+                        <li><i class="fas fa-users"></i> <strong>Aplicabilidad:</strong> Considera tu audiencia y contexto educativo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <p><strong>Nota importante:</strong> Esta actividad te permitirá dominar una competencia esencial para el desarrollo profesional continuo: la síntesis eficiente de literatura académica especializada manteniendo rigor y relevancia práctica.</p>
+            </div>
+        </div>
+        <div class="slide-number">20 / 21</div>
+    </div>
+
+
+
+
+
+    <!-- Slide 20: Síntesis y Transformación Profesional -->
+    <div class="slide">
+        <div class="decorative-shape shape-top-left"></div>
+        <h2 class="slide-content-title">Transformación Profesional: El Educador del Futuro</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-star"></i> Competencias Maestras Desarrolladas en el Módulo 6</h3>
+                    <p>Has completado un módulo transformador que te convierte en un educador estratégicamente equipado para prosperar en la era de la IA, dominando herramientas que amplifican tu impacto profesional manteniendo la esencia humana de la educación.</p>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(2, 1fr); margin: 20px 0;">
+                        <div class="tool-card" style="border-left: 6px solid #10b981;">
+                            <h4><i class="fas fa-search" style="color: #10b981;"></i> Investigación Académica Potenciada</h4>
+                            <p>Síntesis inteligente de literatura, búsqueda avanzada, análisis de tendencias y producción de conocimiento con rigor académico excepcional</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                            <h4><i class="fas fa-pen-fancy" style="color: #3b82f6;"></i> Comunicación Profesional Optimizada</h4>
+                            <p>Redacción académica de alto impacto, propuestas persuasivas, comunicación estratégica y escritura profesional con eficiencia transformada</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
+                            <h4><i class="fas fa-globe" style="color: #8b5cf6;"></i> Conectividad Global Inteligente</h4>
+                            <p>Traducción cultural contextualizada, networking estratégico, colaboración internacional y construcción de redes profesionales globales</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 6px solid #f59e0b;">
+                            <h4><i class="fas fa-sync-alt" style="color: #f59e0b;"></i> Actualización Profesional Continua</h4>
+                            <p>Curación inteligente de información, aprendizaje personalizado autodirigido, gestión de flujos informativos y desarrollo profesional estratégico</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Transformación lograda:</strong> Has evolucionado de consumidor de IA a curador experto, de usuario pasivo a estratega profesional, manteniendo siempre la autenticidad intelectual y los estándares éticos más elevados.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo6/imagen20.png" alt="Transformación Profesional" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+
+                <div class="tool-card" style="border-left: 6px solid #06b6d4;">
+                    <h4><i class="fas fa-compass" style="color: #06b6d4; margin-right: 10px;"></i> Próximo Horizonte: Módulo 7</h4>
+                    <div style="margin-top: 15px; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: 12px;">
+                        <h5 style="color: #0891b2; margin-bottom: 10px;"><strong>"Futuro de la IA en Educación y Competencias del Siglo XXI"</strong></h5>
+                        <p style="color: #164e63; margin-bottom: 15px;">Exploración de tendencias emergentes, evolución del rol educativo, preparación de nuevas generaciones para un mundo transformado por IA, y diseño de estrategias de implementación institucional.</p>
+                        <ul style="color: #155e75;">
+                            <li><i class="fas fa-crystal-ball"></i> <strong>Tendencias futuras:</strong> IA generativa, realidad aumentada educativa, personalización extrema</li>
+                            <li><i class="fas fa-user-astronaut"></i> <strong>Evolución del docente:</strong> De instructor a curador de experiencias de aprendizaje</li>
+                            <li><i class="fas fa-graduation-cap"></i> <strong>Competencias XXI:</strong> Pensamiento crítico, creatividad aumentada, colaboración humano-IA</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px; text-align: center; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b;">
+                <h4><i class="fas fa-medal"></i> ¡Felicitaciones por tu Transformación Profesional!</h4>
+                <p style="color: #92400e;"><strong>Has dominado las competencias esenciales para prosperar como educador en la era de la IA. Tu viaje hacia la excelencia educativa transformada continúa en el módulo final, donde consolidarás tu visión como líder del futuro educativo.</strong></p>
+            </div>
+        </div>
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">21 / 21</div>
+        <div class="decorative-shape shape-bottom-right"></div>
+    </div>
+
+<script>
+    // Funcionalidad del modal de imágenes
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementsByClassName('close')[0];
+
+    // Agregar clase zoomable a todas las imágenes excepto las que están en enlaces
+    document.querySelectorAll('img').forEach(img => {
+        if (!img.classList.contains('modal-content') && !img.closest('a')) {
+            img.addEventListener('click', function() {
+                modal.classList.add('show');
+                modalImg.src = this.src;
+            });
+        }
+    });
+
+    // Cerrar modal con el botón
+    closeBtn.onclick = function() {
+        modal.classList.remove('show');
+    }
+
+    // Cerrar modal haciendo clic fuera de la imagen
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            modal.classList.remove('show');
+        }
+    }
+
+    // Cerrar modal con la tecla Escape
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            modal.classList.remove('show');
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 5: IA en Aula y Evaluación - Presentación</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #fefefe 0%, #f0f9ff 100%);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .slide-title-main {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8rem;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .slide-info {
+            font-size: 1.2rem;
+            color: #4299e1;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .slide-content-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accent-line {
+            height: 4px;
+            background: linear-gradient(90deg, #4299e1, #667eea);
+            border-radius: 2px;
+            width: 120px;
+            margin: 0 auto 35px auto;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1400px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1d4ed8;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .content-card h3 i {
+            margin-right: 15px;
+            color: #4299e1;
+            font-size: 2rem;
+        }
+        
+        .content-card p,
+        .content-card ul {
+            font-size: 1.2rem;
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .content-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .content-card ul li {
+            padding: 12px 0 12px 2.5em;
+            position: relative;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+        }
+        
+        .content-card ul li:hover {
+            transform: translateX(8px);
+            color: #1d4ed8;
+            background: rgba(66, 153, 225, 0.05);
+        }
+        
+        .content-card ul li i {
+            position: absolute;
+            left: 0;
+            top: 16px;
+            color: #4299e1;
+            font-size: 1.3rem;
+        }
+        
+        .decorative-shape {
+            position: absolute;
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .shape-top-left {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        .shape-bottom-right {
+            width: 250px;
+            height: 250px;
+            bottom: -125px;
+            right: -125px;
+        }
+        
+        .nav-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .nav-button-home {
+            background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+            font-size: 1.1rem;
+        }
+        
+        .nav-button-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(66, 153, 225, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-button-home i {
+            margin-right: 10px;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 1.1rem;
+            color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-icon {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 40px rgba(66, 153, 225, 0.4);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 6px solid #4299e1;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1);
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .icon-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(66, 153, 225, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .icon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .icon-card i {
+            font-size: 2.5rem;
+            color: #4299e1;
+            margin-bottom: 15px;
+        }
+        
+        .icon-card h4 {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .icon-card p {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .tool-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 6px solid #4299e1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .activity-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 2px solid rgba(66, 153, 225, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ethics-alert {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #fca5a5;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(248, 113, 113, 0.1);
+        }
+        
+        .ethics-alert::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: #fee2e2;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 1.4rem;
+        }
+        
+        .wide-content {
+            max-width: 1600px;
+            width: 100%;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            border: 2px dashed #4299e1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(66, 153, 225, 0.2);
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .image-placeholder span {
+            color: #4299e1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+        
+        .split-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #4299e1, #667eea);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, #4299e1, #667eea);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 1);
+        }
+        
+        @media (max-width: 1200px) {
+            .slide-title-main {
+                font-size: 3rem;
+            }
+            .content-card {
+                max-width: 1000px;
+            }
+            .split-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .icon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide-title-main {
+                font-size: 2.5rem;
+            }
+            .slide-content-title {
+                font-size: 2rem;
+            }
+            .content-card {
+                padding: 25px;
+                margin: 0 15px 20px 15px;
+            }
+            .icon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal de Imagen */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            display: block;
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Modal para imágenes -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="slide">
+        <div class="decorative-shape shape-top-left"></div>
+        <div class="module-icon">
+            <i class="fas fa-chalkboard-user"></i>
+        </div>
+        <h1 class="slide-title-main">Módulo 5:<br>La IA en Acción:<br>En el Aula y Apoyo a la Evaluación</h1>
+        <p class="slide-subtitle">Diplomado: Herramientas de Inteligencia Artificial para Educadores Innovadores</p>
+        <div class="accent-line"></div>
+
+        <div style="max-width: 600px; height: 200px; text-align: center;">
+            <img src="imagenes/modulo5/imagen1.png" alt="Portada del Módulo" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+        </div>
+
+        <p class="slide-info">
+            <i class="fas fa-chalkboard-teacher"></i> Dr. Salvador Tututi Ávila &nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-laptop-code"></i> I.Q. Juan José Alonso Tijerina
+        </p>
+        <p class="slide-info">
+            <i class="fas fa-clock"></i> Duración del Módulo: 8 horas (3 Síncronas / 5 Asíncronas)
+        </p>
+
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">1 / 20</div>
+        <div class="decorative-shape shape-bottom-right"></div>
+    </div>
+
+    <!-- Slide 2: Agenda del Módulo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Agenda del Módulo 5</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-list-ul"></i> Contenidos Principales</h3>
+                    <ul>
+                        <li><i class="fas fa-users-cog"></i> IA como herramienta para estudiantes (uso supervisado y crítico)</li>
+                        <li><i class="fas fa-hands-helping"></i> IA como asistente de tutoría: Posibilidades y limitaciones</li>
+                        <li><i class="fas fa-tasks"></i> Generación de rúbricas de evaluación detalladas y adaptadas</li>
+                        <li><i class="fas fa-comment-dots"></i> Uso de IA para generar borradores de retroalimentación formativa</li>
+                        <li><i class="fas fa-search-plus"></i> Exploración de herramientas para analizar respuestas abiertas</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Actividad Práctica Síncrona: Diseño de actividad con IA para alumnos</li>
+                        <li><i class="fas fa-file-signature"></i> Actividad Asíncrona: Ejercicio de generación de feedback simulado</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen2.png" alt="Agenda Visual" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">2 / 20</div>
+    </div>
+
+    <!-- Slide 3: IA como Herramienta para Estudiantes (1/3) - Introducción -->
+    <div class="slide">
+        <h2 class="slide-content-title">IA para Estudiantes: Empoderamiento Digital</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-user-graduate"></i> Empoderando a los Alumnos con IA</h3>
+                    <p>La IA no es solo para los docentes; también puede ser una herramienta poderosa en manos de los estudiantes, siempre que su uso sea guiado, ético y crítico. La integración responsable de IA en el aprendizaje estudiantil abre nuevas
+                        dimensiones de autonomía y desarrollo de competencias digitales.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Principio fundamental:</strong> La IA debe servir como catalizador del pensamiento crítico estudiantil, no como sustituto del esfuerzo intelectual y la creatividad personal.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen3.png" alt="IA para Estudiantes" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card">
+                    <i class="fas fa-search"></i>
+                    <h4>Investigación Asistida</h4>
+                    <p>Punto de partida para buscar información, entender conceptos complejos y generar resúmenes iniciales con verificación posterior</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-comments"></i>
+                    <h4>Compañero de Estudio Virtual</h4>
+                    <p>Práctica de idiomas, resolución de dudas puntuales y repaso de conceptos con asistencia inteligente</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Herramienta Creativa</h4>
+                    <p>Generación de ideas para proyectos, borradores de texto e imágenes para trabajos académicos</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Aprendizaje de Programación</h4>
+                    <p>Comprensión de código, depuración de errores y generación de ejemplos educativos</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3 / 20</div>
+    </div>
+
+    <!-- Slide 4: IA como Herramienta para Estudiantes (2/3) - Uso Supervisado y Crítico -->
+    <div class="slide">
+        <h2 class="slide-content-title">Uso Supervisado y Crítico de IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen4.png" alt="Uso Crítico de IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-eye"></i> Fomentando el Uso Supervisado y Crítico</h3>
+                    <p>La implementación exitosa de IA en el aprendizaje estudiantil requiere un marco pedagógico sólido que equilibre la autonomía digital con la supervisión educativa responsable. Es crucial que los docentes guíen a los estudiantes hacia
+                        un uso reflexivo y ético de estas herramientas.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Objetivo clave:</strong> Desarrollar estudiantes capaces de discernir cuándo, cómo y por qué utilizar IA como herramienta de aprendizaje, manteniendo siempre su capacidad de pensamiento crítico y creatividad original.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-chalkboard-teacher" style="color: #10b981;"></i>
+                    <h4>Establecer Directrices Claras</h4>
+                    <p>Definición explícita sobre cuándo y cómo usar la IA, diferenciando entre uso aceptable y plagio académico</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-search-plus" style="color: #3b82f6;"></i>
+                    <h4>Enseñar Evaluación Crítica</h4>
+                    <p>Promoción de verificación de información, identificación de sesgos y comprensión de limitaciones de la IA</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-user-check" style="color: #8b5cf6;"></i>
+                    <h4>Fomentar Autoría Original</h4>
+                    <p>Énfasis en que la IA es herramienta de apoyo, no sustituto del esfuerzo y pensamiento propio del estudiante</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-balance-scale" style="color: #f59e0b;"></i>
+                    <h4>Discutir Implicaciones Éticas</h4>
+                    <p>Abordaje de temas como privacidad, sesgos algorítmicos e impacto social de la IA en la sociedad</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">4 / 20</div>
+    </div>
+
+    <!-- Slide 5: IA como Herramienta para Estudiantes (3/3) - Ejemplos de Actividades -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividades Guiadas con IA para Estudiantes</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-tasks"></i> Ejemplos Prácticos de Implementación</h3>
+                    <p>La integración efectiva de IA en el aprendizaje estudiantil requiere actividades estructuradas que promuevan el pensamiento crítico y la creatividad. A continuación se presentan ejemplos concretos de cómo los estudiantes pueden utilizar
+                        herramientas de IA de manera pedagógicamente valiosa.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Metodología:</strong> Cada actividad debe incluir una fase de uso de IA seguida de análisis crítico, verificación y expansión personal del trabajo generado.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen5.png" alt="Actividades con IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-edit" style="color: #10b981;"></i>
+                    <h4>Generación de Ideas para Ensayos</h4>
+                    <p><strong>Actividad:</strong> "Usar ChatGPT para generar 3 ideas para un ensayo sobre [tema], elegir una y desarrollarla con investigación propia y análisis crítico"</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-palette" style="color: #3b82f6;"></i>
+                    <h4>Creación Visual para Proyectos</h4>
+                    <p><strong>Actividad:</strong> "Solicitar a un generador de imágenes que cree una ilustración para un poema original, analizando cómo la IA interpreta conceptos abstractos"</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-search" style="color: #8b5cf6;"></i>
+                    <h4>Investigación Académica Asistida</h4>
+                    <p><strong>Actividad:</strong> "Utilizar Perplexity AI para encontrar 3 fuentes confiables sobre [tema], verificar credibilidad y sintetizar información"</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-language" style="color: #f59e0b;"></i>
+                    <h4>Práctica de Idiomas Interactiva</h4>
+                    <p><strong>Actividad:</strong> "Mantener conversaciones en idioma extranjero con ChatGPT, practicando escenarios específicos y recibiendo retroalimentación"</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                    <i class="fas fa-code" style="color: #ef4444;"></i>
+                    <h4>Aprendizaje de Programación</h4>
+                    <p><strong>Actividad:</strong> "Usar IA para explicar código complejo, generar ejemplos y depurar errores, analizando la lógica paso a paso"</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #06b6d4;">
+                    <i class="fas fa-question-circle" style="color: #06b6d4;"></i>
+                    <h4>Simulación de Debates</h4>
+                    <p><strong>Actividad:</strong> "Practicar argumentos con IA adoptando diferentes perspectivas, fortaleciendo habilidades de razonamiento y contra-argumentación"</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">5 / 21</div>
+    </div>
+
+    <!-- Slide 6: Actividad Práctica - Comparación de Modelos IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Práctica: Comparación de Modelos IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-calculator"></i> Comparación de Modelos para Solución de Problemas Matemáticos</h3>
+                    <p>Compara dos modelos del estado del arte en términos de solución de problemas matemáticos. Solicitar al modelo que resuelva el problema establecido en la guía de actividades y comprar los resultados.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Discusión:</strong> ¿Qué se puede solicitar al alumno como entregable para un problema como este?</p>
+                    </div>
+                </div>
+                <!-- Imagen eliminada aquí (imagen6.png) -->
+            </div>
+        </div>
+        <div class="slide-number">6 / 21</div>
+    </div>
+
+    <!-- Slide 7: IA como Asistente de Tutoría (1/3) - Posibilidades -->
+    <div class="slide">
+        <h2 class="slide-content-title">IA como Asistente de Tutoría: Posibilidades</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-robot"></i> Potencial de la Tutoría Inteligente</h3>
+                    <p>La IA puede funcionar como un asistente de tutoría complementario que extiende la capacidad educativa del docente, ofreciendo apoyo personalizado 24/7 y adaptándose al ritmo individual de cada estudiante. Esta tecnología permite escalar
+                        la atención personalizada sin perder calidad educativa.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Ventaja clave:</strong> La IA puede proporcionar respuestas inmediatas y explicaciones adaptadas al nivel de comprensión del estudiante, permitiendo un aprendizaje continuo y autodirigido.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen6.png" alt="Tutoría con IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h4>Apoyo Individualizado</h4>
+                    <p>Adaptación automática al estilo de aprendizaje, ritmo y necesidades específicas de cada estudiante</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h4>Respuestas Inmediatas</h4>
+                    <p>Disponibilidad 24/7 para resolver dudas frecuentes y proporcionar explicaciones claras</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Explicaciones Múltiples</h4>
+                    <p>Capacidad de explicar conceptos desde diferentes perspectivas y niveles de complejidad</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Práctica Adaptativa</h4>
+                    <p>Generación automática de ejercicios personalizados basados en el progreso del estudiante</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">7 / 21</div>
+    </div>
+
+    <!-- Slide 8: IA como Asistente de Tutoría (2/3) - Limitaciones -->
+    <div class="slide">
+        <h2 class="slide-content-title">Limitaciones Críticas de la Tutoría IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen7.png" alt="Limitaciones de Tutoría IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-exclamation-triangle"></i> Reconociendo las Limitaciones</h3>
+                    <p>A pesar de sus capacidades impresionantes, la IA como tutor tiene limitaciones fundamentales que los educadores deben comprender y abordar. Es crucial mantener una perspectiva equilibrada sobre lo que la IA puede y no puede hacer en
+                        contextos educativos.</p>
+
+                    <div class="ethics-alert">
+                        <p><strong>Advertencia importante:</strong> La IA nunca debe reemplazar completamente la interacción humana en el proceso educativo, especialmente en momentos de dificultad emocional o aprendizaje complejo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                    <i class="fas fa-heart" style="color: #ef4444;"></i>
+                    <h4>Falta de Empatía Real</h4>
+                    <p>Incapacidad para comprender verdaderamente las emociones y motivaciones profundas del estudiante</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f97316;">
+                    <i class="fas fa-user-times" style="color: #f97316;"></i>
+                    <h4>Contexto Personal Limitado</h4>
+                    <p>No puede entender circunstancias familiares, sociales o personales que afectan el aprendizaje</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #eab308;">
+                    <i class="fas fa-exclamation-circle" style="color: #eab308;"></i>
+                    <h4>Riesgo de Información Incorrecta</h4>
+                    <p>Posibilidad de proporcionar respuestas erróneas o superficiales, especialmente en temas complejos</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #dc2626;">
+                    <i class="fas fa-eye"></i>
+                    <h4>Necesidad de Supervisión</h4>
+                    <p>Requerimiento constante de oversight humano para garantizar calidad y apropiedad educativa</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">8 / 21</div>
+    </div>
+
+    <!-- Slide 9: IA como Asistente de Tutoría (3/3) - Ejemplos y Herramientas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Herramientas y Ejemplos de Tutoría IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-tools"></i> Implementaciones Prácticas</h3>
+                    <p>Existen diversas herramientas y enfoques para implementar asistentes de tutoría basados en IA. Estas soluciones van desde plataformas especializadas hasta configuraciones personalizadas de modelos de lenguaje general.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Ejemplo destacado:</strong> Khanmigo de Khan Academy representa un modelo exitoso de tutoría IA que mantiene el equilibrio entre asistencia automatizada y supervisión pedagógica humana.</p>
+                    </div>
+
+                    <p><strong>Configuración de LLMs como tutores:</strong></p>
+                    <ul>
+                        <li><i class="fas fa-cog"></i> Definir roles específicos y limitaciones claras</li>
+                        <li><i class="fas fa-shield-alt"></i> Establecer protocolos de seguridad y escalación</li>
+                        <li><i class="fas fa-chart-bar"></i> Implementar sistemas de monitoreo y evaluación</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen8.png" alt="Herramientas de Tutoría" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-graduation-cap" style="color: #10b981;"></i>
+                    <h4>Khanmigo (Khan Academy)</h4>
+                    <p>Asistente de IA integrado que guía a estudiantes sin dar respuestas directas, promoviendo el pensamiento crítico</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-comments" style="color: #3b82f6;"></i>
+                    <h4>ChatGPT Educativo</h4>
+                    <p>Configuración personalizada de modelos conversacionales para actuar como tutores específicos de materia</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-brain" style="color: #8b5cf6;"></i>
+                    <h4>Sistemas ITS Adaptativos</h4>
+                    <p>Plataformas de tutoría inteligente que ajustan contenido y metodología según el progreso estudiantil</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">9 / 22</div>
+    </div>
+
+    <!-- Slide 10: Actividad Asíncrona - Desarrollo de Actividad con IA para Matemáticas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Asíncrona: IA para Matemáticas</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-calculator"></i> Desarrollo de Actividad con IA</h3>
+                    <p>Desarrolla una actividad para potenciar las capacidades de los estudiantes usando la IA en el área de matemáticas.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Entregable:</strong> La actividad propuesta, sea una página HTML, presentación, etc.</p>
+                    </div>
+
+                    <div class="icon-grid" style="margin-top: 30px;">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-chart-line" style="color: #10b981;"></i>
+                            <h4>Resolución de Ecuaciones</h4>
+                            <p>Usar IA para generar problemas paso a paso y verificar soluciones</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-shapes" style="color: #3b82f6;"></i>
+                            <h4>Geometría Visualizada</h4>
+                            <p>Generar figuras geométricas y explicaciones interactivas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <i class="fas fa-percentage" style="color: #8b5cf6;"></i>
+                            <h4>Problemas de Porcentajes</h4>
+                            <p>Crear contextos reales y soluciones explicadas</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen10.png" alt="Actividad IA Matemáticas" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10 / 22</div>
+    </div>
+
+    <!-- Slide 11: Generación de Rúbricas con IA (1/3) - Introducción y Ventajas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Rúbricas de Evaluación Potenciadas por IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-marker"></i> Optimizando la Creación de Rúbricas</h3>
+                    <p>Las rúbricas son herramientas esenciales para una evaluación transparente, coherente y justa. La IA revoluciona este proceso al permitir la creación rápida de rúbricas detalladas y bien estructuradas, manteniendo los estándares pedagógicos
+                        más altos.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Transformación clave:</strong> La IA puede reducir el tiempo de creación de rúbricas de horas a minutos, permitiendo a los educadores enfocarse en la personalización y contextualización específica.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen9.png" alt="Rúbricas con IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-magic" style="color: #10b981;"></i>
+                    <h4>Generación de Borradores Iniciales</h4>
+                    <p>Creación automática de rúbricas a partir de objetivos de aprendizaje, competencias o descripciones de tareas específicas</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-tasks" style="color: #3b82f6;"></i>
+                    <h4>Criterios de Evaluación Inteligentes</h4>
+                    <p>Sugerencias automáticas de criterios basados en competencias clave, estándares curriculares y mejores prácticas</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-sort-amount-down" style="color: #8b5cf6;"></i>
+                    <h4>Niveles de Desempeño Detallados</h4>
+                    <p>Definición clara y diferenciada de expectativas para cada nivel de logro académico</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-language" style="color: #f59e0b;"></i>
+                    <h4>Lenguaje Claro y Preciso</h4>
+                    <p>Formulación de descriptores comprensibles y específicos que eliminen ambigüedades evaluativas</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <p><strong>Ventajas principales:</strong> Ahorro significativo de tiempo, mayor consistencia en criterios, ayuda para desglosar expectativas complejas, y escalabilidad para múltiples asignaturas y niveles.</p>
+            </div>
+        </div>
+        <div class="slide-number">11 / 22</div>
+    </div>
+
+    <!-- Slide 12: Generación de Rúbricas con IA (2/3) - Prompts Ejemplo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Prompts Efectivos para Rúbricas en Ciencias Químicas</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen10.png" alt="Prompts para Rúbricas" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-flask"></i> Rúbricas Especializadas para Ciencias Químicas</h3>
+                    <p>Las rúbricas en ciencias químicas requieren enfoques específicos que evalúen competencias en química analítica, síntesis, procesos industriales, control de calidad y seguridad. La IA puede generar rúbricas que reflejen estándares profesionales y marcos de competencias químicas aplicadas a industria, farmacología y medio ambiente.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Enfoque especializado:</strong> Las rúbricas en ciencias químicas deben evaluar conocimientos fundamentales, competencias de laboratorio, análisis de procesos químicos, comunicación científica, seguridad industrial y consideraciones ambientales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <div class="icon-card" style="border-left: 6px solid #10b981; margin-bottom: 20px;">
+                    <h4><i class="fas fa-flask" style="color: #10b981; margin-right: 10px;"></i> Ejemplo 1: Proyecto de Diseño de Proceso Químico</h4>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
+                        "Crea una rúbrica para evaluar un proyecto de diseño de una planta química para producción de acetona por deshidrogenación de isopropanol para estudiantes de ingeniería química (8vo semestre). Incluye criterios específicos: análisis de factibilidad técnica y económica, balance de materia y energía, diagramas de flujo de proceso (PFD) y de tuberías e instrumentación (P&ID), diseño de equipos principales (reactores, columnas de destilación, intercambiadores), cálculos de transferencia de masa y calor, análisis de seguridad de procesos (HAZOP), evaluación de impacto ambiental, simulación en Aspen Plus/HYSYS, estimación de costos y análisis económico (VPN, TIR), y consideraciones de control automático. Utiliza escala de 4 niveles: Sobresaliente (4), Competente (3), En desarrollo (2), Inadecuado (1). Ponderación: diseño técnico 35%, análisis económico 20%, seguridad y ambiente 20%, documentación 15%, presentación 10%."
+                    </div>
+                </div>
+
+                <div class="icon-card" style="border-left: 6px solid #3b82f6; margin-bottom: 20px;">
+                    <h4><i class="fas fa-vial" style="color: #3b82f6; margin-right: 10px;"></i> Ejemplo 2: Análisis Farmacológico Cuantitativo</h4>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
+                        "Desarrolla una rúbrica para evaluar análisis cuantitativo de principios activos en medicamentos para estudiantes de químico farmacobiólogo. Criterios técnicos: preparación de muestras siguiendo protocolos farmacéuticos, validación de métodos analíticos (linealidad, precisión, exactitud, especificidad), uso correcto de técnicas instrumentales (HPLC, espectrofotometría UV-Vis, cromatografía de gases), cálculos estadísticos y tratamiento de datos, interpretación de resultados según farmacopeas (USP, Ph. Eur.), cumplimiento de buenas prácticas de laboratorio (BPL), evaluación de incertidumbre analítica, documentación completa del proceso, análisis de interferencias y estabilidad, y conclusiones sobre calidad del producto farmacéutico. Incluye evaluación de competencias regulatorias y de control de calidad farmacéutico."
+                    </div>
+                </div>
+
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6; margin-bottom: 20px;">
+                    <h4><i class="fas fa-industry" style="color: #8b5cf6; margin-right: 10px;"></i> Ejemplo 3: Optimización de Proceso Industrial Químico</h4>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
+                        "Genera una rúbrica para evaluar proyecto de optimización de proceso de polimerización en una planta petroquímica para estudiantes de ingeniería industrial con énfasis químico. Evalúa: análisis del proceso actual (identificación de cuellos de botella, eficiencias de conversión), aplicación de metodologías de mejora continua (Six Sigma, Kaizen), diseño de experimentos (DOE) para optimización de variables de proceso, análisis estadístico de datos de producción, modelado y simulación del proceso (software SuperPro Designer), evaluación de indicadores KPI (rendimiento, calidad, costos), implementación de control estadístico de procesos (SPC), análisis de riesgos operacionales, propuesta de mejoras técnicas y organizacionales, evaluación económica del proyecto de mejora, y plan de implementación con cronograma y recursos. Considera competencias en gestión de la producción química y mejora continua."
+                    </div>
+                </div>
+
+                <div class="icon-card" style="border-left: 6px solid #f59e0b; margin-bottom: 20px;">
+                    <h4><i class="fas fa-recycle" style="color: #f59e0b; margin-right: 10px;"></i> Ejemplo 4: Proyecto de Ingeniería Ambiental</h4>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
+                        "Diseña una rúbrica para evaluar proyecto de tratamiento de aguas residuales industriales con contaminantes químicos para estudiantes de ingeniería ambiental. Criterios: caracterización fisicoquímica del efluente (DQO, DBO, metales pesados, pH, SST), selección y diseño de tecnologías de tratamiento (coagulación-floculación, oxidación avanzada, filtración, adsorción), cálculos de dimensionamiento de reactores y equipos, evaluación de eficiencias de remoción, análisis de cinética de reacciones químicas, cumplimiento de normatividad ambiental (NOM, límites de descarga), evaluación de impacto ambiental y huella de carbono, análisis de costos de inversión y operación, gestión de lodos y subproductos, propuesta de monitoreo y control automático, y evaluación de sostenibilidad del proceso. Incluye competencias en legislación ambiental y gestión integral de residuos."
+                    </div>
+                </div>
+
+                <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                    <h4><i class="fas fa-atom" style="color: #ef4444; margin-right: 10px;"></i> Ejemplo 5: Desarrollo de Producto Químico Industrial</h4>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
+                        "Crea una rúbrica para evaluar desarrollo de un producto químico industrial (surfactante biodegradable) para estudiantes de licenciatura en química industrial. Incluye: investigación de mercado y análisis de competencia, formulación química y síntesis a escala laboratorio, caracterización fisicoquímica del producto (tensión superficial, CMC, biodegradabilidad), evaluación de propiedades de aplicación (poder detergente, espumación, estabilidad), escalamiento del proceso de síntesis a planta piloto, análisis de materias primas y proveedores, estudios de toxicidad y ecocompatibilidad, cumplimiento de regulaciones químicas (REACH, GHS), desarrollo de especificaciones técnicas y hoja de seguridad (SDS), análisis de costos de producción y precios de venta, estrategia de comercialización y canales de distribución, y evaluación de viabilidad comercial del proyecto. Evalúa competencias en desarrollo de productos, innovación química y gestión empresarial."
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px; border-left: 6px solid #6366f1;">
+                <h4><i class="fas fa-graduation-cap"></i> Competencias Específicas en Ciencias Químicas</h4>
+                <div class="icon-grid" style="margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <p><strong>Fundamentos químicos:</strong> Aplicación de principios de química orgánica, inorgánica, fisicoquímica y analítica</p>
+                        <p><strong>Operaciones unitarias:</strong> Diseño y análisis de procesos de separación, transferencia de masa y calor</p>
+                        <p><strong>Análisis instrumental:</strong> Dominio de técnicas cromatográficas, espectroscópicas y electroanalíticas</p>
+                        <p><strong>Seguridad química:</strong> Manejo seguro de sustancias, análisis de riesgos y normatividad</p>
+                        <p><strong>Control de calidad:</strong> Validación de métodos, estadística analítica y aseguramiento de calidad</p>
+                        <p><strong>Sostenibilidad:</strong> Química verde, tratamiento de residuos y evaluación de impacto ambiental</p>
+                        <p><strong>Regulación:</strong> Conocimiento de normatividad farmacéutica, ambiental e industrial</p>
+                        <p><strong>Innovación:</strong> Desarrollo de productos, escalamiento de procesos y transferencia tecnológica</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">12 / 22</div>
+    </div>
+
+    <!-- Slide 13: Generación de Rúbricas con IA (3/3) - Revisión y Adaptación Docente -->
+    <div class="slide">
+        <h2 class="slide-content-title">Revisión y Personalización de Rúbricas IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-user-edit"></i> El Rol Crucial del Docente</h3>
+                    <p>Las rúbricas generadas por IA son excelentes puntos de partida, pero requieren la intervención experta del educador para asegurar relevancia, precisión y alineación con objetivos específicos. La personalización docente es lo que transforma
+                        una rúbrica genérica en una herramienta evaluativa efectiva.</p>
+
+                    <div class="ethics-alert">
+                        <p><strong>Responsabilidad profesional:</strong> El docente debe validar que cada criterio y descriptor sea apropiado, justo y alineado con los estándares curriculares y objetivos de aprendizaje específicos.</p>
+                    </div>
+                </div>
+                <!-- Imagen eliminada aquí (imagen11.png) -->
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-search-plus" style="color: #10b981;"></i>
+                    <h4>Revisión de Contenido</h4>
+                    <p>Verificar precisión académica, relevancia curricular y apropiedad del lenguaje para el nivel educativo específico</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-cogs" style="color: #3b82f6;"></i>
+                    <h4>Adaptación Contextual</h4>
+                    <p>Ajustar criterios y descriptores según características específicas del grupo, contexto institucional y recursos disponibles</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-bullseye" style="color: #8b5cf6;"></i>
+                    <h4>Alineación con Objetivos</h4>
+                    <p>Asegurar correspondencia directa entre criterios de evaluación y competencias u objetivos de aprendizaje establecidos</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-balance-scale" style="color: #f59e0b;"></i>
+                    <h4>Validación de Equidad</h4>
+                    <p>Revisar que los criterios no contengan sesgos y sean accesibles para estudiantes con diversas capacidades y backgrounds</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <p><strong>Checklist de revisión:</strong> ¿Son claros y específicos los descriptores? ¿Están alineados con objetivos? ¿Son apropiados para el nivel? ¿Promueven el aprendizaje? ¿Son justos e inclusivos?</p>
+            </div>
+        </div>
+        <div class="slide-number">13 / 22</div>
+    </div>
+
+    <!-- Slide 14: IA para Retroalimentación Formativa (1/3) - Introducción -->
+    <div class="slide">
+        <h2 class="slide-content-title">Retroalimentación Formativa con IA (1/3)</h2>
+        <div class="accent-line"></div>
+        <div class="content-card">
+            <h3><i class="fas fa-comments"></i> IA como Asistente para el Feedback</h3>
+            <p>La retroalimentación es clave para el aprendizaje, pero consume mucho tiempo. La IA puede ayudar a generar <strong>borradores</strong> de feedback, enfocándose en:</p>
+            <ul>
+                <li><i class="fas fa-search"></i> <strong>Identificación de Patrones Comunes:</strong> Errores frecuentes o áreas de mejora en un grupo de trabajos.</li>
+                <li><i class="fas fa-list-ul"></i> <strong>Sugerencias Generales:</strong> Basadas en criterios de una rúbrica o en buenas prácticas.</li>
+                <li><i class="fas fa-highlighter"></i> <strong>Señalar Aspectos Específicos:</strong> (Con supervisión) Identificar frases o secciones que podrían mejorarse.</li>
+            </ul>
+            <p><strong>Importante:</strong> La IA no debe usarse para la calificación final ni para reemplazar el juicio y la personalización del feedback por parte del docente.</p>
+        </div>
+        <div class="slide-number">14 / 22</div>
+    </div>
+
+    <!-- Slide 15: IA para Retroalimentación Formativa (2/3) - Prompts y Herramientas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Prompts Efectivos para Retroalimentación</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-terminal"></i> Estrategias de Prompting para Feedback</h3>
+                    <p>La generación efectiva de retroalimentación formativa con IA requiere prompts estructurados que incluyan criterios específicos, contexto del estudiante y objetivos de aprendizaje claros. Los mejores resultados se obtienen cuando se proporciona la rúbrica o criterios de evaluación directamente en el prompt.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Principio clave:</strong> La IA debe generar feedback constructivo, específico y orientado a la mejora, nunca calificaciones finales.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen12.png" alt="Prompts para Feedback" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #10b981;">
+                    <h4><i class="fas fa-edit" style="color: #10b981; margin-right: 10px;"></i> Ejemplo 1: Análisis de Ensayo</h4>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
+                        "Analiza este ensayo argumentativo de 500 palabras sobre [tema]. Basándote en esta rúbrica: [pegar rúbrica], identifica 2 fortalezas específicas y 2 áreas de mejora concretas. Para cada área de mejora, ofrece una sugerencia práctica y un ejemplo específico. Usa un tono constructivo y motivador apropiado para estudiantes de [nivel]."
+                    </div>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                    <h4><i class="fas fa-flask" style="color: #3b82f6; margin-right: 10px;"></i> Ejemplo 2: Proyecto Científico</h4>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
+                        "Evalúa este reporte de laboratorio considerando: 1) Claridad de hipótesis, 2) Diseño experimental, 3) Análisis de datos, 4) Conclusiones. Para cada criterio, proporciona feedback específico incluyendo qué está bien logrado y qué necesita refinamiento. Sugiere pasos concretos para mejorar sin dar las respuestas directamente."
+                    </div>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
+                    <h4><i class="fas fa-calculator" style="color: #8b5cf6; margin-right: 10px;"></i> Ejemplo 3: Problema Matemático</h4>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
+                        "Revisa esta solución de ecuaciones cuadráticas. Identifica: errores de procedimiento, pasos omitidos, y aciertos en el razonamiento. Genera feedback que ayude al estudiante a comprender dónde se desvió del método correcto y cómo puede auto-verificar su trabajo en futuros problemas similares."
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">15 / 22</div>
+    </div>
+
+    <!-- Slide 16: IA para Retroalimentación Formativa (3/3) - Rol del Docente -->
+    <div class="slide">
+        <h2 class="slide-content-title">El Rol Docente en la Retroalimentación IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen13.png" alt="Rol Docente en Feedback IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-user-check"></i> El Docente como Curador y Personalizador</h3>
+                    <p>La IA genera borradores de retroalimentación que requieren la intervención experta del educador para asegurar relevancia, sensibilidad contextual y valor pedagógico real. El docente transforma feedback genérico en orientación personalizada y significativa.</p>
+
+                    <div class="ethics-alert">
+                        <p><strong>Responsabilidad crítica:</strong> El docente debe revisar, personalizar y contextualizar toda retroalimentación generada por IA antes de entregarla al estudiante. La IA optimiza tiempo, no reemplaza el juicio pedagógico.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-search-plus" style="color: #10b981;"></i>
+                    <h4>Revisión y Validación</h4>
+                    <p>Verificar precisión académica, apropiedad del tono, y alineación con objetivos de aprendizaje específicos del curso</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-user-heart" style="color: #3b82f6;"></i>
+                    <h4>Personalización Contextual</h4>
+                    <p>Agregar conocimiento del estudiante individual, su progreso, estilo de aprendizaje y circunstancias específicas</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-comments" style="color: #8b5cf6;"></i>
+                    <h4>Elemento Humano</h4>
+                    <p>Incluir motivación empática, reconocimiento del esfuerzo, y conexión emocional apropiada para cada estudiante</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-forward" style="color: #f59e0b;"></i>
+                    <h4>Orientación Futura</h4>
+                    <p>Conectar feedback con próximos pasos específicos, recursos adicionales y oportunidades de mejora</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h4><i class="fas fa-lightbulb"></i> Workflow Recomendado:</h4>
+                <p><strong>1. Generar:</strong> Usar IA para borrador inicial → <strong>2. Revisar:</strong> Validar precisión y relevancia → <strong>3. Personalizar:</strong> Agregar contexto del estudiante → <strong>4. Humanizar:</strong> Incluir elementos motivacionales → <strong>5. Entregar:</strong> Acompañar de conversación presencial cuando sea posible</p>
+            </div>
+        </div>
+        <div class="slide-number">16 / 22</div>
+    </div>
+
+    <!-- Slide 17: Análisis de Respuestas Abiertas con IA (1/2) -->
+    <div class="slide">
+        <h2 class="slide-content-title">Análisis Inteligente de Respuestas Abiertas (1/2)</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-search"></i> Potencial de Análisis Automatizado</h3>
+                    <p>La IA puede procesar grandes volúmenes de respuestas abiertas para identificar patrones, temas emergentes y tendencias de comprensión en toda una clase o cohorte. Esta capacidad permite a los educadores obtener insights valiosos sobre el aprendizaje colectivo sin inversión masiva de tiempo.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Aplicación clave:</strong> Análisis de respuestas en foros de discusión, preguntas de desarrollo corto, reflexiones estudiantiles y evaluaciones formativas abiertas para identificar conceptos mal comprendidos o emergentes.</p>
+                    </div>
+
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-tags" style="color: #10b981;"></i>
+                            <h4>Identificación de Temas</h4>
+                            <p>Categorización automática de respuestas por conceptos principales y temas recurrentes</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-heart" style="color: #3b82f6;"></i>
+                            <h4>Análisis de Sentimiento</h4>
+                            <p>Detección de actitudes hacia la materia: frustración, entusiasmo, confusión, confianza</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen14.png" alt="Análisis Respuestas Abiertas" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
+                    <h4><i class="fas fa-chart-bar" style="color: #8b5cf6; margin-right: 10px;"></i> Casos de Uso Prácticos</h4>
+                    <ul>
+                        <li><i class="fas fa-comments"></i> <strong>Foros de discusión:</strong> Identificar hilos con mayor confusión conceptual</li>
+                        <li><i class="fas fa-question-circle"></i> <strong>Preguntas de reflexión:</strong> Mapear comprensión general de la clase</li>
+                        <li><i class="fas fa-clipboard-list"></i> <strong>Exit tickets:</strong> Detectar patrones en dificultades de aprendizaje</li>
+                        <li><i class="fas fa-pen-alt"></i> <strong>Ensayos cortos:</strong> Análisis de argumentación y estructura</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card" style="border-left: 6px solid #f59e0b;">
+                    <h4><i class="fas fa-lightbulb" style="color: #f59e0b; margin-right: 10px;"></i> Beneficios para el Docente</h4>
+                    <ul>
+                        <li><i class="fas fa-clock"></i> <strong>Eficiencia temporal:</strong> Análisis rápido de 50+ respuestas en minutos</li>
+                        <li><i class="fas fa-eye"></i> <strong>Perspectiva panorámica:</strong> Visión global del estado de comprensión</li>
+                        <li><i class="fas fa-target"></i> <strong>Intervención dirigida:</strong> Identificación de áreas que requieren refuerzo</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Evolución temporal:</strong> Seguimiento de progreso conceptual a lo largo del curso</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">17 / 22</div>
+    </div>
+
+    <!-- Slide 18: Análisis de Respuestas Abiertas con IA (2/2) - Herramientas y Limitaciones -->
+    <div class="slide">
+        <h2 class="slide-content-title">Herramientas y Limitaciones del Análisis Automatizado (2/2)</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen15.png" alt="Herramientas Análisis IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-tools"></i> Herramientas y Técnicas Disponibles</h3>
+                    <p>Existen diversas herramientas y enfoques para analizar respuestas abiertas, desde LLMs generales hasta soluciones especializadas en análisis educativo. La elección depende del volumen de datos, precisión requerida y recursos disponibles.</p>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-cogs"></i> Métodos de Implementación:</h4>
+                        <ul>
+                            <li><i class="fas fa-comments"></i> <strong>LLMs conversacionales:</strong> ChatGPT, Gemini para análisis directo con prompts específicos</li>
+                            <li><i class="fas fa-cloud"></i> <strong>APIs especializadas:</strong> Google Cloud Natural Language, AWS Comprehend</li>
+                            <li><i class="fas fa-chart-bar"></i> <strong>Herramientas educativas:</strong> Gradescope AI, Turnitin Feedback Studio</li>
+                            <li><i class="fas fa-code"></i> <strong>Soluciones custom:</strong> Scripts con bibliotecas como NLTK, spaCy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ethics-alert" style="margin-top: 30px;">
+                <h4><i class="fas fa-exclamation-triangle"></i> Limitaciones Críticas del Análisis Automatizado</h4>
+                <div class="icon-grid" style="margin-top: 20px;">
+                    <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                        <i class="fas fa-mask" style="color: #ef4444;"></i>
+                        <h4>Comprensión Superficial</h4>
+                        <p>La IA puede perder matices, ironía, sarcasmo y subtextos que son evidentes para lectores humanos</p>
+                    </div>
+                    <div class="icon-card" style="border-left: 6px solid #f97316;">
+                        <i class="fas fa-puzzle-piece" style="color: #f97316;"></i>
+                        <h4>Contexto Limitado</h4>
+                        <p>Falta de conocimiento sobre dinámicas de clase, personalidades estudiantiles y historia académica individual</p>
+                    </div>
+                    <div class="icon-card" style="border-left: 6px solid #eab308;">
+                        <i class="fas fa-brain" style="color: #eab308;"></i>
+                        <h4>Profundidad de Comprensión</h4>
+                        <p>Dificultad para evaluar verdadera comprensión conceptual vs. reproducción de patrones textuales</p>
+                    </div>
+                    <div class="icon-card" style="border-left: 6px solid #dc2626;">
+                        <i class="fas fa-balance-scale" style="color: #dc2626;"></i>
+                        <h4>Sesgos Algorítmicos</h4>
+                        <p>Potencial discriminación basada en estilo de escritura, variedad lingüística o background cultural</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h4><i class="fas fa-user-graduate"></i> Papel Indispensable del Docente:</h4>
+                <p><strong>Interpretación experta:</strong> El análisis IA proporciona insights iniciales que requieren validación, contextualización e interpretación pedagógica por parte del educador. <strong>La IA informa, el docente decide y actúa.</strong></p>
+            </div>
+        </div>
+        <div class="slide-number">18 / 22</div>
+    </div>
+
+    <!-- Slide 19: Actividad Asíncrona - Quiz para Identificar Patrones de Aprendizaje -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Asíncrona: Quiz de Patrones de Aprendizaje</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-question-circle"></i> Desarrollo de Quiz con IA</h3>
+                    <p>Desarrolla un quiz para identificar patrones de aprendizaje y razonamiento.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Objetivo:</strong> Crear instrumentos de evaluación que permitan identificar estilos de aprendizaje, fortalezas cognitivas y patrones de razonamiento en los estudiantes.</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-lightbulb"></i> Ejemplos de Prompts para Generar Quiz</h4>
+                        <div style="margin-top: 15px;">
+                            <p><strong>Prompt 1:</strong> "Crea un quiz de 10 preguntas para identificar si un estudiante de secundaria es más visual, auditivo o kinestésico en su aprendizaje. Incluye situaciones prácticas y opciones de respuesta claras."</p>
+                            <p><strong>Prompt 2:</strong> "Genera preguntas que identifiquen patrones de razonamiento lógico vs. intuitivo en estudiantes universitarios. Incluye problemas que requieran diferentes enfoques de solución."</p>
+                            <p><strong>Prompt 3:</strong> "Diseña un cuestionario para detectar preferencias de procesamiento secuencial vs. holístico en el aprendizaje de matemáticas para estudiantes de primaria."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Imagen eliminada aquí (imagen16.png) -->
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #10b981;">
+                    <h4><i class="fas fa-brain" style="color: #10b981; margin-right: 10px;"></i> Tipos de Patrones a Identificar</h4>
+                    <ul>
+                        <li><i class="fas fa-eye"></i> <strong>Estilos de procesamiento:</strong> Visual, auditivo, kinestésico</li>
+                        <li><i class="fas fa-puzzle-piece"></i> <strong>Estrategias de resolución:</strong> Analítico vs. intuitivo</li>
+                        <li><i class="fas fa-arrows-alt-h"></i> <strong>Organización mental:</strong> Secuencial vs. holístico</li>
+                        <li><i class="fas fa-users"></i> <strong>Preferencias sociales:</strong> Individual vs. colaborativo</li>
+                    </ul>
+                </div>
+                <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                    <h4><i class="fas fa-clipboard-check" style="color: #3b82f6; margin-right: 10px;"></i> Elementos del Quiz</h4>
+                    <ul>
+                        <li><i class="fas fa-question"></i> <strong>Preguntas situacionales:</strong> Contextos reales de aprendizaje</li>
+                        <li><i class="fas fa-list-ol"></i> <strong>Escalas de preferencia:</strong> Opciones graduadas</li>
+                        <li><i class="fas fa-chart-bar"></i> <strong>Sistema de puntuación:</strong> Algoritmo de interpretación</li>
+                        <li><i class="fas fa-file-alt"></i> <strong>Reporte de resultados:</strong> Retroalimentación personalizada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">19 / 22</div>
+    </div>
+
+    <!-- Slide 20: Actividad Asíncrona - Desarrollo de Actividad con IA y Rúbrica -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Asíncrona: Desarrollo con IA y Rúbrica</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-cogs"></i> Desarrollo de Actividad con IA</h3>
+                    <p>Desarrolla una actividad con el uso de IA para resolver el problema y generar su rúbrica de evaluación.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Ejemplo:</strong> Solicitar a una IA resolver un problema matemático, después pasarle la respuesta a otra IA y pedir que la segunda IA revise la solución y genere una discusión.</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-video"></i> Implementación en Clase</h4>
+                        <p>Este problema se puede implementar en clase solicitando al estudiante discutir las observaciones en un video corto.</p>
+                    </div>
+
+                    <div class="tool-card" style="border-left: 6px solid #10b981;">
+                        <h4><i class="fas fa-calculator" style="color: #10b981; margin-right: 10px;"></i> Proceso de Trabajo</h4>
+                        <ul>
+                            <li><i class="fas fa-play"></i> <strong>Paso 1:</strong> Solicitar a IA #1 resolver problema matemático</li>
+                            <li><i class="fas fa-exchange-alt"></i> <strong>Paso 2:</strong> Pasar respuesta a IA #2 para revisión</li>
+                            <li><i class="fas fa-comments"></i> <strong>Paso 3:</strong> Generar discusión crítica entre ambas IA</li>
+                            <li><i class="fas fa-clipboard-check"></i> <strong>Paso 4:</strong> Crear rúbrica de evaluación para la actividad</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen16.png" alt="Actividad con IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="tool-card" style="border-left: 6px solid #3b82f6;">
+                    <h4><i class="fas fa-lightbulb" style="color: #3b82f6; margin-right: 10px;"></i> Opción 1: Problema Matemático con IA</h4>
+                    <p>Utilizar dos IA diferentes para resolver y revisar un problema matemático, generando una discusión crítica sobre métodos y resultados. Los estudiantes analizan el proceso y crean un video corto con sus observaciones.</p>
+                </div>
+                <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
+                    <h4><i class="fas fa-pen-alt" style="color: #8b5cf6; margin-right: 10px;"></i> Opción 2: Generación de Texto</h4>
+                    <p>Genera un texto de un tema de interés utilizando IA, luego desarrolla una rúbrica para evaluar la calidad del contenido generado y el proceso de refinamiento.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">20 / 21</div>
+    </div>
+
+    <!-- Slide 21: Resumen y Próximos Pasos -->
+    <div class="slide">
+        <h2 class="slide-content-title">Transformación Educativa: Síntesis y Proyección</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-star"></i> Competencias Desarrolladas en el Módulo 5</h3>
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-user-graduate" style="color: #10b981;"></i>
+                            <h4>Empoderamiento Estudiantil</h4>
+                            <p>Estrategias para guiar a estudiantes hacia uso crítico y productivo de IA como herramienta de aprendizaje</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-robot" style="color: #3b82f6;"></i>
+                            <h4>Tutoría Inteligente</h4>
+                            <p>Comprensión de potencial y limitaciones de IA como asistente educativo complementario</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <i class="fas fa-clipboard-check" style="color: #8b5cf6;"></i>
+                            <h4>Evaluación Optimizada</h4>
+                            <p>Maestría en generación y refinamiento de rúbricas e instrumentos de evaluación con IA</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-comments" style="color: #f59e0b;"></i>
+                            <h4>Retroalimentación Inteligente</h4>
+                            <p>Competencia en creación de feedback formativo personalizado y pedagógicamente valioso</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 30px;">
+                        <p><strong>Principio fundamental integrado:</strong> La IA amplifica la capacidad pedagógica del educador sin reemplazar el juicio profesional, la creatividad humana y la conexión empática que define la excelencia educativa.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo5/imagen19.png" alt="Transformación Educativa" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="activity-card" style="margin-top: 30px;">
+                <h4><i class="fas fa-road"></i> Proyección al Módulo 6: "IA para el Desarrollo Profesional Docente"</h4>
+                <p>La experiencia práctica desarrollada en el Módulo 5 se convierte en la base para explorar cómo la IA puede potenciar el crecimiento profesional continuo: investigación educativa, redacción académica, actualización disciplinar, networking profesional, y diseño de trayectorias de desarrollo personalizado.</p>
+                
+                <div class="icon-grid" style="margin-top: 20px;">
+                    <div class="tool-card" style="border-left: 6px solid #ef4444;">
+                        <h4><i class="fas fa-search" style="color: #ef4444; margin-right: 10px;"></i> Investigación Académica</h4>
+                        <p>IA como asistente de investigación: búsqueda de literatura, síntesis de fuentes, identificación de tendencias</p>
+                    </div>
+                    <div class="tool-card" style="border-left: 6px solid #06b6d4;">
+                        <h4><i class="fas fa-pen-fancy" style="color: #06b6d4; margin-right: 10px;"></i> Escritura Profesional</h4>
+                        <p>Optimización de artículos, propuestas, informes y comunicación académica con asistencia inteligente</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">21 / 21</div>
+    </div>
+
+    <script>
+        // Funcionalidad del modal de imágenes
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        // Agregar clase zoomable a todas las imágenes excepto las que están en enlaces
+        document.querySelectorAll('img').forEach(img => {
+            if (!img.classList.contains('modal-content') && !img.closest('a')) {
+                img.addEventListener('click', function() {
+                    modal.classList.add('show');
+                    modalImg.src = this.src;
+                });
+            }
+        });
+
+        // Cerrar modal con el botón
+        closeBtn.onclick = function() {
+            modal.classList.remove('show');
+        }
+
+        // Cerrar modal haciendo clic fuera de la imagen
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        // Cerrar modal con la tecla Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                modal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+
+</html>

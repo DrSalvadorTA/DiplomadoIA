@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 8: Proyecto Final Integrador - Presentación</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #fefefe 0%, #f0f9ff 100%);
+        }
+        
+        .slide-title-main {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8rem;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .slide-info {
+            font-size: 1.2rem;
+            color: #4299e1;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .slide-content-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accent-line {
+            height: 4px;
+            background: linear-gradient(90deg, #4299e1, #667eea);
+            border-radius: 2px;
+            width: 120px;
+            margin: 0 auto 35px auto;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1400px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1d4ed8;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .content-card h3 i {
+            margin-right: 15px;
+            color: #4299e1;
+            font-size: 2rem;
+        }
+        
+        .content-card p,
+        .content-card ul {
+            font-size: 1.2rem;
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .content-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .content-card ul li {
+            padding: 12px 0 12px 2.5em;
+            position: relative;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+        }
+        
+        .content-card ul li:hover {
+            transform: translateX(8px);
+            color: #1d4ed8;
+            background: rgba(66, 153, 225, 0.05);
+        }
+        
+        .content-card ul li i {
+            position: absolute;
+            left: 0;
+            top: 16px;
+            color: #4299e1;
+            font-size: 1.3rem;
+        }
+        
+        .decorative-shape {
+            position: absolute;
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .shape-top-left {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        .shape-bottom-right {
+            width: 250px;
+            height: 250px;
+            bottom: -125px;
+            right: -125px;
+        }
+        
+        .nav-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .nav-button-home {
+            background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+            font-size: 1.1rem;
+        }
+        
+        .nav-button-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(66, 153, 225, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-button-home i {
+            margin-right: 10px;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 1.1rem;
+            color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-icon {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 40px rgba(66, 153, 225, 0.4);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 6px solid #4299e1;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1);
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .icon-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(66, 153, 225, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .icon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .icon-card i {
+            font-size: 2.5rem;
+            color: #4299e1;
+            margin-bottom: 15px;
+        }
+        
+        .icon-card h4 {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .icon-card p {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .wide-content {
+            max-width: 1600px;
+            width: 100%;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            border: 2px dashed #4299e1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(66, 153, 225, 0.2);
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .image-placeholder span {
+            color: #4299e1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+        
+        .split-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.1);
+        }
+        
+        .project-card h4 {
+            color: #1e3a8a;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .requirement-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .requirement-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(16, 185, 129, 0.1);
+        }
+        
+        .requirement-card h4 {
+            color: #1e3a8a;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .phase-card {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(168, 85, 247, 0.1);
+        }
+        
+        .phase-card h4 {
+            color: #1e3a8a;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .evaluation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .evaluation-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #4299e1;
+            transition: all 0.3s ease;
+        }
+        
+        .evaluation-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(66, 153, 225, 0.1);
+        }
+        
+        .celebration-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+        
+        .celebration-card h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .slide-title-main {
+                font-size: 3rem;
+            }
+            .content-card {
+                max-width: 1000px;
+            }
+            .split-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .icon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide-title-main {
+                font-size: 2.5rem;
+            }
+            .slide-content-title {
+                font-size: 2rem;
+            }
+            .content-card {
+                padding: 25px;
+                margin: 0 15px 20px 15px;
+            }
+            .icon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="slide">
+        <div class="decorative-shape shape-top-left"></div>
+        <div class="module-icon">
+            <i class="fas fa-trophy"></i>
+        </div>
+        <h1 class="slide-title-main">Módulo 8:<br>Proyecto Final Integrador</h1>
+        <p class="slide-subtitle">Diplomado: Herramientas de Inteligencia Artificial para Educadores Innovadores</p>
+        <div class="accent-line"></div>
+
+        <div style="max-width: 600px; height: 200px; text-align: center;">
+            <img src="imagenes/modulo8/imagen1.png" alt="Portada del Módulo" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+        </div>
+
+        <p class="slide-info">
+            <i class="fas fa-chalkboard-teacher"></i> Dr. Salvador Tututi Ávila &nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-laptop-code"></i> I.Q. Juan José Alonso Tijerina
+        </p>
+        <p class="slide-info">
+            <i class="fas fa-clock"></i> Duración del Módulo: 6 horas (1 Síncrona / 5 Asíncronas)
+        </p>
+
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">1 / 8</div>
+        <div class="decorative-shape shape-bottom-right"></div>
+    </div>
+
+    <!-- Slide 2: Agenda del Módulo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Agenda del Módulo 8</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-list-ul"></i> Contenidos Principales</h3>
+                    <ul>
+                        <li><i class="fas fa-bullseye"></i> Objetivos del Proyecto Final Integrador: síntesis transformadora del aprendizaje</li>
+                        <li><i class="fas fa-lightbulb"></i> Opciones creativas y enfoques innovadores para el desarrollo del proyecto</li>
+                        <li><i class="fas fa-tasks"></i> Requisitos esenciales y componentes clave para la excelencia académica</li>
+                        <li><i class="fas fa-sitemap"></i> Metodología estructurada: fases estratégicas para el desarrollo exitoso</li>
+                        <li><i class="fas fa-tools"></i> Ecosistema completo de herramientas y recursos de apoyo especializado</li>
+                        <li><i class="fas fa-clipboard-check"></i> Marco de evaluación integral: criterios y estándares de calidad</li>
+                        <li><i class="fas fa-video"></i> Formatos innovadores de presentación y comunicación de resultados</li>
+                        <li><i class="fas fa-comments"></i> Sesión síncrona de cierre: Q&A final, reflexiones y próximos pasos</li>
+                        <li><i class="fas fa-calendar-check"></i> Desarrollo asíncrono: construcción y entrega del proyecto final</li>
+                        <li><i class="fas fa-trophy"></i> Celebración de logros: conclusión exitosa del diplomado</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="slide-number">2 / 8</div>
+    </div>
+
+    <!-- Slide 3: Objetivos del Proyecto Final (1/2) -->
+    <div class="slide">
+        <h2 class="slide-content-title">Objetivos del Proyecto Final (1/2)</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-cogs"></i> Síntesis Transformadora del Aprendizaje</h3>
+                    <p>El Proyecto Final Integrador representa la <strong>culminación académica de tu travesía formativa</strong>, diseñado para que demuestres de manera tangible y significativa la integración profunda de competencias en inteligencia artificial
+                        educativa adquiridas a lo largo de este diplomado.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Meta transformadora:</strong> Evolucionar de consumidor de herramientas IA a <strong>creador de soluciones innovadoras</strong> que generen impacto real en tu contexto.</p>
+                    </div>
+
+                    <div class="icon-grid">
+                        <div class="icon-card">
+                            <i class="fas fa-brain"></i>
+                            <h4>Integración Inteligente</h4>
+                            <p>Orquestación estratégica de múltiples herramientas IA en contextos educativos auténticos</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Innovación Pedagógica</h4>
+                            <p>Diseño de propuestas educativas que trascienden métodos tradicionales</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="slide-number">3 / 8</div>
+    </div>
+
+    <!-- Slide 4: Objetivos del Proyecto Final (2/2) -->
+    <div class="slide">
+        <h2 class="slide-content-title">Objetivos del Proyecto Final (2/2)</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-balance-scale"></i> Excelencia Ética y Reflexión Crítica</h3>
+
+                    <div class="icon-grid">
+                        <div class="icon-card">
+                            <i class="fas fa-star"></i>
+                            <h4>Relevancia Profesional</h4>
+                            <p>Proyectos con impacto real en tu práctica educativa y desarrollo profesional continuo</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Responsabilidad Ética</h4>
+                            <p>Implementación consciente de principios éticos en el diseño y aplicación de IA</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-brain"></i>
+                            <h4>Metacognición Avanzada</h4>
+                            <p>Análisis reflexivo profundo del proceso de aprendizaje y crecimiento profesional</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Proyección Futura</h4>
+                            <p>Identificación de trayectorias de desarrollo profesional y líneas de investigación</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🎯 Visión integral:</strong> Tu proyecto final es más que una entrega académica; es tu <strong>carta de presentación profesional</strong> como educador innovador en la era de la inteligencia artificial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">4 / 8</div>
+    </div>
+
+    <!-- Slide 5: Opciones de Proyecto (1/3) - Unidad de Aprendizaje -->
+    <div class="slide">
+        <h2 class="slide-content-title">Rutas de Desarrollo Profesional (1/3)</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-book-open"></i> Opción A: Elementos de la planeación de una unidad de aprendizaje</h3>
+                    <p>Desarrolla una <strong>unidad de aprendizaje completa</strong> que integre herramientas de IA en cada elemento fundamental de la planeación educativa, creando una experiencia de aprendizaje innovadora y efectiva.</p>
+
+                    <div class="project-card">
+                        <h4><i class="fas fa-cogs"></i> Elementos Clave de Planeación</h4>
+                        <ul style="text-align: left;">
+                            <li>🎯 <strong>Propósito y contexto:</strong> Justificación pedagógica y análisis del contexto educativo</li>
+                            <li>📚 <strong>Competencias y objetivos:</strong> Definición clara de competencias a desarrollar y objetivos específicos</li>
+                            <li>📋 <strong>Contenidos temáticos:</strong> Selección y organización de contenidos alineados con objetivos</li>
+                            <li>⚡ <strong>Actividades de aprendizaje:</strong> Diseño de experiencias activas y significativas</li>
+                            <li>📊 <strong>Evaluación integral:</strong> Estrategias de evaluación formativa y sumativa</li>
+                            <li>🔧 <strong>Recursos y materiales:</strong> Selección de recursos didácticos y tecnológicos</li>
+                        </ul>
+                    </div>
+
+                                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <p><strong>🎯 Entregable:</strong> Bosquejo de unidad de aprendizaje que incluya todos los elementos clave y especifique cómo se integra la IA en cada componente.</p>
+                        </div>
+
+                    <div class="highlight-box">
+                        <p><strong>💡 Enfoque:</strong> Crear una unidad que demuestre cómo la IA puede <strong>potenciar cada elemento</strong> de la planeación educativa, desde la generación de contenidos hasta la evaluación del aprendizaje.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="slide-number">5 / 8</div>
+    </div>
+
+    <!-- Slide 6: Opciones de Proyecto (2/3) - Simulador Educativo y Gamificación -->
+    <div class="slide">
+        <h2 class="slide-content-title">Rutas de Desarrollo Profesional (2/3)</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-gamepad"></i> Opción B: Simulador Educativo u otra actividad de gamificación</h3>
+                    <p>Desarrolla <strong>experiencias de aprendizaje inmersivas</strong> que utilicen elementos de gamificación, simuladores educativos o juegos serios para crear contextos de aprendizaje motivadores y significativos.</p>
+
+                    <div class="project-card">
+                        <h4><i class="fas fa-trophy"></i> Elementos de Gamificación</h4>
+                        <ul style="text-align: left;">
+                            <li>🎯 <strong>Simulador interactivo:</strong> Entorno virtual que recrea situaciones reales del área de estudio</li>
+                            <li>🏆 <strong>Sistema de puntos y logros:</strong> Mecánicas de progreso que motiven la participación activa</li>
+                            <li>🎮 <strong>Desafíos graduales:</strong> Niveles de complejidad que se adapten al ritmo de aprendizaje</li>
+                            <li>👥 <strong>Colaboración competitiva:</strong> Elementos que fomenten trabajo en equipo y competencia sana</li>
+                            <li>📊 <strong>Retroalimentación inmediata:</strong> Feedback instantáneo sobre el desempeño estudiantil</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-card">
+                        <h4><i class="fas fa-map-marked-alt"></i> Componentes del Contexto Educativo</h4>
+                        <ul style="text-align: left;">
+                            <li>🎓 <strong>Objetivos de aprendizaje claros:</strong> Competencias específicas que se desarrollarán</li>
+                            <li>📚 <strong>Contenido curricular alineado:</strong> Temas del programa oficial integrados creativamente</li>
+                            <li>🎭 <strong>Narrativa educativa:</strong> Historia o escenario que contextualice el aprendizaje</li>
+                            <li>🔧 <strong>Herramientas IA integradas:</strong> Uso de ChatGPT, Gema u otras para personalización</li>
+                            <li>⏰ <strong>Estructura temporal:</strong> Secuencia lógica de actividades con tiempos definidos</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4><i class="fas fa-tasks"></i> Actividad Práctica: Diseño de Simulador Gamificado</h4>
+                        
+                        <div style="margin-top: 15px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                            <div style="background: rgba(236, 72, 153, 0.1); padding: 15px; border-radius: 8px;">
+                                <strong>Fase 1: Conceptualización</strong><br>
+                                <small>• Seleccionar tema y nivel educativo<br>
+                                • Definir mecánicas de gamificación<br>
+                                • Crear narrativa o escenario base</small>
+                            </div>
+                            <div style="background: rgba(236, 72, 153, 0.2); padding: 15px; border-radius: 8px;">
+                                <strong>Fase 2: Prototipado</strong><br>
+                                <small>• Usar IA para generar contenido<br>
+                                • Diseñar interfaz o flujo de usuario<br>
+                                • Crear sistema de evaluación</small>
+                            </div>
+                            <div style="background: rgba(236, 72, 153, 0.3); padding: 15px; border-radius: 8px;">
+                                <strong>Fase 3: Discusión</strong><br>
+                                <small>• Testear con otra persona<br>
+                                • Refinar basado en feedback<br>
+                                • Preparar entregable</small>
+                            </div>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); padding: 20px; border-radius: 12px; margin-top: 20px;">
+                            <p><strong>🎯 Entregable:</strong> Prototipo funcional de simulador o actividad gamificada que incluya: descripción del contexto, mecánicas de juego, rúbrica de evaluación, y demostración práctica de su implementación.</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="highlight-box">
+                        <p><strong>💡 Enfoque:</strong> Crear experiencias de aprendizaje que <strong>combinen diversión y rigor académico</strong>, usando IA para personalizar la experiencia y maximizar el engagement estudiantil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">6 / 8</div>
+    </div>
+
+    <!-- Slide 7: Opciones de Proyecto (3/3) - Análisis de Desempeño con Colab -->
+    <div class="slide">
+        <h2 class="slide-content-title">Rutas de Desarrollo Profesional (3/3)</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-chart-bar"></i> Opción C: Análisis cuantitativo y cualitativo de desempeño de estudiantes usando Colab</h3>
+                    <p>Desarrolla un <strong>sistema integral de análisis de datos educativos</strong> que combine métodos cuantitativos y cualitativos para evaluar el desempeño estudiantil utilizando Google Colab como plataforma de análisis.</p>
+
+                    <div class="project-card">
+                        <h4><i class="fas fa-database"></i> Componentes del Análisis de Datos</h4>
+                        <ul style="text-align: left;">
+                            <li>📊 <strong>Análisis cuantitativo:</strong> Procesamiento estadístico de calificaciones, tiempos de respuesta, y métricas de progreso</li>
+                            <li>📈 <strong>Visualización de datos:</strong> Creación de gráficos, dashboards y reportes interactivos</li>
+                            <li>🔍 <strong>Identificación de patrones:</strong> Detección de tendencias, fortalezas y áreas de mejora</li>
+                            <li>🎯 <strong>Predicción de desempeño:</strong> Modelos predictivos para identificar estudiantes en riesgo</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-card">
+                        <h4><i class="fas fa-laptop-code"></i> Herramientas y Metodologías en Colab</h4>
+                        <ul style="text-align: left;">
+                            <li>🐍 <strong>Python y librerías:</strong> Pandas, NumPy, Matplotlib, Seaborn para análisis de datos</li>
+                            <li>📊 <strong>Análisis estadístico:</strong> Descriptivos, correlaciones, regresiones, y pruebas de hipótesis</li>
+                            <li>📈 <strong>Visualización avanzada:</strong> Matplotlib, Seaborn y widgets para gráficos interactivos</li>
+                            <li>💬 <strong>Análisis de texto:</strong> Procesamiento de lenguaje natural para comentarios y feedback</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-card">
+                        <h4><i class="fas fa-tasks"></i> Actividad Práctica: Análisis de Datos Educativos en Colab</h4>
+                        <div style="margin-top: 15px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                            <div style="background: rgba(34, 197, 94, 0.1); padding: 15px; border-radius: 8px;">
+                                <strong>Fase 1: Exploración</strong><br>
+                                <small>• Cargar dataset de calificaciones<br>
+                                • Análisis descriptivo inicial<br>
+                                • Identificar variables clave</small>
+                            </div>
+                            <div style="background: rgba(34, 197, 94, 0.2); padding: 15px; border-radius: 8px;">
+                                <strong>Fase 2: Análisis</strong><br>
+                                <small>• Crear visualizaciones informativas<br>
+                                • Aplicar análisis estadístico<br>
+                                • Identificar patrones y tendencias</small>
+                            </div>
+                            <div style="background: rgba(34, 197, 94, 0.3); padding: 15px; border-radius: 8px;">
+                                <strong>Fase 3: Interpretación</strong><br>
+                                <small>• Generar insights educativos<br>
+                                • Crear recomendaciones<br>
+                                • Preparar presentación de resultados</small>
+                            </div>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); padding: 20px; border-radius: 12px; margin-top: 20px;">
+                            <p><strong>🎯 Entregable:</strong> Notebook de Colab completo con análisis de datos educativos que incluya: exploración de datos, visualizaciones, análisis estadístico, insights educativos, y recomendaciones prácticas para mejorar el desempeño estudiantil.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="slide-number">7 / 8</div>
+    </div>
+
+    <!-- Slide 8: Conclusión del Diplomado -->
+    <div class="slide">
+        <h2 class="slide-content-title">Transformación Completada: Tu Nuevo Horizonte Profesional</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+
+
+            <div class="celebration-card">
+                <h3><i class="fas fa-trophy"></i> ¡Felicitaciones por este Logro Extraordinario!</h3>
+                <p>Has completado una <strong>travesía transformadora de 8 módulos intensivos</strong>, desarrollando competencias avanzadas que te posicionan como líder innovador en la integración educativa de inteligencia artificial.</p>
+            </div>
+
+            <div class="icon-grid">
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-brain" style="color: #8b5cf6;"></i>
+                    <h4>Competencias Maestras Adquiridas</h4>
+                    <p>Dominio técnico de herramientas IA, diseño pedagógico innovador, y liderazgo en transformación educativa</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #06b6d4;">
+                    <i class="fas fa-robot" style="color: #06b6d4;"></i>
+                    <h4>Herramientas de IA Dominadas</h4>
+                    <p>ChatGPT, Gema, Claude y otras herramientas de IA para generación de contenido, retroalimentación y apoyo educativo</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-tools" style="color: #10b981;"></i>
+                    <h4>Integración de IA en Educación</h4>
+                    <p>Capacidad para implementar herramientas de IA en planeación didáctica, evaluación y creación de recursos educativos</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-infinity" style="color: #f59e0b;"></i>
+                    <h4>Aprendizaje Continuo Garantizado</h4>
+                    <p>Acceso permanente a recursos, actualizaciones tecnológicas, y oportunidades de desarrollo profesional avanzado</p>
+                </div>
+            </div>
+
+
+            <div class="celebration-card">
+                <h4><i class="fas fa-heart"></i> El Futuro de la Educación Está en Tus Manos</h4>
+                <p>Eres parte de una <strong>generación pionera de educadores</strong> que está redefiniendo las posibilidades del aprendizaje humano. Tu proyecto final será el primer paso de un impacto educativo que trascenderá fronteras.</p>
+            </div>
+        </div>
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Volver al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">8 / 8</div>
+    </div>
+
+</body>
+
+</html>

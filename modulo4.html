@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 4: Creación de Material con IA - Presentación</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #fefefe 0%, #f0f9ff 100%);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .slide-title-main {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8rem;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .slide-info {
+            font-size: 1.2rem;
+            color: #4299e1;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .slide-content-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accent-line {
+            height: 4px;
+            background: linear-gradient(90deg, #4299e1, #667eea);
+            border-radius: 2px;
+            width: 120px;
+            margin: 0 auto 35px auto;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1400px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1d4ed8;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .content-card h3 i {
+            margin-right: 15px;
+            color: #4299e1;
+            font-size: 2rem;
+        }
+        
+        .content-card p,
+        .content-card ul {
+            font-size: 1.2rem;
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .content-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .content-card ul li {
+            padding: 12px 0 12px 2.5em;
+            position: relative;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+        }
+        
+        .content-card ul li:hover {
+            transform: translateX(8px);
+            color: #1d4ed8;
+            background: rgba(66, 153, 225, 0.05);
+        }
+        
+        .content-card ul li i {
+            position: absolute;
+            left: 0;
+            top: 16px;
+            color: #4299e1;
+            font-size: 1.3rem;
+        }
+        
+        .decorative-shape {
+            position: absolute;
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .shape-top-left {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        .shape-bottom-right {
+            width: 250px;
+            height: 250px;
+            bottom: -125px;
+            right: -125px;
+        }
+        
+        .nav-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .nav-button-home {
+            background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+            font-size: 1.1rem;
+        }
+        
+        .nav-button-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(66, 153, 225, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-button-home i {
+            margin-right: 10px;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 1.1rem;
+            color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-icon {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 40px rgba(66, 153, 225, 0.4);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 6px solid #4299e1;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1);
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .icon-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(66, 153, 225, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .icon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .icon-card i {
+            font-size: 2.5rem;
+            color: #4299e1;
+            margin-bottom: 15px;
+        }
+        
+        .icon-card h4 {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .icon-card p {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .wide-content {
+            max-width: 1600px;
+            width: 100%;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            border: 2px dashed #4299e1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(66, 153, 225, 0.2);
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .image-placeholder span {
+            color: #4299e1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+        
+        .split-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .tool-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 1px solid #cbd5e0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            border-left: 4px solid #4299e1;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .prompt-example {
+            background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+            border: 1px solid #fbbf24;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            color: #92400e;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .activity-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1px solid #22c55e;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 6px solid #16a34a;
+        }
+        
+        @media (max-width: 1200px) {
+            .slide-title-main {
+                font-size: 3rem;
+            }
+            .content-card {
+                max-width: 1000px;
+            }
+            .split-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .icon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide-title-main {
+                font-size: 2.5rem;
+            }
+            .slide-content-title {
+                font-size: 2rem;
+            }
+            .content-card {
+                padding: 25px;
+                margin: 0 15px 20px 15px;
+            }
+            .icon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal de Imagen */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .zoomable {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .zoomable:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="slide">
+        <div class="decorative-shape shape-top-left"></div>
+        <div class="module-icon">
+            <i class="fas fa-magic"></i>
+        </div>
+        <h1 class="slide-title-main">Módulo 4:<br>Creación de Material Didáctico<br>con Inteligencia Artificial</h1>
+        <p class="slide-subtitle">Diplomado: Herramientas de Inteligencia Artificial para Educadores Innovadores</p>
+        <div class="accent-line"></div>
+
+        <div style="max-width: 600px; height: 200px; text-align: center;">
+            <img src="imagenes/modulo4/imagen1.png" alt="Portada del Módulo" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+        </div>
+
+        <p class="slide-info">
+            <i class="fas fa-chalkboard-teacher"></i> Dr. Salvador Tututi Ávila &nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-laptop-code"></i> I.Q. Juan José Alonso Tijerina
+        </p>
+        <p class="slide-info">
+            <i class="fas fa-clock"></i> Duración del Módulo: 10 horas (3 Síncronas / 7 Asíncronas)
+        </p>
+
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">1 / 26</div>
+        <div class="decorative-shape shape-bottom-right"></div>
+    </div>
+
+    <!-- Slide 2: Agenda del Módulo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Agenda del Módulo 4</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-list-ul"></i> Contenidos Principales</h3>
+                    <ul>
+                        <li><i class="fas fa-file-alt"></i> Generación inteligente de textos educativos y material de apoyo pedagógico</li>
+                        <li><i class="fas fa-image"></i> Creación de imágenes, ilustraciones y elementos visuales para el aula</li>
+                        <li><i class="fas fa-video"></i> Desarrollo de ideas, guiones y contenido multimedia educativo</li>
+                        <li><i class="fas fa-desktop"></i> Presentaciones dinámicas y material interactivo asistido por IA</li>
+                        <li><i class="fas fa-puzzle-piece"></i> Diseño de quizzes, evaluaciones y materiales de práctica personalizados</li>
+                        <li><i class="fas fa-users"></i> Taller práctico: Creación colaborativa de recursos visuales y evaluativos</li>
+                        <li><i class="fas fa-archive"></i> Proyecto integral: Desarrollo de un paquete completo de materiales didácticos</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen2.png" alt="Agenda Visual" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">2 / 26</div>
+    </div>
+
+    <!-- Slide 3: Generación de Textos Educativos - Introducción -->
+    <div class="slide">
+        <h2 class="slide-content-title">Generación Inteligente de Textos Educativos</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-pencil-ruler"></i> Revolución en la Creación de Contenido Pedagógico</h3>
+                    <p>La IA Generativa representa una transformación radical en la forma en que los educadores crean, adaptan y personalizan contenido escrito para sus estudiantes. Su capacidad para comprender contexto y generar texto coherente abre posibilidades
+                        ilimitadas.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p><strong>Paradigma transformador:</strong> De la búsqueda y adaptación manual de recursos a la co-creación inteligente con IA, multiplicando exponencialmente la capacidad de producción de material didáctico de calidad.</p>
+                    </div>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 20px;">
+                        <div class="icon-card">
+                            <i class="fas fa-brain"></i>
+                            <h4>Personalización</h4>
+                            <p>Adaptación automática a niveles y estilos de aprendizaje</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Eficiencia</h4>
+                            <p>Creación rápida de contenido de alta calidad</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-palette"></i>
+                            <h4>Creatividad</h4>
+                            <p>Generación de enfoques pedagógicos innovadores</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen3.png" alt="Textos Educativos IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3 / 26</div>
+    </div>
+
+    <!-- Slide 4: Tipos de Contenido Textual Educativo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Ecosistema de Contenido Textual Educativo</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen4.png" alt="Tipos de Contenido" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-file-alt"></i> Categorías de Material Textual Generativo</h3>
+
+                    <div class="icon-grid" style="grid-template-columns: 1fr;">
+                        <div class="tool-card">
+                            <h4><i class="fas fa-lightbulb"></i> Explicaciones y Conceptos</h4>
+                            <p>Definiciones claras, analogías efectivas, simplificaciones conceptuales adaptadas a diferentes niveles de comprensión</p>
+                        </div>
+
+                        <div class="tool-card">
+                            <h4><i class="fas fa-book-open"></i> Narrativas Educativas</h4>
+                            <p>Cuentos contextualizados, casos de estudio, escenarios de aprendizaje que faciliten la comprensión através de storytelling</p>
+                        </div>
+
+                        <div class="tool-card">
+                            <h4><i class="fas fa-list-ul"></i> Material de Apoyo</h4>
+                            <p>Resúmenes estructurados, guías de estudio, glosarios especializados, y material de refuerzo pedagógico</p>
+                        </div>
+
+                        <div class="tool-card">
+                            <h4><i class="fas fa-question-circle"></i> Contenido Evaluativo</h4>
+                            <p>Bancos de preguntas diferenciadas, rúbricas de evaluación, ejercicios de práctica progresivos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">4 / 26</div>
+    </div>
+
+    <!-- Slide 5: Prompts Especializados para Textos Educativos -->
+    <div class="slide">
+        <h2 class="slide-content-title">Prompts Especializados para Contenido Textual</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-terminal"></i> Framework de Prompts Pedagógicos Avanzados</h3>
+
+                    <div class="prompt-example">
+                        <strong>Explicación Conceptual Adaptativa:</strong><br> "Actúa como un pedagogo experto. Explica [CONCEPTO] para estudiantes de [NIVEL/EDAD] utilizando: 1) Una analogía familiar, 2) Un ejemplo práctico, 3) Una conexión con su entorno
+                        cotidiano. Usa un lenguaje apropiado y genera 2 preguntas de reflexión al final."
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Narrativa Educativa Contextualizada:</strong><br> "Crea una historia breve (200-300 palabras) para estudiantes de [EDAD] que ilustre [CONCEPTO/VALOR]. La historia debe: incluir personajes diversos, desarrollarse en un contexto
+                        familiar para los estudiantes, y terminar con una moraleja clara que refuerce el aprendizaje."
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Material de Apoyo Estructurado:</strong><br> "Genera un resumen ejecutivo de [TEXTO/TEMA] organizado en: 1) Conceptos clave (máximo 5), 2) Aplicaciones prácticas, 3) Conexiones interdisciplinarias, 4) Recursos para profundizar.
+                        Formato orientado a educadores."
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Principio fundamental:</strong> La especificidad en el prompt determina la calidad del output. Incluir contexto pedagógico, nivel académico, y objetivos de aprendizaje maximiza la utilidad del contenido generado.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen5.png" alt="Prompts Especializados" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">5 / 26</div>
+    </div>
+
+    <!-- Slide 6: Creación de Imágenes Educativas con IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Revolución Visual: Imágenes Educativas con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-palette"></i> Democratización de la Creación Visual Educativa</h3>
+                    <p>La generación de imágenes con IA representa una revolución en la accesibilidad del diseño educativo, permitiendo a cualquier educador crear contenido visual profesional sin necesidad de habilidades artísticas especializadas.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Impacto transformador:</strong> Los educadores pueden ahora generar ilustraciones personalizadas, diagramas conceptuales, y material visual adaptado específicamente a sus necesidades pedagógicas en minutos, no días.</p>
+                    </div>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="icon-card">
+                            <i class="fas fa-brain"></i>
+                            <h4>Conceptos Abstractos</h4>
+                            <p>Visualización de ideas complejas e intangibles</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-users"></i>
+                            <h4>Personajes Didácticos</h4>
+                            <p>Avatares y figuras para narrativas educativas</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-map"></i>
+                            <h4>Diagramas Visuales</h4>
+                            <p>Mapas conceptuales y esquemas ilustrados</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-icons"></i>
+                            <h4>Elementos Gráficos</h4>
+                            <p>Iconografía y elementos de diseño personalizados</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen6.png" alt="Imágenes Educativas IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">6 / 26</div>
+    </div>
+
+    <!-- Slide 7: Herramientas y Ecosistema Visual IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Herramientas y Ecosistema de Generación Visual</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen7.png" alt="Herramientas Visuales" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-tools"></i> Plataformas Líderes en Generación Visual Educativa</h3>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-robot"></i> DALL-E 3 (OpenAI)</h4>
+                        <p><strong>Integrado en:</strong> ChatGPT Plus, Microsoft Copilot<br>
+                            <strong>Fortalezas:</strong> Comprensión contextual superior, texto en imágenes, versatilidad pedagógica</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-palette"></i> Midjourney</h4>
+                        <p><strong>Plataforma:</strong> Discord<br>
+                            <strong>Fortalezas:</strong> Calidad artística excepcional, estilos visuales diversos, comunidad activa</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-shield-alt"></i> Adobe Firefly</h4>
+                        <p><strong>Enfoque:</strong> Uso comercial seguro<br>
+                            <strong>Fortalezas:</strong> Entrenado con contenido licenciado, integración Creative Cloud, uso educativo confiable</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-design"></i> Canva AI / Microsoft Designer</h4>
+                        <p><strong>Ventaja:</strong> Integración con herramientas de diseño<br>
+                            <strong>Fortalezas:</strong> Flujo de trabajo simplificado, plantillas educativas, accesibilidad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">7 / 26</div>
+    </div>
+
+    <!-- Slide 8: Prompts Avanzados para Imágenes Educativas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Prompts Avanzados para Imágenes Educativas</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-code"></i> Arquitectura de Prompts Visuales Pedagógicos</h3>
+
+                    <div class="prompt-example">
+                        <strong>Ilustración Científica Educativa:</strong><br> "Ilustración educativa vectorial del [PROCESO CIENTÍFICO], estilo infografía moderna, colores vibrantes pero profesionales, diseñado para estudiantes de [EDAD], incluir etiquetas
+                        claras en español, fondo blanco limpio, perspectiva isométrica"
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Personaje Didáctico Inclusivo:</strong><br> "Personaje animado de [PROFESIÓN/ROL] diverso y amigable, estilo ilustración infantil moderna, expresión entusiasta, vestimenta profesional pero accesible, fondo educativo relacionado
+                        con [TEMA], paleta de colores cálidos, diseño inclusivo y representativo"
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Escenario Contextual de Aprendizaje:</strong><br> "Escena educativa de [CONTEXTO/LUGAR] donde estudiantes diversos de [EDAD] participan en [ACTIVIDAD], ambiente colaborativo y positivo, iluminación natural, elementos culturalmente
+                        relevantes, estilo realista pero optimista"
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Framework de 5 elementos:</strong> 1) Descripción del sujeto, 2) Estilo visual, 3) Contexto educativo, 4) Especificaciones técnicas, 5) Consideraciones de inclusión</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen8.png" alt="Prompts Visuales Avanzados" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">8 / 26</div>
+    </div>
+
+    <!-- Slide 9: Consideraciones Éticas en Generación Visual -->
+    <div class="slide">
+        <h2 class="slide-content-title">Ética y Responsabilidad en Generación Visual</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen9.png" alt="Ética Visual IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-balance-scale"></i> Dimensiones Éticas en Generación Visual Educativa</h3>
+
+                    <div class="icon-grid" style="grid-template-columns: 1fr;">
+                        <div class="tool-card" style="border-left: 4px solid #ef4444;">
+                            <h4><i class="fas fa-users"></i> Representación e Inclusión</h4>
+                            <p>Promover diversidad genuina, evitar estereotipos, representar equitativamente diferentes grupos demográficos y culturas en el material visual</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #f59e0b;">
+                            <h4><i class="fas fa-copyright"></i> Propiedad Intelectual</h4>
+                            <p>Comprender las implicaciones de derechos de autor, usar modelos con training data ético, verificar políticas de uso comercial</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #10b981;">
+                            <h4><i class="fas fa-shield-check"></i> Veracidad y Precisión</h4>
+                            <p>Verificar exactitud científica en ilustraciones técnicas, evitar desinformación visual, mantener rigor académico</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #3b82f6;">
+                            <h4><i class="fas fa-eye"></i> Transparencia</h4>
+                            <p>Comunicar claramente cuando el contenido es generado por IA, educar sobre las capacidades y limitaciones de la tecnología</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Principio rector:</strong> La generación visual con IA debe servir al propósito pedagógico mientras mantiene los más altos estándares éticos de representación, veracidad e inclusión.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">9 / 26</div>
+    </div>
+
+    <!-- Slide 10: Revolución del Contenido Multimedia Educativo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Revolución del Contenido Multimedia Educativo</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-video"></i> IA como Catalizador de Narrativas Audiovisuales</h3>
+                    <p>La inteligencia artificial está revolucionando la planificación, estructuración y desarrollo de contenido multimedia educativo, permitiendo a los educadores crear experiencias audiovisuales ricas sin conocimientos técnicos avanzados.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Transformación paradigmática:</strong> De la dependencia de equipos especializados a la autonomía creativa del educador, democratizando la producción de contenido multimedia educativo de calidad profesional.</p>
+                    </div>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="icon-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Ideación Creativa</h4>
+                            <p>Generación de conceptos y temáticas innovadoras</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-script"></i>
+                            <h4>Estructuración Narrativa</h4>
+                            <p>Desarrollo de guiones pedagógicamente efectivos</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-eye"></i>
+                            <h4>Elementos Visuales</h4>
+                            <p>Sugerencias de componentes gráficos y estéticos</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-users"></i>
+                            <h4>Engagement Estudiantil</h4>
+                            <p>Estrategias para maximizar la participación</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen10.png" alt="Multimedia Educativo IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10 / 26</div>
+    </div>
+
+    <!-- Slide 11: Herramientas y Prompts para Contenido Multimedia -->
+    <div class="slide">
+        <h2 class="slide-content-title">Herramientas y Prompts para Contenido Multimedia</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen11.png" alt="Herramientas Multimedia" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-cogs"></i> Ecosistema de Tecnologías Multimedia Emergentes</h3>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-user-tie"></i> Synthesia / D-ID</h4>
+                        <p><strong>Función:</strong> Avatares IA para presentaciones<br>
+                            <strong>Ventajas:</strong> Personalización, múltiples idiomas<br>
+                            <strong>Consideraciones:</strong> Costo, naturalidad limitada</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-film"></i> Pictory / InVideo AI</h4>
+                        <p><strong>Función:</strong> Generación automática de videos desde texto<br>
+                            <strong>Ventajas:</strong> Rapidez, integración de assets<br>
+                            <strong>Consideraciones:</strong> Personalización limitada</p>
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Guión Educativo Estructurado:</strong><br> "Crea un guión de [DURACIÓN] minutos para explicar [CONCEPTO] a estudiantes de [NIVEL]. Estructura: 1) Hook inicial (15s), 2) Contexto y relevancia (30s), 3) Explicación central
+                        con ejemplos (60-90s), 4) Aplicación práctica (30s), 5) Resumen y call-to-action (15s). Tono [ESPECIFICAR], incluir sugerencias de elementos visuales."
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Recomendación estratégica:</strong> Comenzar con herramientas de guionización antes de invertir en tecnologías de producción automatizada, priorizando la calidad pedagógica sobre la sofisticación técnica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11 / 26</div>
+    </div>
+
+    <!-- Slide 12: Presentaciones Dinámicas Asistidas por IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Presentaciones Dinámicas Asistidas por IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-file-powerpoint"></i> Evolución del Diseño Pedagógico de Presentaciones</h3>
+                    <p>La IA está transformando radicalmente la creación de presentaciones educativas, desde la conceptualización hasta la producción final, permitiendo a los educadores crear experiencias visuales impactantes y pedagógicamente efectivas.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Revolución en eficiencia:</strong> Lo que tradicionalmente requería horas de trabajo manual ahora se puede lograr en minutos, liberando tiempo para el refinamiento pedagógico y la personalización del mensaje educativo.</p>
+                    </div>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="icon-card">
+                            <i class="fas fa-sitemap"></i>
+                            <h4>Arquitectura Inteligente</h4>
+                            <p>Estructuración automática y lógica del contenido</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-magic"></i>
+                            <h4>Diseño Adaptativo</h4>
+                            <p>Generación de layouts visuales optimizados</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-palette"></i>
+                            <h4>Coherencia Visual</h4>
+                            <p>Mantenimiento automático de estilo y branding</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-comments"></i>
+                            <h4>Narrativa Persuasiva</h4>
+                            <p>Estructuras que maximizan el impacto educativo</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen12.png" alt="Presentaciones IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">12 / 26</div>
+    </div>
+
+    <!-- Slide 13: Herramientas de Presentación IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Plataformas de Presentación Inteligente</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen13.png" alt="Herramientas Presentación" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-tools"></i> Ecosistema de Herramientas Avanzadas</h3>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-rocket"></i> Gamma.app</h4>
+                        <p>Generación completa de presentaciones desde prompts textuales, diseño automático, y narrativa inteligente</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-book"></i> Tome.app</h4>
+                        <p>Storytelling interactivo, integración multimedia, y experiencias inmersivas de presentación</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-microsoft"></i> Copilot en PowerPoint</h4>
+                        <p>Asistencia integrada en flujo tradicional, compatibilidad empresarial, refinamiento inteligente</p>
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Prompt Estructural Avanzado:</strong><br> "Crea una presentación de [X] diapositivas sobre [TEMA] para [AUDIENCIA]. Estructura: introducción hook, 3 puntos principales con evidencia, actividad interactiva, conclusión memorable.
+                        Incluye sugerencias visuales específicas para cada diapositiva."
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">13 / 26</div>
+    </div>
+
+    <!-- Slide 14: Actividad Intermediaria - Guía Interactiva con DeepSiteV2 -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Intermediaria: Guía Interactiva con DeepSiteV2</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-globe"></i> Creación de Guía Interactiva Educativa</h3>
+                    <p>Actividad práctica donde aplicarás los conocimientos adquiridos para crear una <strong>guía interactiva web</strong> sobre un tópico de tu especialidad utilizando <strong>DeepSiteV2</strong>, una herramienta de IA que genera sitios web educativos completos y navegables.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-list-check"></i> Instrucciones de la Actividad (15 minutos)</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>• <strong>Selecciona un tópico</strong> específico de tu área de conocimiento</li>
+                            <li>• <strong>Define tu audiencia objetivo</strong> (nivel educativo y características)</li>
+                            <li>• <strong>Utiliza DeepSiteV2</strong> para generar una guía interactiva</li>
+                            <li>• <strong>Personaliza el contenido</strong> según tu contexto pedagógico</li>
+                            <li>• <strong>Evalúa la efectividad</strong> del recurso generado</li>
+                        </ul>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-lightbulb"></i> Prompt Sugerido para DeepSiteV2</h4>
+                        <p><em>"Crea una guía interactiva educativa sobre [TU TÓPICO] dirigida a [AUDIENCIA]. Incluye: introducción atractiva, contenido estructurado en secciones navegables, ejemplos prácticos, actividades de refuerzo, y evaluación rápida. Diseño visual claro y accesible."</em></p>
+                    </div>
+                </div>
+                <!-- Imagen eliminada aquí (imagen13.png) -->
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>⚡ Objetivo:</strong> Experimentar de primera mano cómo la IA puede acelerar la creación de recursos educativos interactivos manteniendo calidad pedagógica y engagement estudiantil.</p>
+            </div>
+        </div>
+        <div class="slide-number">14 / 26</div>
+    </div>
+
+    <!-- Slide 15: Evaluación Inteligente con IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Revolución en Evaluación: Quizzes Inteligentes</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-clipboard-check"></i> Transformación de la Evaluación Educativa</h3>
+                    <p>La IA está revolucionando la creación de instrumentos de evaluación, permitiendo generar bancos de preguntas diversificados, adaptativos y pedagógicamente sólidos en fracciones del tiempo tradicional.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Impacto cuantitativo:</strong> Generación de 20-50 preguntas de calidad en minutos vs. horas de elaboración manual, con variaciones automáticas y diferentes niveles de dificultad.</p>
+                    </div>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="icon-card">
+                            <i class="fas fa-list-alt"></i>
+                            <h4>Opción Múltiple</h4>
+                            <p>Generación inteligente con distractores efectivos</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-check-square"></i>
+                            <h4>Verdadero/Falso</h4>
+                            <p>Preguntas conceptuales con justificaciones</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-edit"></i>
+                            <h4>Completar Espacios</h4>
+                            <p>Ejercicios de aplicación práctica</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h4>Elementos Lúdicos</h4>
+                            <p>Crucigramas, sopas de letras, gamificación</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen15.png" alt="Evaluación IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">15 / 26</div>
+    </div>
+
+    <!-- Slide 15: Prompts Especializados para Evaluación -->
+    <div class="slide">
+        <h2 class="slide-content-title">Prompts Especializados para Evaluación</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen16.png" alt="Prompts Evaluación" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-terminal"></i> Framework Avanzado de Prompts Evaluativos</h3>
+
+                    <div class="prompt-example">
+                        <strong>Generación de Opción Múltiple Pedagógica:</strong><br> "Basado en [TEXTO/CONCEPTO], crea 5 preguntas de opción múltiple para nivel [ESPECIFICAR]. Cada pregunta debe: 1) Evaluar comprensión real, no memorización, 2) Incluir
+                        un distractor plausible, 3) Tener una opción claramente correcta, 4) Incluir explicación de por qué la respuesta es correcta."
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Evaluación de Aplicación Práctica:</strong><br> "Diseña un escenario real donde estudiantes de [NIVEL] apliquen [CONCEPTO]. Crea 3 preguntas que evalúen: análisis de la situación, toma de decisiones, y justificación del
+                        razonamiento. Incluye criterios de evaluación claros."
+                    </div>
+
+                    <div class="prompt-example">
+                        <strong>Material Lúdico Educativo:</strong><br> "Genera elementos para un crucigrama educativo sobre [TEMA]: 10 palabras clave con definiciones pedagógicas apropiadas para [EDAD], asegurando que las pistas promuevan pensamiento
+                        crítico en lugar de memorización simple."
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Principio pedagógico:</strong> Cada instrumento evaluativo debe alinearse con objetivos de aprendizaje específicos y promover diferentes niveles de conocimiento según la taxonomía de Bloom.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">16 / 26</div>
+    </div>
+
+    <!-- Slide 16: Evaluación Formativa e Integración Pedagógica -->
+    <div class="slide">
+        <h2 class="slide-content-title">Evaluación Formativa e Integración Pedagógica</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-chart-line"></i> Optimización del Aprendizaje mediante Evaluación Inteligente</h3>
+                    <p>La IA no solo genera instrumentos evaluativos, sino que transforma la evaluación en una herramienta de aprendizaje continuo, proporcionando feedback inmediato y personalizando las experiencias educativas.</p>
+
+                    <div class="icon-grid" style="grid-template-columns: 1fr;">
+                        <div class="tool-card" style="border-left: 4px solid #10b981;">
+                            <h4><i class="fas fa-sync"></i> Retroalimentación Inmediata</h4>
+                            <p>Generación automática de explicaciones detalladas, sugerencias de mejora, y recursos adicionales basados en respuestas incorrectas</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #3b82f6;">
+                            <h4><i class="fas fa-layer-group"></i> Diferenciación Automática</h4>
+                            <p>Creación de versiones adaptadas del mismo instrumento para diferentes niveles de habilidad dentro del mismo grupo</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #f59e0b;">
+                            <h4><i class="fas fa-bullseye"></i> Alineación Curricular</h4>
+                            <p>Verificación automática de que las evaluaciones correspondan con estándares curriculares y objetivos de aprendizaje</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Consideración crítica:</strong> La calidad pedagógica del docente sigue siendo fundamental para validar, contextualizar y humanizar las evaluaciones generadas por IA.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen17.png" alt="Evaluación Formativa" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">17 / 26</div>
+    </div>
+
+    <!-- Slide 17: Mejores Prácticas en Creación de Material IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Mejores Prácticas en Creación de Material IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-star"></i> Framework de Excelencia Pedagógica con IA</h3>
+
+                    <div class="icon-grid" style="grid-template-columns: 1fr;">
+                        <div class="tool-card" style="border-left: 4px solid #10b981;">
+                            <h4><i class="fas fa-search"></i> Revisión y Validación</h4>
+                            <p>Verificar exactitud factual, relevancia curricular, y adecuación al nivel educativo antes de implementar cualquier material generado</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #3b82f6;">
+                            <h4><i class="fas fa-users"></i> Personalización Contextual</h4>
+                            <p>Adaptar el contenido a características específicas del grupo: cultura local, intereses, nivel socioeconómico, y diversidad</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #f59e0b;">
+                            <h4><i class="fas fa-palette"></i> Coherencia Visual</h4>
+                            <p>Mantener consistencia en estilo, colores, tipografía, y elementos gráficos para crear una experiencia educativa unificada</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #ef4444;">
+                            <h4><i class="fas fa-sync-alt"></i> Iteración Continua</h4>
+                            <p>Refinar y mejorar el material basado en feedback estudiantil, resultados de aprendizaje, y evidencia de efectividad</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Principio rector:</strong> La IA es un poderoso asistente, pero la sabiduría pedagógica, la sensibilidad humana, y la experiencia docente siguen siendo irreemplazables en la educación de calidad.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen18.png" alt="Mejores Prácticas" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">18 / 26</div>
+    </div>
+
+    <!-- Slide 19: Flujo de Trabajo Optimizado -->
+    <div class="slide">
+        <h2 class="slide-content-title">Flujo de Trabajo Optimizado para Creación con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <!-- Imagen eliminada aquí (imagen19.png) -->
+                <div>
+                    <h3><i class="fas fa-project-diagram"></i> Metodología Sistemática de Producción</h3>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-lightbulb"></i> Fase 1: Conceptualización</h4>
+                        <p>• Definir objetivos de aprendizaje específicos<br> • Identificar audiencia y contexto<br> • Seleccionar tipo de material más efectivo</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-magic"></i> Fase 2: Generación IA</h4>
+                        <p>• Diseñar prompts específicos y detallados<br> • Generar múltiples versiones para comparar<br> • Utilizar herramientas apropiadas para cada tipo</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-edit"></i> Fase 3: Refinamiento</h4>
+                        <p>• Revisar exactitud y relevancia pedagógica<br> • Personalizar para contexto específico<br> • Integrar con curriculum existente</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-chart-line"></i> Fase 4: Implementación y Evaluación</h4>
+                        <p>• Probar con grupo piloto<br> • Recopilar feedback estudiantil<br> • Iterar basado en resultados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">19 / 26</div>
+    </div>
+
+    <!-- Slide 20: Actividad Intermediaria - Infografía con Gema/GPT -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Intermediaria: Infografía con Gema/GPT</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-chart-pie"></i> Utiliza una Gema/GPT para Generar una Infografía Mejorada</h3>
+                    <p>Actividad práctica donde aplicarás las herramientas de IA especializadas para crear una <strong>infografía educativa profesional</strong> sobre un tópico, clase o tema de tu interés. Esta actividad te permitirá experimentar con la generación visual inteligente y el diseño pedagógico automatizado.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-tasks"></i> Proceso de Creación (20 minutos)</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>• <strong>Selecciona un tópico específico</strong> de tu área de especialización</li>
+                            <li>• <strong>Define tu audiencia objetivo</strong> (nivel educativo y características)</li>
+                            <li>• <strong>Utiliza una Gema/GPT especializada</strong> para generar la infografía</li>
+                            <li>• <strong>Refina y personaliza</strong> el contenido según tu contexto pedagógico</li>
+                            <li>• <strong>Optimiza el diseño</strong> para máximo impacto educativo</li>
+                        </ul>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-lightbulb"></i> Prompt Sugerido</h4>
+                        <p><em>"Crea una infografía educativa sobre [TU TÓPICO] dirigida a [AUDIENCIA]. Incluye: título atractivo, 5-7 puntos clave con iconos representativos, estadísticas relevantes, ejemplos prácticos, y un call-to-action educativo. Diseño moderno, colores vibrantes, y layout fácil de leer."</em></p>
+                    </div>
+                </div>
+                <!-- Imagen eliminada aquí (imagen19.png) -->
+            </div>
+
+            <div class="icon-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 20px;">
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-robot" style="color: #3b82f6;"></i>
+                    <h4>Herramienta IA</h4>
+                    <p>Gema/GPT especializada en generación de infografías educativas</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-chart-bar" style="color: #10b981;"></i>
+                    <h4>Diseño Visual</h4>
+                    <p>Elementos gráficos optimizados para aprendizaje efectivo</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-file-download" style="color: #f59e0b;"></i>
+                    <h4>Entregable</h4>
+                    <p><strong>Infografía final</strong> lista para uso pedagógico</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>🎯 Entregable:</strong> Una <strong>infografía educativa completa</strong> generada con IA que demuestre la aplicación práctica de herramientas especializadas para la creación de contenido visual pedagógico de alta calidad.</p>
+            </div>
+        </div>
+        <div class="slide-number">20 / 26</div>
+    </div>
+
+    <!-- Slide 21: Consideraciones Éticas y Responsabilidad -->
+    <div class="slide">
+        <h2 class="slide-content-title">Dimensiones Éticas en Creación de Material con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-balance-scale"></i> Responsabilidad Pedagógica y Ética Digital</h3>
+                    <p>La creación de material didáctico con IA conlleva responsabilidades éticas fundamentales que los educadores deben considerar para mantener la integridad y efectividad del proceso educativo.</p>
+
+                    <div class="icon-grid" style="grid-template-columns: 1fr;">
+                        <div class="tool-card" style="border-left: 4px solid #ef4444;">
+                            <h4><i class="fas fa-shield-alt"></i> Transparencia y Honestidad</h4>
+                            <p>Comunicar claramente a estudiantes y colegas cuándo y cómo se utiliza IA en la creación de materiales educativos</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #f59e0b;">
+                            <h4><i class="fas fa-copyright"></i> Propiedad Intelectual</h4>
+                            <p>Respetar derechos de autor, entender limitaciones legales del contenido generado, y atribuir adecuadamente las fuentes</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #10b981;">
+                            <h4><i class="fas fa-check-circle"></i> Veracidad y Rigor</h4>
+                            <p>Verificar la exactitud del contenido generado, especialmente en áreas técnicas o científicas donde la precisión es crítica</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #3b82f6;">
+                            <h4><i class="fas fa-users"></i> Inclusión y Representación</h4>
+                            <p>Asegurar que el material generado sea inclusivo, culturalmente sensible, y represente diversas perspectivas y experiencias</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen20.png" alt="Ética IA Material" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">21 / 26</div>
+    </div>
+
+    <!-- Slide 22: Actividad Síncrona - Creación Colaborativa de Recursos -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Síncrona: Creación Colaborativa de Recursos</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-users-cog"></i> Laboratorio de Innovación Pedagógica con IA</h3>
+                    <p>Experiencia práctica intensiva donde los participantes crearán material didáctico real utilizando las herramientas y técnicas aprendidas. Los participantes <strong>trabajarán en equipos</strong> para desarrollar recursos educativos innovadores aplicando IA de manera estratégica.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-list-alt"></i> Paso 1: Selección del Material Didáctico a Crear</h4>
+                        <p><strong>Elige uno de los siguientes tipos:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 8px;">
+                            <li>• <strong>Guía de estudio interactiva</strong></li>
+                            <li>• <strong>Presentación multimedia adaptativa</strong></li>
+                            <li>• <strong>Banco de ejercicios diferenciados</strong></li>
+                            <li>• <strong>Simulación o caso de estudio</strong></li>
+                            <li>• <strong>Recurso de evaluación formativa</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-cogs"></i> Paso 2: Definición del Contexto Educativo</h4>
+                        <p><strong>Especifica los parámetros:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 8px;">
+                            <li>• <strong>Nivel educativo específico</strong></li>
+                            <li>• <strong>Duración del material</strong> (30-60 minutos de uso)</li>
+                            <li>• <strong>Objetivos de aprendizaje concretos</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen21.png" alt="Creación Colaborativa" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+    </div>
+
+            <div class="tool-card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%); border: 2px solid #10b981; margin-top: 20px;">
+                <h4><i class="fas fa-clipboard-list" style="color: #10b981;"></i> Entregable Final</h4>
+                <p><strong>Propuesta de proyecto, discusión de resultados, mejoras.</strong> Cada equipo presentará su recurso creado, analizará la efectividad del proceso, y recibirá retroalimentación para optimización futura.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                <p><strong>🎯 Metodología de trabajo:</strong> Equipos de 3-4 personas, uso estratégico de herramientas IA aprendidas, iteración basada en feedback, y construcción colaborativa de mejores prácticas.</p>
+            </div>
+        </div>
+        <div class="slide-number">22 / 26</div>
+    </div>
+
+    <!-- Slide 23: Proyecto Asíncrono - Instrumentos Evaluativos -->
+    <div class="slide">
+        <h2 class="slide-content-title">Proyecto Asíncrono: Instrumentos Evaluativos Innovadores</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-clipboard-check"></i> Desarrollo de Instrumentos Evaluativos con IA</h3>
+                    <p>Los participantes desarrollarán <strong>instrumentos evaluativos innovadores</strong> (exámenes, cuestionarios, rúbricas y sistemas de evaluación) utilizando herramientas de inteligencia artificial para optimizar la validez, confiabilidad y eficiencia del proceso evaluativo. La actividad incluye la creación de evaluaciones tradicionales, adaptativas y formativas.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-search"></i> Selección del Contexto Evaluativo</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>• <strong>Tipo de examen:</strong> diagnóstico, formativo, sumativo, certificación</li>
+                            <li>• <strong>Nivel educativo específico</strong></li>
+                            <li>• <strong>Materia o competencia a evaluar</strong></li>
+                            <li>• <strong>Duración prevista del instrumento</strong> (30-120 minutos)</li>
+                        </ul>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-bullseye"></i> Definición de Objetivos de Evaluación</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>• <strong>Competencias específicas a medir</strong></li>
+                            <li>• <strong>Niveles de dominio según taxonomía de Bloom</strong></li>
+                            <li>• <strong>Criterios de desempeño esperados</strong></li>
+                            <li>• <strong>Propósito de la evaluación</strong> (calificación, diagnóstico, feedback)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen23.png" alt="Instrumentos Evaluativos IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="activity-card" style="margin-top: 20px;">
+                <h4><i class="fas fa-cogs"></i> Análisis de Restricciones y Recursos</h4>
+                <ul style="margin-top: 10px;">
+                    <li>• <strong>Limitaciones tecnológicas</strong></li>
+                    <li>• <strong>Tiempo disponible para aplicación</strong></li>
+                    <li>• <strong>Perfil de los evaluados</strong></li>
+                    <li>• <strong>Recursos de corrección disponibles</strong></li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>🎯 Meta del proyecto:</strong> Crear un instrumento evaluativo completo que demuestre la aplicación estratégica de IA en procesos de evaluación educativa, optimizando la experiencia tanto para evaluadores como para estudiantes.</p>
+            </div>
+        </div>
+        <div class="slide-number">23 / 26</div>
+    </div>
+
+    <!-- Slide 24: Criterios de Evaluación y Entrega -->
+    <div class="slide">
+        <h2 class="slide-content-title">Criterios de Evaluación y Metodología de Entrega</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen24.png" alt="Evaluación Proyecto" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-clipboard-list"></i> Framework de Evaluación Integral</h3>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-star"></i> Criterios de Evaluación (100 puntos)</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>• <strong>Calidad Pedagógica (30%):</strong> Alineación con objetivos, adecuación al nivel, coherencia curricular</li>
+                            <li>• <strong>Innovación Técnica (25%):</strong> Uso efectivo de herramientas IA, creatividad en prompts, integración multimedia</li>
+                            <li>• <strong>Consideraciones Éticas (20%):</strong> Transparencia, inclusión, verificación de contenido</li>
+                            <li>• <strong>Reflexión Crítica (15%):</strong> Análisis del proceso, identificación de desafíos, propuestas de mejora</li>
+                            <li>• <strong>Presentación (10%):</strong> Organización, claridad, documentación completa</li>
+                        </ul>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-upload"></i> Modalidad de Entrega</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>• <strong>Portafolio Digital:</strong> Carpeta organizada con todos los materiales</li>
+                            <li>• <strong>Documentación:</strong> Reporte reflexivo (500-750 palabras)</li>
+                            <li>• <strong>Banco de Prompts:</strong> Registro de prompts utilizados con evaluación de efectividad</li>
+                            <li>• <strong>Fecha límite:</strong> 2 semanas posteriores al módulo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">24 / 26</div>
+    </div>
+
+    <!-- Slide 25: Recursos Complementarios y Comunidad -->
+    <div class="slide">
+        <h2 class="slide-content-title">Recursos Complementarios y Comunidad de Práctica</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <!-- Imagen eliminada aquí (imagen25.png) -->
+            <div class="icon-grid">
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-book-open" style="color: #3b82f6;"></i>
+                    <h4>Biblioteca de Recursos</h4>
+                    <p>Tutoriales avanzados, casos de estudio, plantillas de prompts, y ejemplos de mejores prácticas actualizados continuamente</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-users" style="color: #10b981;"></i>
+                    <h4>Comunidad de Educadores IA</h4>
+                    <p>Foro exclusivo para compartir experiencias, resolver dudas, colaborar en proyectos, y mantenerse actualizado</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-calendar-alt" style="color: #f59e0b;"></i>
+                    <h4>Sesiones de Seguimiento</h4>
+                    <p>Webinars mensuales con nuevas herramientas, técnicas emergentes, y resolución de casos específicos</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-certificate" style="color: #8b5cf6;"></i>
+                    <h4>Certificación Avanzada</h4>
+                    <p>Programa de especialización para educadores que deseen profundizar en aplicaciones específicas de IA</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                    <i class="fas fa-tools" style="color: #ef4444;"></i>
+                    <h4>Banco de Herramientas</h4>
+                    <p>Acceso a herramientas premium, descuentos especiales, y early access a nuevas plataformas educativas</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #06b6d4;">
+                    <i class="fas fa-handshake" style="color: #06b6d4;"></i>
+                    <h4>Red de Colaboración</h4>
+                    <p>Conexiones con otros educadores innovadores, oportunidades de co-creación, y proyectos interdisciplinarios</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">25 / 26</div>
+    </div>
+
+    <!-- Slide 26: Síntesis Transformadora y Proyección Futura -->
+    <div class="slide">
+        <h2 class="slide-content-title">Síntesis Transformadora del Módulo 4</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-star"></i> Logros de Aprendizaje Alcanzados</h3>
+                    <div class="icon-grid" style="grid-template-columns: 1fr;">
+                        <div class="tool-card" style="border-left: 4px solid #10b981;">
+                            <h4><i class="fas fa-magic"></i> Dominio de Creación Multimodal</h4>
+                            <p>Competencia avanzada en generación de textos, imágenes, multimedia y evaluaciones con IA, aplicando frameworks pedagógicos sólidos</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #3b82f6;">
+                            <h4><i class="fas fa-terminal"></i> Maestría en Prompting Educativo</h4>
+                            <p>Habilidad para diseñar prompts especializados que produzcan contenido pedagógicamente efectivo y contextualmente relevante</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #f59e0b;">
+                            <h4><i class="fas fa-balance-scale"></i> Conciencia Ética Integral</h4>
+                            <p>Comprensión profunda de las implicaciones éticas, responsabilidades profesionales, y mejores prácticas en el uso educativo de IA</p>
+                        </div>
+
+                        <div class="tool-card" style="border-left: 4px solid #ef4444;">
+                            <h4><i class="fas fa-cogs"></i> Flujo de Trabajo Optimizado</h4>
+                            <p>Metodología sistemática para la producción eficiente de material didáctico de alta calidad con integración inteligente de IA</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🚀 Adelanto del Módulo 5:</strong> "IA en el Aula: Interacción Directa con Estudiantes" - Descubre cómo facilitar el uso responsable de IA por parte de los estudiantes, crear experiencias de aprendizaje colaborativo humano-IA,
+                            y desarrollar competencias digitales del siglo XXI. ¡Prepárate para transformar la dinámica del aula!</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo4/imagen26.png" alt="Futuro Educativo IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">26 / 26</div>
+    </div>
+
+    <!-- Modal para imágenes -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Funcionalidad del modal de imágenes
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        // Agregar clase zoomable a todas las imágenes excepto las que están dentro de enlaces
+        document.querySelectorAll('img').forEach(img => {
+            if (!img.classList.contains('modal-content') && !img.closest('a')) {
+                img.classList.add('zoomable');
+                img.onclick = function() {
+                    modal.style.display = 'flex';
+                    modalImg.src = this.src;
+                    setTimeout(() => modal.classList.add('show'), 10);
+                }
+            }
+        });
+
+        // Cerrar modal
+        closeBtn.onclick = function() {
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        // Cerrar modal al hacer clic fuera de la imagen
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            }
+        }
+
+        // Cerrar modal con la tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Introducción a la IA en Educación - Presentación</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #fefefe 0%, #f0f9ff 100%);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .slide-title-main {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8rem;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .slide-info {
+            font-size: 1.2rem;
+            color: #4299e1;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .slide-content-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accent-line {
+            height: 4px;
+            background: linear-gradient(90deg, #4299e1, #667eea);
+            border-radius: 2px;
+            width: 120px;
+            margin: 0 auto 35px auto;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1400px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1d4ed8;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .content-card h3 i {
+            margin-right: 15px;
+            color: #4299e1;
+            font-size: 2rem;
+        }
+        
+        .content-card p,
+        .content-card ul {
+            font-size: 1.2rem;
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .content-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .content-card ul li {
+            padding: 12px 0 12px 2.5em;
+            position: relative;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+        }
+        
+        .content-card ul li:hover {
+            transform: translateX(8px);
+            color: #1d4ed8;
+            background: rgba(66, 153, 225, 0.05);
+        }
+        
+        .content-card ul li i {
+            position: absolute;
+            left: 0;
+            top: 16px;
+            color: #4299e1;
+            font-size: 1.3rem;
+        }
+        
+        .decorative-shape {
+            position: absolute;
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .shape-top-left {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        .shape-bottom-right {
+            width: 250px;
+            height: 250px;
+            bottom: -125px;
+            right: -125px;
+        }
+        
+        .nav-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .nav-button-home {
+            background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+            font-size: 1.1rem;
+        }
+        
+        .nav-button-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(66, 153, 225, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-button-home i {
+            margin-right: 10px;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 1.1rem;
+            color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-icon {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 40px rgba(66, 153, 225, 0.4);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 6px solid #4299e1;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1);
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .icon-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(66, 153, 225, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .icon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        a .icon-card:hover {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid #4299e1;
+        }
+        
+        .icon-card i {
+            font-size: 2.5rem;
+            color: #4299e1;
+            margin-bottom: 15px;
+        }
+        
+        .icon-card h4 {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .icon-card p {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .ethics-alert {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #fca5a5;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(248, 113, 113, 0.1);
+        }
+        
+        .ethics-alert::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: #fee2e2;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 1.4rem;
+        }
+        
+        .wide-content {
+            max-width: 1600px;
+            width: 100%;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            border: 2px dashed #4299e1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(66, 153, 225, 0.2);
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .image-placeholder span {
+            color: #4299e1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+        
+        .split-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #4299e1, #667eea);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, #4299e1, #667eea);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 1);
+        }
+        
+        @media (max-width: 1200px) {
+            .slide-title-main {
+                font-size: 3rem;
+            }
+            .content-card {
+                max-width: 1000px;
+            }
+            .split-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .icon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide-title-main {
+                font-size: 2.5rem;
+            }
+            .slide-content-title {
+                font-size: 2rem;
+            }
+            .content-card {
+                padding: 25px;
+                margin: 0 15px 20px 15px;
+            }
+            .icon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal de Imagen */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .zoomable {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .zoomable:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="slide">
+        <div class="decorative-shape shape-top-left"></div>
+        <div class="module-icon">
+            <i class="fas fa-brain"></i>
+        </div>
+        <h1 class="slide-title-main">Módulo 1:<br>Introducción a la Inteligencia Artificial<br>en la Educación</h1>
+        <p class="slide-subtitle">Diplomado: Herramientas de Inteligencia Artificial para Educadores Innovadores</p>
+        <div class="accent-line"></div>
+
+        <div style="max-width: 600px; height: 200px; text-align: center;">
+            <img src="imagenes/modulo1/imagen1.png" alt="Portada del Módulo" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+        </div>
+
+        <p class="slide-info">
+            <i class="fas fa-chalkboard-teacher"></i> Dr. Salvador Tututi Ávila &nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-laptop-code"></i> I.Q. Juan José Alonso Tijerina
+        </p>
+        <p class="slide-info">
+            <i class="fas fa-clock"></i> Duración del Módulo: 6 horas (2 Síncronas / 4 Asíncronas)
+        </p>
+
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">1 / 23</div>
+        <div class="decorative-shape shape-bottom-right"></div>
+    </div>
+
+    <!-- Slide 2: Agenda del Módulo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Agenda del Módulo 1</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-list-ul"></i> Contenidos Principales</h3>
+                    <ul>
+                        <li><i class="fas fa-question-circle"></i> ¿Qué es la Inteligencia Artificial? Conceptos clave para educadores</li>
+                        <li><i class="fas fa-cogs"></i> Tipos de IA relevantes para la educación (énfasis en IA Generativa)</li>
+                        <li><i class="fas fa-history"></i> Breve historia y evolución de la IA en el ámbito educativo</li>
+                        <li><i class="fas fa-lightbulb"></i> Potencial transformador: Oportunidades para enseñanza y aprendizaje</li>
+                        <li><i class="fas fa-shield-alt"></i> Consideraciones éticas: Sesgos, privacidad, plagio y uso responsable</li>
+                        <li><i class="fas fa-comments"></i> Actividades: Foro de discusión y Quiz de conceptos básicos</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen2.png" alt="Agenda Visual" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">2 / 23</div>
+    </div>
+
+    <!-- Slide 3: ¿Qué es la IA? - Definición General -->
+    <div class="slide">
+        <h2 class="slide-content-title">¿Qué es la Inteligencia Artificial?</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-brain"></i> Definición Fundamental</h3>
+                    <p>La <strong>Inteligencia Artificial (IA)</strong> es un campo multidisciplinario de la informática dedicado a la creación de sistemas computacionales capaces de realizar tareas que tradicionalmente requieren inteligencia humana.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Capacidades clave:</strong> Aprendizaje automático, razonamiento lógico, resolución de problemas complejos, percepción sensorial, comprensión y generación de lenguaje natural, y toma de decisiones autónomas.</p>
+                    </div>
+
+                    <p>La IA busca replicar y, en algunos casos, superar los procesos cognitivos humanos mediante algoritmos sofisticados, permitiendo a las máquinas "pensar", "aprender" y "actuar" de manera inteligente en diversos contextos.</p>
+
+                    <h4><i class="fas fa-cogs"></i> Técnicas Más Comunes de IA:</h4>
+                    <div class="icon-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-graduation-cap" style="color: #3b82f6;"></i>
+                            <h4>Machine Learning</h4>
+                            <ul style="text-align: left; margin-top: 10px;">
+                                <li><i class="fas fa-check"></i> <strong>Aprendizaje Supervisado:</strong> Clasificación y regresión</li>
+                                <li><i class="fas fa-check"></i> <strong>Aprendizaje No Supervisado:</strong> Clustering y reducción de dimensionalidad</li>
+                                <li><i class="fas fa-check"></i> <strong>Aprendizaje por Refuerzo:</strong> Q-learning y políticas adaptativas</li>
+                                <li><i class="fas fa-check"></i> <strong>Transfer Learning:</strong> Reutilización de conocimiento entre dominios</li>
+                            </ul>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-project-diagram" style="color: #10b981;"></i>
+                            <h4>Deep Learning</h4>
+                            <ul style="text-align: left; margin-top: 10px;">
+                                <li><i class="fas fa-check"></i> <strong>Redes Neuronales Convolucionales (CNN):</strong> Procesamiento de imágenes</li>
+                                <li><i class="fas fa-check"></i> <strong>Redes Neuronales Recurrentes (RNN):</strong> Secuencias temporales</li>
+                                <li><i class="fas fa-check"></i> <strong>Transformers:</strong> Procesamiento de lenguaje natural</li>
+                                <li><i class="fas fa-check"></i> <strong>Redes Generativas Adversariales (GAN):</strong> Generación de contenido</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen3.png" alt="Concepto de IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 20px;">
+                    <img src="imagenes/modulo1/ia.png" alt="Inteligencia Artificial" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3 / 23</div>
+    </div>
+
+    <!-- Slide 4: ¿Qué es la IA? - Para Educadores -->
+    <div class="slide">
+        <h2 class="slide-content-title">IA: Relevancia para Educadores</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen4.png" alt="IA en Educación" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                    
+                    <div class="highlight-box" style="margin-top: 20px; text-align: left;">
+                        <h4><i class="fas fa-chart-bar"></i> Reporte HolonIQ: "Challenges for AI in education?" (2019)</h4>
+                        <p><strong>Encuesta global:</strong> 377 ejecutivos del sector educativo identificaron los principales obstáculos para la adopción de IA.</p>
+                        
+                        <p><strong>Hallazgo principal:</strong> El 48% reportó que la <strong>falta de una estrategia clara de IA</strong> es la barrera más grande.</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                            <div style="background: rgba(239, 68, 68, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                                <strong>Instituciones (50%)</strong><br>
+                                <small>Falta de estrategia clara</small>
+                            </div>
+                            <div style="background: rgba(59, 130, 246, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                                <strong>EdTech (25%)</strong><br>
+                                <small>Menos preocupación por estrategia</small>
+                            </div>
+                            <div style="background: rgba(16, 185, 129, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid #10b981;">
+                                <strong>Falta de talento (49%)</strong><br>
+                                <small>Escasez de habilidades en IA</small>
+                            </div>
+                            <div style="background: rgba(245, 158, 11, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                                <strong>Falta de liderazgo (39%)</strong><br>
+                                <small>Ausencia de visión ejecutiva</small>
+                            </div>
+                        </div>
+                        
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #6b7280;">
+                            <i class="fas fa-lightbulb"></i> <strong>Implicación clave:</strong> Las instituciones educativas necesitan desarrollar estrategias claras de IA, formar talento especializado y establecer liderazgo comprometido para superar las barreras de adopción.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Transformación Educativa</h3>
+                    <p>Para los educadores del siglo XXI, la IA representa mucho más que una tendencia tecnológica: es un conjunto revolucionario de herramientas que puede transformar fundamentalmente la enseñanza y el aprendizaje.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Principio fundamental:</strong> La IA no busca reemplazar al docente, sino potenciar exponencialmente sus capacidades pedagógicas y crear nuevas oportunidades educativas.</p>
+                    </div>
+
+                    <p>Al comprender la IA, los educadores pueden tomar decisiones informadas sobre su implementación, guiar éticamente a los estudiantes en un mundo cada vez más digital, y aprovechar estas herramientas para personalizar la educación a escala
+                        nunca antes vista.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">4 / 23</div>
+    </div>
+
+    <!-- Slide 5: Actividad Intermedia - Manus AI -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Intermedia</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-robot"></i> Actividad Principal: Manus AI</h3>
+                    
+                    <div class="highlight-box" style="margin-bottom: 25px;">
+                        <h4><i class="fas fa-info-circle" style="color: #4299e1;"></i> ¿Qué es Manus AI?</h4>
+                        <p><strong>Manus AI</strong> es una plataforma avanzada de inteligencia artificial que permite a los usuarios interactuar con agentes IA especializados en diferentes dominios. La plataforma ofrece capacidades de procesamiento de lenguaje natural, generación de contenido y asistencia inteligente para diversas tareas educativas y profesionales.</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                            <div style="background: rgba(66, 153, 225, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid #4299e1;">
+                                <strong>Modo Agente</strong><br>
+                                <small>Interacción con IA especializada en tareas específicas</small>
+                            </div>
+                            <div style="background: rgba(16, 185, 129, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid #10b981;">
+                                <strong>Diapositivas Activas</strong><br>
+                                <small>Integración con presentaciones para contexto visual</small>
+                            </div>
+                            <div style="background: rgba(245, 158, 11, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                                <strong>Procesamiento Multimodal</strong><br>
+                                <small>Análisis de texto, imágenes y contenido multimedia</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 3px solid #4299e1; border-radius: 20px; padding: 40px; box-shadow: 0 15px 40px rgba(66, 153, 225, 0.2); margin-bottom: 30px;">
+                        <div style="text-align: center; margin-bottom: 25px;">
+                            <i class="fas fa-robot" style="font-size: 3rem; color: #4299e1; margin-bottom: 15px; display: block;"></i>
+                            <h4 style="font-size: 1.8rem; font-weight: 600; color: #1e40af; margin-bottom: 10px;">¡Actividad Interactiva!</h4>
+                            <p style="font-size: 1.2rem; color: #374151; margin-bottom: 20px;">Explora Manus AI en modo agente con diapositivas activadas</p>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 15px; border-radius: 12px; border-left: 4px solid #4299e1;">
+                                <h5 style="color: #1e40af; font-weight: 600; margin-bottom: 8px;"><i class="fas fa-cog"></i> Paso 1</h5>
+                                <p style="font-size: 0.9rem; color: #6b7280;">Accede a Manus AI en modo agente</p>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 15px; border-radius: 12px; border-left: 4px solid #10b981;">
+                                <h5 style="color: #059669; font-weight: 600; margin-bottom: 8px;"><i class="fas fa-image"></i> Paso 2</h5>
+                                <p style="font-size: 0.9rem; color: #6b7280;">Activa las diapositivas para contexto visual</p>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 15px; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                                <h5 style="color: #d97706; font-weight: 600; margin-bottom: 8px;"><i class="fas fa-comments"></i> Paso 3</h5>
+                                <p style="font-size: 0.9rem; color: #6b7280;">Interactúa con el agente IA especializado</p>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <a href="https://manus.im" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%); color: white; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; font-size: 1.1rem; box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);">
+                                <i class="fas fa-external-link-alt"></i> Ir a Manus AI
+                            </a>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: #6b7280;">
+                                <i class="fas fa-info-circle"></i> Haz clic para abrir directamente en una nueva pestaña
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-brain"></i> Discusión: IQ de los Modelos Actuales de IA</h3>
+                    <p>Los modelos de IA actuales exhiben capacidades cognitivas que pueden ser comparadas con diferentes niveles de inteligencia humana, aunque de manera especializada y no general.</p>
+
+                    <div class="icon-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-chart-line" style="color: #10b981;"></i>
+                            <h4>Capacidades Actuales</h4>
+                            <ul style="text-align: left; margin-top: 10px;">
+                                <li><i class="fas fa-check"></i> <strong>Razonamiento lógico:</strong> Resolución de problemas matemáticos complejos</li>
+                                <li><i class="fas fa-check"></i> <strong>Comprensión de lenguaje:</strong> Análisis y generación de texto sofisticado</li>
+                                <li><i class="fas fa-check"></i> <strong>Creatividad:</strong> Generación de contenido original y artístico</li>
+                                <li><i class="fas fa-check"></i> <strong>Memoria:</strong> Acceso a vastas bases de conocimiento</li>
+                            </ul>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                            <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
+                            <h4>Limitaciones Clave</h4>
+                            <ul style="text-align: left; margin-top: 10px;">
+                                <li><i class="fas fa-times"></i> <strong>Inteligencia general:</strong> Especialización en tareas específicas</li>
+                                <li><i class="fas fa-times"></i> <strong>Comprensión contextual:</strong> Falta de experiencia del mundo real</li>
+                                <li><i class="fas fa-times"></i> <strong>Consciencia:</strong> Ausencia de autoconciencia genuina</li>
+                                <li><i class="fas fa-times"></i> <strong>Razonamiento causal:</strong> Dificultad con relaciones causales complejas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Perspectiva educativa:</strong> Los modelos de IA actuales pueden considerarse como "superinteligentes" en dominios específicos (como procesamiento de lenguaje o resolución de problemas matemáticos), pero carecen de la inteligencia general y adaptabilidad que caracteriza a la inteligencia humana.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h4><i class="fas fa-chart-bar" style="color: #8b5cf6; margin-bottom: 20px;"></i> Seguimiento del Progreso de IA</h4>
+                    <div style="background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); border: 2px solid #8b5cf6; border-radius: 15px; padding: 30px; margin-bottom: 20px;">
+                        <i class="fas fa-tachometer-alt" style="font-size: 2.5rem; color: #8b5cf6; margin-bottom: 15px;"></i>
+                        <h5 style="color: #8b5cf6; font-weight: 600; margin-bottom: 10px;">Tracking AI</h5>
+                        <p style="font-size: 0.9rem; color: #6b7280;">Plataforma para monitorear el progreso y capacidades de los modelos de IA</p>
+                    </div>
+                    
+                    <a href="https://www.trackingai.org/home" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; font-size: 1rem;">
+                        <i class="fas fa-external-link-alt"></i> Visitar Tracking AI
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">5 / 23</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://manus.im" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-robot mr-2"></i>Manus AI</a>
+            <a href="https://www.trackingai.org/home" class="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 text-sm font-semibold" target="_blank"><i class="fas fa-tachometer-alt mr-2"></i>Tracking AI</a>
+        </div>
+    </div>
+
+    <!-- Slide 6: Características Fundamentales de la IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Características Fundamentales de la IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div style="height: 200px; margin-bottom: 30px; text-align: center;">
+                <img src="imagenes/modulo1/imagen5.png" alt="Características de la IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+            </div>
+
+            <div class="icon-grid">
+                <a href="machinelearning.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon-card" style="cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Aprendizaje Automático <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 8px; color: #4299e1;"></i></h4>
+                        <p>Capacidad de adquirir conocimientos, identificar patrones y mejorar el rendimiento a partir de la experiencia y los datos, sin programación explícita</p>
+                    </div>
+                </a>
+                <div class="icon-card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h4>Resolución de Problemas</h4>
+                    <p>Habilidad para analizar situaciones complejas, evaluar múltiples variables y encontrar soluciones óptimas a desafíos multifacéticos</p>
+                </div>
+                <a href="NLP.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon-card" style="cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-comments"></i>
+                        <h4>Procesamiento de Lenguaje <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 8px; color: #4299e1;"></i></h4>
+                        <p>Comprensión, interpretación y generación de lenguaje humano natural, incluyendo contexto, semántica y pragmática</p>
+                    </div>
+                </a>
+                <div class="icon-card">
+                    <i class="fas fa-eye"></i>
+                    <h4>Percepción Inteligente</h4>
+                    <p>Interpretación sofisticada de información sensorial: imágenes, sonidos, texto, permitiendo la comprensión del entorno</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-robot"></i>
+                    <h4>Autonomía Operativa</h4>
+                    <p>Capacidad de operar, tomar decisiones y ejecutar tareas de manera independiente en contextos específicos y controlados</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h4>Adaptabilidad</h4>
+                    <p>Flexibilidad para ajustarse a nuevas situaciones, aprender de errores y optimizar estrategias en tiempo real</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">6 / 23</div>
+    </div>
+
+    <!-- Slide 7: Machine Learning - Concepto Profundo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Machine Learning: El Corazón de la IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-cogs"></i> Aprendizaje Automático Explicado</h3>
+                    <p>El Machine Learning es una rama fundamental de la IA que permite a los sistemas aprender y mejorar automáticamente a través de la experiencia, sin ser programados explícitamente para cada tarea específica.</p>
+
+                    <p><strong>Proceso fundamental:</strong></p>
+                    <ul>
+                        <li><i class="fas fa-database"></i> <strong>Ingesta de datos:</strong> Recopilación de información relevante</li>
+                        <li><i class="fas fa-search"></i> <strong>Identificación de patrones:</strong> Análisis y reconocimiento de tendencias</li>
+                        <li><i class="fas fa-brain"></i> <strong>Creación de modelos:</strong> Desarrollo de representaciones predictivas</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Mejora continua:</strong> Optimización basada en nuevos datos</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <a href="machinelearning.html" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-graduation-cap mr-2"></i>Aprendizaje Automático</a>
+                        <a href="https://colab.research.google.com/drive/1wbIlUxPSVXL7-2dqeU4G4y7VKMeJxVJH?authuser=1#scrollTo=YCZrYp_Ot9EY" class="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 text-sm font-semibold" target="_blank"><i class="fas fa-code mr-2"></i>Ejemplo en Colab</a>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen6.png" alt="Machine Learning" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">7 / 23</div>
+    </div>
+
+    <!-- Slide 8: Deep Learning y Redes Neuronales -->
+    <div class="slide">
+        <h2 class="slide-content-title">Deep Learning: Redes Neuronales Avanzadas</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-project-diagram"></i> Arquitectura Neural Profunda</h3>
+                    <p>El Deep Learning representa la evolución más sofisticada del Machine Learning, utilizando redes neuronales artificiales con múltiples capas (de ahí "profundo") que simulan la estructura y funcionamiento del cerebro humano.</p>
+
+                    <p><strong>Capacidades revolucionarias:</strong></p>
+                    <ul>
+                        <li><i class="fas fa-image"></i> <strong>Visión computacional:</strong> Reconocimiento y análisis de imágenes complejas</li>
+                        <li><i class="fas fa-microphone"></i> <strong>Procesamiento de audio:</strong> Transcripción y síntesis de voz</li>
+                        <li><i class="fas fa-file-alt"></i> <strong>Generación de texto:</strong> Creación de contenido coherente y contextual</li>
+                        <li><i class="fas fa-palette"></i> <strong>Creación artística:</strong> Generación de arte y diseño original</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <a href="deeplearning.html" class="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 text-sm font-semibold" target="_blank"><i class="fas fa-project-diagram mr-2"></i>Arquitecturas de Deep Learning</a>
+                        <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.03910&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" class="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 text-sm font-semibold" target="_blank"><i class="fas fa-brain mr-2"></i>Simulador Deep Learning</a>
+                    </div>
+
+                    <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.03910&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank" class="block">
+                        <div class="highlight-box cursor-pointer hover:shadow-lg transition-shadow duration-300">
+                            <p><strong>Revolución educativa:</strong> Herramientas como GPT-4, DALL-E, y Midjourney utilizan deep learning para generar contenido educativo original: desde explicaciones textuales hasta ilustraciones científicas personalizadas.</p>
+                        </div>
+                    </a>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen8.png" alt="Deep Learning" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 20px;">
+                    <img src="imagenes/modulo1/Net.gif" alt="Arquitectura Neural Profunda" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 20px;">
+                    <img src="imagenes/modulo1/Perceptron.png" alt="Perceptrón" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">8 / 23</div>
+    </div>
+
+    <!-- Slide 9: NLP y Prompts - Comunicación con IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Comunicación con IA: NLP y Prompts</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen7.png" alt="NLP y Prompts" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-language"></i> Procesamiento de Lenguaje Natural (NLP)</h3>
+                    <p>El NLP permite a las máquinas comprender, interpretar, manipular y generar lenguaje humano de manera natural y contextualmente apropiada. Es la tecnología que hace posible la comunicación intuitiva entre humanos y sistemas de IA.</p>
+
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <a href="NLP.html" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-comments mr-2"></i>Procesamiento de Lenguaje</a>
+                        <a href="https://poloclub.github.io/transformer-explainer/" class="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 text-sm font-semibold" target="_blank"><i class="fas fa-magic mr-2"></i>Visualizador Transformer</a>
+                    </div>
+
+                    <h3><i class="fas fa-terminal"></i> Prompts: Arte de la Instrucción IA</h3>
+                    <p>Los prompts son instrucciones cuidadosamente diseñadas que se proporcionan a modelos de IA para obtener respuestas específicas y de alta calidad. La efectividad del prompt determina directamente la utilidad de la respuesta.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Prompt educativo optimizado:</strong> "Actúa como un experto pedagogo. Crea una explicación de la fotosíntesis para estudiantes de 12 años, utilizando analogías familiares, incluyendo una actividad práctica, y proporcionando
+                            3 preguntas de reflexión que fomenten el pensamiento crítico."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">9 / 23</div>
+    </div>
+
+    <!-- Slide 10: Actividad Síncrona - Redes Neuronales -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Síncrona: Redes Neuronales en Acción</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-cogs"></i> Demostración Interactiva</h3>
+                    <div class="highlight-box">
+                        <p><strong>Modalidad:</strong> Actividad Síncrona - Demostración guiada en tiempo real</p>
+                    </div>
+
+                    <h4><i class="fas fa-brain" style="color: #10b981;"></i> TensorFlow Playground: Visualizando el Aprendizaje</h4>
+                    <p><strong>Objetivo:</strong> Comprender visualmente cómo las redes neuronales aprenden y se adaptan a través de la experimentación interactiva.</p>
+
+                    <div style="margin: 20px 0;">
+                        <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.03910&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; font-size: 1.1rem;">
+                            <i class="fas fa-external-link-alt"></i> Abrir TensorFlow Playground
+                        </a>
+                    </div>
+
+                    <h4><i class="fas fa-lightbulb" style="color: #3b82f6;"></i> Actividades de Exploración:</h4>
+                    <ul>
+                        <li><i class="fas fa-mouse-pointer"></i> <strong>Observar el entrenamiento:</strong> Ve cómo la red aprende a clasificar puntos en tiempo real</li>
+                        <li><i class="fas fa-sliders-h"></i> <strong>Ajustar parámetros:</strong> Experimenta con diferentes tasas de aprendizaje y arquitecturas</li>
+                        <li><i class="fas fa-database"></i> <strong>Cambiar datasets:</strong> Prueba con diferentes conjuntos de datos (círculo, XOR, espiral)</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Analizar resultados:</strong> Observa cómo cambian los patrones de clasificación</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p><strong>Reflexión grupal:</strong> ¿Cómo se relaciona este proceso de aprendizaje automático con las herramientas de IA que usamos en educación?</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen6.jpg" alt="Redes Neuronales" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10 / 24</div>
+    </div>
+
+    <!-- Slide 11: Tipos de IA por Capacidad -->
+    <div class="slide">
+        <h2 class="slide-content-title">Clasificación de IA por Capacidad</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-microchip" style="color: #10b981;"></i>
+                            <h4>IA Estrecha (ANI)</h4>
+                            <p><strong>Estado actual:</strong> Especializada en tareas específicas como reconocimiento facial, traducción, o generación de texto. Toda la IA disponible hoy es de este tipo.</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-brain" style="color: #f59e0b;"></i>
+                            <h4>IA General (AGI)</h4>
+                            <p><strong>Futuro hipotético:</strong> Capacidad de realizar cualquier tarea intelectual humana. Objeto de investigación intensiva pero aún no alcanzada.</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                            <i class="fas fa-infinity" style="color: #ef4444;"></i>
+                            <h4>Superinteligencia (ASI)</h4>
+                            <p><strong>Especulación teórica:</strong> IA que supera significativamente la inteligencia humana en todos los aspectos. Tema de debate ético y filosófico.</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Enfoque educativo práctico:</strong> Nos concentramos exclusivamente en la IA Estrecha, ya que es la única disponible actualmente y tiene aplicaciones inmediatas y tangibles en el aula moderna.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h4><i class="fas fa-play-circle" style="color: #f59e0b; margin-bottom: 15px;"></i> Video: IA General (AGI)</h4>
+                    <div style="position: relative; width: 100%; max-width: 500px; margin: 0 auto;">
+                        <iframe 
+                            width="100%" 
+                            height="280" 
+                            src="https://www.youtube.com/embed/p_S6NIEfu-U?start=8" 
+                            title="IA General (AGI)" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                        </iframe>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #6b7280;">
+                        <i class="fas fa-info-circle"></i> Video explicativo sobre el concepto de IA General y sus implicaciones
+                    </p>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4><i class="fas fa-image" style="color: #8b5cf6; margin-bottom: 15px;"></i> Infografía: Evolución de la IA</h4>
+                        <div style="position: relative; width: 100%; max-width: 500px; margin: 0 auto;">
+                            <img 
+                                src="imagenes/modulo1/imagen23.png" 
+                                alt="Evolución de la IA - Infografía" 
+                                style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease;"
+                                class="zoomable"
+                                onclick="openImageModal(this.src, this.alt)">
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #6b7280;">
+                            <i class="fas fa-search-plus"></i> Haz clic en la imagen para ampliarla
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11 / 23</div>
+    </div>
+
+    <!-- Slide 12: IA por Aplicación Educativa -->
+    <div class="slide">
+        <h2 class="slide-content-title">IA Clasificada por Aplicación Educativa</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-graduation-cap"></i> Categorías Prácticas para Educadores</h3>
+
+                    <div class="icon-grid" style="grid-template-columns: 1fr;">
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <div style="display: flex; align-items: center; text-align: left;">
+                                <i class="fas fa-robot" style="color: #3b82f6; margin-right: 20px;"></i>
+                                <div>
+                                    <h4>Sistemas de Tutoría Inteligente (ITS)</h4>
+                                    <p>Plataformas que ofrecen instrucción personalizada, retroalimentación adaptativa y seguimiento individualizado del progreso estudiantil.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <div style="display: flex; align-items: center; text-align: left;">
+                                <i class="fas fa-clipboard-check" style="color: #10b981; margin-right: 20px;"></i>
+                                <div>
+                                    <h4>Herramientas de Evaluación Automatizada</h4>
+                                    <p>Sistemas que califican automáticamente, identifican patrones de error, y proporcionan análisis detallados del rendimiento.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <div style="display: flex; align-items: center; text-align: left;">
+                                <i class="fas fa-comments" style="color: #8b5cf6; margin-right: 20px;"></i>
+                                <div>
+                                    <h4>Chatbots y Asistentes Educativos</h4>
+                                    <p>Asistentes virtuales disponibles 24/7 para responder preguntas, guiar el aprendizaje y proporcionar soporte académico.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <div style="display: flex; align-items: center; text-align: left;">
+                                <i class="fas fa-magic" style="color: #f59e0b; margin-right: 20px;"></i>
+                                <div>
+                                    <h4>IA Generativa</h4>
+                                    <p>Herramientas que crean contenido original: textos, imágenes, videos, ejercicios, y materiales didácticos personalizados.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen10.png" alt="Aplicaciones Educativas" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">12 / 23</div>
+    </div>
+
+    <!-- Slide 13: IA Generativa - Enfoque Especial -->
+    <div class="slide">
+        <h2 class="slide-content-title">IA Generativa: Revolución Creativa</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen11.png" alt="IA Generativa" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-wand-magic-sparkles"></i> Definición y Capacidades</h3>
+                    <p>La IA Generativa representa el paradigma más revolucionario de la inteligencia artificial contemporánea: sistemas capaces de crear contenido completamente original y contextualmente relevante a partir de patrones aprendidos de vastos
+                        conjuntos de datos.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Tecnologías subyacentes:</strong> Utiliza arquitecturas avanzadas como Transformers (GPT), Modelos de Difusión (DALL-E, Midjourney), y Redes Generativas Adversariales (GANs) para producir contenido indistinguible del creado
+                            por humanos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icon-grid" style="margin-top: 30px;">
+                <div class="icon-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>Generación de Texto</h4>
+                    <p>Artículos, ensayos, resúmenes, planes de clase, ejercicios personalizados, y contenido académico estructurado</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-image"></i>
+                    <h4>Creación Visual</h4>
+                    <p>Ilustraciones científicas, diagramas educativos, infografías, mapas conceptuales, y arte didáctico</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-video"></i>
+                    <h4>Contenido Multimedia</h4>
+                    <p>Videos explicativos, animaciones educativas, presentaciones interactivas, y experiencias inmersivas</p>
+                </div>
+                <div class="icon-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Código y Algoritmos</h4>
+                    <p>Programas educativos, simulaciones interactivas, herramientas pedagógicas, y aplicaciones personalizadas</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">13 / 23</div>
+    </div>
+
+    <!-- Slide 14: Historia de la IA - Fundaciones Mejoradas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Historia de la IA Educativa: Fundaciones</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-history"></i> Los Pioneros (1960s-1980s)</h3>
+
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <h4><strong>1960s - Enseñanza Programada y CAI</strong></h4>
+                            <p><strong>Enseñanza programada:</strong> Inspirada en las "teaching machines" de B.F. Skinner, basadas en refinamiento por ensayo y error.</p>
+                            <p><strong>PLATO (1960):</strong> Primer sistema generalizado de instrucción asistida por computadora, implementado en la Universidad de Illinois. Introdujo pantallas táctiles, chat, foros, pruebas en línea y sirvió hasta los 2000s.</p>
+                            <p><strong>IBM 1500 (1966):</strong> Sistema CAI comercial con terminales gráficos y lápiz-óptico para hasta 32 alumnos.</p>
+                            <p><strong>Experimentos de Patrick Suppes (Stanford):</strong> CAI en matemáticas y lectura con IBM 1500, iniciando a mediados de los 1960s.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <h4><strong>1970s - CAI y Comunidades Académicas</strong></h4>
+                            <p>Ampliación de CAI con microcomputadoras como Apple II, Commodore PET, TRS-80, popularizando los ejercicios interactivos.</p>
+                            <p><strong>PLATO evolucionó:</strong> CATO, TUTOR, entornos multimedia, lógica programable y ecosistemas educativos en múltiples disciplinas.</p>
+                            <p><strong>Enfoques conductistas:</strong> Refuerzo inmediato, respuestas múltiples, aprendizaje a su propio ritmo.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <h4><strong>1980s - Emergencia de los ITS</strong></h4>
+                            <p><strong>Investigación IA para tutoría adaptativa:</strong> Los ITS combinan psicología cognitiva e IA, avanzando más allá de CAI.</p>
+                            <p><strong>Ejemplos destacados:</strong></p>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>LISP Tutor (1983):</strong> Detectaba errores en el uso del lenguaje Lisp y ofrecía feedback inmediato.</li>
+                                <li><strong>Sistemas TUTOR (1984) y PARNASSUS (1989, CMU):</strong> Para instrucción adaptativa en distintos dominios.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen12.png" alt="Historia Temprana IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4><i class="fas fa-star"></i> Legado Duradero</h4>
+                <p>Estos primeros sistemas establecieron pilares clave que aún persisten:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                        <strong>Personalización</strong><br>
+                        <small>Plataformas adaptativas ajustan rutas según nivel y errores.</small>
+                    </div>
+                    <div style="background: rgba(59, 130, 246, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                        <strong>Retroalimentación inmediata</strong><br>
+                        <small>Usada en ejercicios online y procesos de evaluación.</small>
+                    </div>
+                    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid #8b5cf6;">
+                        <strong>Ritmo individual</strong><br>
+                        <small>Formularios dinámicos y auto-aprendizaje.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">14 / 23</div>
+    </div>
+
+    <!-- Slide 15: Historia de la IA - Era Moderna -->
+    <div class="slide">
+        <h2 class="slide-content-title">Historia de la IA Educativa: Era Digital</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen13.png" alt="Era Digital IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-rocket"></i> Revolución Tecnológica (1990s-Presente)</h3>
+
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <h4><strong>1990s-2000s - Internet y LMS</strong></h4>
+                            <p>Internet revoluciona la educación a distancia. Aparecen los primeros <strong>Learning Management Systems</strong> (Moodle, Blackboard), democratizando el acceso a la educación digital.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <h4><strong>2000s-2010s - Machine Learning Educativo</strong></h4>
+                            <p>Avances en ML permiten sistemas adaptativos sofisticados. <strong>Khan Academy</strong> y plataformas similares introducen personalización basada en datos a escala masiva.</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <h4><strong>2020-Presente - Era Generativa</strong></h4>
+                            <p><strong>Noviembre 2022:</strong> ChatGPT marca un hito histórico. La IA Generativa se vuelve accesible al público general, transformando instantáneamente las posibilidades educativas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Momento transformador:</strong> La democratización de la IA Generativa ha puesto en manos de cada educador herramientas que antes requerían equipos especializados y recursos masivos, marcando el inicio de una nueva era educativa.</p>
+            </div>
+        </div>
+        <div class="slide-number">15 / 23</div>
+    </div>
+
+    <!-- Slide 16: Potencial Transformador - Para Docentes -->
+    <div class="slide">
+        <h2 class="slide-content-title">Potencial Transformador: Docentes</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Oportunidades Revolucionarias para Educadores</h3>
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-magic" style="color: #10b981;"></i>
+                            <h4>Automatización Inteligente</h4>
+                            <p>Tareas administrativas, calificación automática, programación de clases, y gestión de recursos educativos</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-palette" style="color: #3b82f6;"></i>
+                            <h4>Creación de Contenido</h4>
+                            <p>Material didáctico personalizado, ejercicios adaptativos, presentaciones interactivas, y evaluaciones diferenciadas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <i class="fas fa-user-graduate" style="color: #8b5cf6;"></i>
+                            <h4>Personalización a Escala</h4>
+                            <p>Aprendizaje adaptativo masivo que responde a necesidades, ritmos y estilos individuales de cada estudiante</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-chart-line" style="color: #f59e0b;"></i>
+                            <h4>Análisis Predictivo</h4>
+                            <p>Identificación temprana de riesgos académicos, patrones de aprendizaje, y oportunidades de intervención</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen14.png" alt="Potencial Docentes" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">16 / 23</div>
+    </div>
+
+    <!-- Slide 17: Potencial Transformador - Para Estudiantes -->
+    <div class="slide">
+        <h2 class="slide-content-title">Potencial Transformador: Estudiantes</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen15.png" alt="Potencial Estudiantes" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 20px;">
+                    <img src="imagenes/modulo1/educa.png" alt="Educación con IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 20px;">
+                    <img src="imagenes/modulo1/effort.png" alt="Esfuerzo y Aprendizaje" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-user-graduate"></i> Experiencias de Aprendizaje Transformadoras</h3>
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                            <i class="fas fa-robot" style="color: #ef4444;"></i>
+                            <h4>Tutores Virtuales 24/7</h4>
+                            <p>Asistencia personalizada continua, resolución de dudas inmediata, y acompañamiento académico constante</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-route" style="color: #10b981;"></i>
+                            <h4>Rutas de Aprendizaje Inteligentes</h4>
+                            <p>Trayectorias educativas que se adaptan dinámicamente al progreso, preferencias y objetivos individuales</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-comments" style="color: #3b82f6;"></i>
+                            <h4>Retroalimentación Instantánea</h4>
+                            <p>Feedback inmediato y específico que acelera el proceso de aprendizaje y corrección de errores</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-lightbulb" style="color: #f59e0b;"></i>
+                            <h4>Creatividad Potenciada</h4>
+                            <p>Herramientas que amplifican la capacidad creativa y exploración de nuevas ideas y conceptos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">17 / 23</div>
+    </div>
+
+    <!-- Slide 18: Consideraciones Éticas (1/2) -->
+    <div class="slide">
+        <h2 class="slide-content-title">Consideraciones Éticas Fundamentales (1/2)</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-balance-scale"></i> Desafíos Éticos Críticos</h3>
+                    <div class="ethics-alert">
+                        <p><strong>Imperativo ético:</strong> El uso responsable de IA en educación requiere consideración cuidadosa de estas dimensiones críticas para el bienestar estudiantil.</p>
+                    </div>
+
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                            <i class="fas fa-shield-alt" style="color: #ef4444;"></i>
+                            <h4>Privacidad de Datos</h4>
+                            <p>Protección rigurosa de información estudiantil sensible y cumplimiento de normativas de privacidad</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f97316;">
+                            <i class="fas fa-balance-scale" style="color: #f97316;"></i>
+                            <h4>Sesgos Algorítmicos</h4>
+                            <p>Identificación y mitigación de prejuicios que pueden perpetuar desigualdades educativas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #eab308;">
+                            <i class="fas fa-copy" style="color: #eab308;"></i>
+                            <h4>Integridad Académica</h4>
+                            <p>Definición clara de límites entre asistencia y deshonestidad académica en el uso de IA</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #dc2626;">
+                            <i class="fas fa-users" style="color: #dc2626;"></i>
+                            <h4>Equidad Digital</h4>
+                            <p>Garantizar acceso equitativo y prevenir que la IA amplíe brechas educativas existentes</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen16.png" alt="Ética en IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">18 / 23</div>
+    </div>
+
+    <!-- Slide 19: Mejores Prácticas Éticas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Mejores Prácticas Éticas</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-shield-check"></i> Framework de Implementación Responsable</h3>
+                    <div class="highlight-box">
+                        <p><strong>Visión:</strong> Implementar IA de manera ética, transparente y centrada en el desarrollo integral del estudiante como persona.</p>
+                    </div>
+
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-eye" style="color: #10b981;"></i>
+                            <h4>Transparencia Total</h4>
+                            <p>Comunicación clara sobre cuándo, cómo y por qué se utiliza IA en procesos educativos</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-user-check" style="color: #3b82f6;"></i>
+                            <h4>Supervisión Humana</h4>
+                            <p>Mantener la centralidad del educador en decisiones pedagógicas críticas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <i class="fas fa-brain" style="color: #8b5cf6;"></i>
+                            <h4>Literacidad Digital</h4>
+                            <p>Educación integral sobre IA para estudiantes, docentes y familias</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-gavel" style="color: #f59e0b;"></i>
+                            <h4>Marcos Regulatorios</h4>
+                            <p>Desarrollo de políticas institucionales claras para uso educativo de IA</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen17.png" alt="Prácticas Éticas" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">19 / 23</div>
+    </div>
+
+    <!-- Slide 20: Actividad - Creación de Infografías -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad: Creación de Infografías con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-image"></i> Actividad Principal</h3>
+                    <div class="highlight-box">
+                        <p><strong>Tarea:</strong> Crea una infografía de un tema de interés de una de tus materias con un generador de imágenes</p>
+                    </div>
+
+                    <h4><i class="fas fa-tools"></i> Generadores de Imágenes Recomendados:</h4>
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-robot" style="color: #3b82f6;"></i>
+                            <h4>DALL-E 3</h4>
+                            <p>Integrado en ChatGPT Plus y Bing Image Creator. Excelente para infografías educativas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-microsoft" style="color: #10b981;"></i>
+                            <h4>Copilot (Microsoft)</h4>
+                            <p>Acceso gratuito a DALL-E 3. Ideal para crear material didáctico</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <i class="fas fa-magic" style="color: #8b5cf6;"></i>
+                            <h4>Midjourney</h4>
+                            <p>Calidad artística superior. Perfecto para ilustraciones educativas detalladas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-fire" style="color: #f59e0b;"></i>
+                            <h4>Firefly (Adobe)</h4>
+                            <p>Integrado en Creative Suite. Excelente para diseños profesionales</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                            <i class="fas fa-brain" style="color: #ef4444;"></i>
+                            <h4>Leonardo AI</h4>
+                            <p>Gratuito con límites. Muy bueno para infografías educativas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #06b6d4;">
+                            <i class="fas fa-palette" style="color: #06b6d4;"></i>
+                            <h4>Canva AI</h4>
+                            <p>Herramienta integral con generación de imágenes. Ideal para educadores</p>
+                        </div>
+                    </div>
+
+                    <div class="ethics-alert">
+                        <p><strong>Recomendación:</strong> Experimenta con diferentes prompts y generadores para encontrar el que mejor se adapte a tu estilo y necesidades educativas. Recuerda siempre verificar los derechos de uso de las imágenes generadas.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen18.png" alt="Creación de Infografías" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">20 / 23</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://www.bing.com/images/create" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-robot mr-2"></i>Bing Image Creator</a>
+            <a href="https://www.adobe.com/sensei/generative-ai/firefly.html" class="inline-flex items-center px-3 py-1 bg-pink-100 text-pink-700 rounded hover:bg-pink-200 text-sm font-semibold" target="_blank"><i class="fas fa-fire mr-2"></i>Adobe Firefly</a>
+            <a href="https://www.canva.com/ai-image-generator/" class="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 text-sm font-semibold" target="_blank"><i class="fas fa-palette mr-2"></i>Canva AI</a>
+        </div>
+    </div>
+
+    <!-- Slide 21: Foro de Discusión Detallado -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad: Foro de Reflexión Ética</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen19.png" alt="Foro Discusión" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-comments"></i> Participación Activa en Comunidad de Aprendizaje</h3>
+
+                    <div class="highlight-box">
+                        <p><strong>Objetivo:</strong> Agrega una discusión en Teams sobre la ética y riesgos de usar la IA generativa.</p>
+                    </div>
+
+                    <h4><i class="fas fa-question-circle"></i> Preguntas Guía para la Reflexión:</h4>
+                    <ul>
+                        <li><i class="fas fa-lightbulb"></i> <strong>Percepciones iniciales:</strong> ¿Cómo visualizas la integración de IA en tu práctica docente actual?</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> <strong>Preocupaciones éticas:</strong> ¿Qué dilemas éticos consideras más urgentes en tu contexto educativo?</li>
+                        <li><i class="fas fa-users"></i> <strong>Impacto estudiantil:</strong> ¿Cómo podría la IA beneficiar o desafiar a tus estudiantes específicos?</li>
+                        <li><i class="fas fa-cogs"></i> <strong>Soluciones proactivas:</strong> Propón una estrategia concreta para abordar un desafío ético identificado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">21 / 23</div>
+    </div>
+
+    <!-- Slide 22: Quiz de Evaluación -->
+    <div class="slide">
+        <h2 class="slide-content-title">Evaluación: Quiz Conceptos Fundamentales</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-clipboard-check"></i> Evaluación Formativa Integral</h3>
+
+                    <div class="highlight-box">
+                        <p><strong>Propósito:</strong> Consolidar y verificar la comprensión de conceptos fundamentales de IA aplicados al contexto educativo.</p>
+                    </div>
+
+                    <h4><i class="fas fa-list-ol"></i> Estructura del Quiz:</h4>
+                    <div class="icon-grid">
+                        <div class="icon-card">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>15 Preguntas</h4>
+                            <p>Selección múltiple y verdadero/falso</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-clock"></i>
+                            <h4>20 Minutos</h4>
+                            <p>Tiempo estimado de completación</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-redo"></i>
+                            <h4>2 Intentos</h4>
+                            <p>Múltiples oportunidades de práctica</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Retroalimentación</h4>
+                            <p>Explicaciones detalladas por pregunta</p>
+                        </div>
+                    </div>
+
+                    <h4><i class="fas fa-books"></i> Temas Evaluados:</h4>
+                    <ul>
+                        <li><i class="fas fa-brain"></i> Definiciones fundamentales de IA</li>
+                        <li><i class="fas fa-cogs"></i> Conceptos de Machine Learning y NLP</li>
+                        <li><i class="fas fa-magic"></i> Características de IA Generativa</li>
+                        <li><i class="fas fa-history"></i> Hitos históricos importantes</li>
+                        <li><i class="fas fa-shield-alt"></i> Principios éticos básicos</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen20.png" alt="Quiz Evaluación" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">22 / 23</div>
+    </div>
+
+    <!-- Slide 23: Recursos Complementarios -->
+    <div class="slide">
+        <h2 class="slide-content-title">Recursos de Aprendizaje Complementarios</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div style="height: 200px; margin-bottom: 30px; text-align: center;">
+                <img src="imagenes/modulo1/imagen21.png" alt="Recursos Complementarios" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+            </div>
+
+            <div class="icon-grid">
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-book-open" style="color: #3b82f6;"></i>
+                    <h4>Lecturas Especializadas</h4>
+                    <p>Artículos académicos actuales sobre IA en educación, investigaciones empíricas, y estudios de caso internacionales</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-video" style="color: #10b981;"></i>
+                    <h4>Videos Educativos</h4>
+                    <p>Conferencias TED, documentales, demostraciones técnicas, y entrevistas con expertos en IA educativa</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-podcast" style="color: #f59e0b;"></i>
+                    <h4>Podcasts Especializados</h4>
+                    <p>Episodios sobre tendencias en IA, debates éticos, y experiencias de implementación en diferentes países</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-external-link-alt" style="color: #8b5cf6;"></i>
+                    <h4>Herramientas Interactivas</h4>
+                    <p>Simuladores de IA, plataformas de experimentación, y demos de herramientas educativas emergentes</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                    <i class="fas fa-file-pdf" style="color: #ef4444;"></i>
+                    <h4>Guías y Marcos</h4>
+                    <p>Documentos oficiales, marcos éticos institucionales, y mejores prácticas de organizaciones educativas</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #06b6d4;">
+                    <i class="fas fa-users" style="color: #06b6d4;"></i>
+                    <h4>Comunidades de Práctica</h4>
+                    <p>Redes profesionales, grupos de discusión, y comunidades de educadores innovadores en IA</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">23 / 23</div>
+    </div>
+
+    <!-- Slide 24: Resumen y Proyección Futura -->
+    <div class="slide">
+        <h2 class="slide-content-title">Síntesis del Módulo y Proyección Futura</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-star"></i> Logros de Aprendizaje Alcanzados</h3>
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-check-circle" style="color: #10b981;"></i>
+                            <h4>Fundamentos Sólidos</h4>
+                            <p>Comprensión profunda de qué es la IA y su potencial transformador en educación</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-cogs" style="color: #3b82f6;"></i>
+                            <h4>Conceptos Técnicos</h4>
+                            <p>Dominio de ML, NLP, Deep Learning, y IA Generativa aplicados a contextos educativos</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                            <i class="fas fa-balance-scale" style="color: #ef4444;"></i>
+                            <h4>Conciencia Ética</h4>
+                            <p>Comprensión crítica de implicaciones éticas y marcos para implementación responsable</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-lightbulb" style="color: #f59e0b;"></i>
+                            <h4>Visión Estratégica</h4>
+                            <p>Perspectiva informada sobre el rol del educador en la era de la IA</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🚀 Adelanto del Módulo 2:</strong> "Explorando Herramientas de IA Generativa" - Sumérgete en la experiencia práctica con ChatGPT, Gemini, Claude, y otras plataformas revolucionarias. ¡Prepárate para transformar tu práctica
+                            pedagógica con experimentación hands-on y proyectos reales!</p>
+                    </div>
+
+                    <div class="ethics-alert" style="margin-top: 20px;">
+                        <p><strong>Reflexión final:</strong> La IA no es solo una herramienta tecnológica, es un catalizador para reimaginar la educación del siglo XXI. Tu papel como educador es fundamental para guiar esta transformación de manera ética
+                            y centrada en el desarrollo humano integral.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo1/imagen22.png" alt="Futuro de la Educación" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">24 / 24</div>
+    </div>
+
+    <!-- Modal para imágenes -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // ... existing code ...
+
+        // Funcionalidad del modal de imágenes
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        // Función para abrir el modal de imagen
+        function openImageModal(src, alt) {
+            modal.style.display = 'flex';
+            modalImg.src = src;
+            modalImg.alt = alt;
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        // Agregar clase zoomable a todas las imágenes excepto en las diapositivas específicas
+        document.querySelectorAll('img').forEach(img => {
+            // Buscar el elemento más cercano con clase 'slide' y obtener su número de diapositiva
+            const slideElement = img.closest('.slide');
+            const slideNumber = slideElement ? slideElement.querySelector('.slide-number')?.textContent : '';
+            
+            // Excluir imágenes de las diapositivas 6/23 y 23/23
+            if (!img.classList.contains('modal-content') && 
+                slideNumber !== '6 / 23' && 
+                slideNumber !== '23 / 23') {
+                img.classList.add('zoomable');
+                img.onclick = function() {
+                    openImageModal(this.src, this.alt);
+                }
+            }
+        });
+
+        // Cerrar modal
+        closeBtn.onclick = function() {
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        // Cerrar modal al hacer clic fuera de la imagen
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            }
+        }
+
+        // Cerrar modal con la tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            }
+        });
+    </script>
+</body>
+
+</html>

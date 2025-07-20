@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Aprendizaje Automático</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-button-home {
+            background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+            font-size: 1.1rem;
+        }
+        
+        .nav-button-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(66, 153, 225, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-button-home i {
+            margin-right: 10px;
+        }
+        
+        .type-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 15px 40px rgba(66, 153, 225, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .type-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 6px solid #4299e1;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1);
+        }
+        
+        .decorative-shape {
+            position: absolute;
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .shape-top-left {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        .shape-bottom-right {
+            width: 250px;
+            height: 250px;
+            bottom: -125px;
+            right: -125px;
+        }
+        
+        .slide-title-main {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.5rem;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .accent-line {
+            height: 4px;
+            background: linear-gradient(90deg, #4299e1, #667eea);
+            border-radius: 2px;
+            width: 120px;
+            margin: 0 auto 35px auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-icon {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 2rem auto;
+            box-shadow: 0 15px 40px rgba(66, 153, 225, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con botón de regreso -->
+    <header class="gradient-bg text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="decorative-shape shape-top-left"></div>
+        <div class="decorative-shape shape-bottom-right"></div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="module-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h1 class="slide-title-main text-white">Explorando el Aprendizaje Automático</h1>
+            <p class="slide-subtitle text-white opacity-90">Descubre los diferentes tipos de inteligencia artificial que están transformando nuestro mundo</p>
+            
+            <!-- Botón de regreso al inicio -->
+            <div class="mt-8">
+                <a href="modulo1.html" class="nav-button-home">
+                    <i class="fas fa-arrow-left"></i>
+                    Regresar al Módulo 1
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <!-- Intro Section -->
+        <section class="mb-20">
+            <div class="content-card text-center">
+                <h2 class="section-title">¿Qué es el Aprendizaje Automático?</h2>
+                <div class="accent-line"></div>
+                <p class="text-xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed text-justify">
+                    El aprendizaje automático (Machine Learning) es una rama de la inteligencia artificial donde los sistemas aprenden patrones a partir de datos, mejorando su rendimiento en tareas específicas sin ser programados explícitamente. Los algoritmos aplican <strong>técnicas de aprendizaje estadístico</strong> para identificar automáticamente patrones en los datos y hacer predicciones altamente precisas.
+                </p>
+                <div class="highlight-box inline-block">
+                    <p class="text-primary font-semibold text-lg">"El aprendizaje automático permite a las computadoras aprender de la experiencia y mejorar automáticamente"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simple Example Section -->
+        <section class="mb-20">
+            <div class="content-card">
+                <h2 class="section-title">Ejemplo Simple: Clasificando Manzanas y Naranjas</h2>
+                <div class="accent-line"></div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            El Problema
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            Imagina que quieres crear un programa que pueda distinguir entre manzanas y naranjas automáticamente. Sin machine learning, tendrías que escribir muchas reglas complejas.
+                        </p>
+                        <div class="example-box">
+                            <h4 class="font-bold mb-4 text-xl">Datos de Entrenamiento:</h4>
+                            <ul class="space-y-2 text-lg">
+                                <li class="flex items-center">
+                                    <i class="fas fa-apple-alt mr-3"></i>
+                                    Manzana: 135g, textura suave → Etiqueta: "Manzana"
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-apple-alt mr-3"></i>
+                                    Manzana: 110g, textura suave → Etiqueta: "Manzana"
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-lemon mr-3"></i>
+                                    Naranja: 155g, textura áspera → Etiqueta: "Naranja"
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-lemon mr-3"></i>
+                                    Naranja: 180g, textura áspera → Etiqueta: "Naranja"
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-secondary flex items-center">
+                            <i class="fas fa-lightbulb mr-3"></i>
+                            La Solución con ML
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            El algoritmo aprende automáticamente los patrones y puede clasificar nuevas frutas que nunca ha visto antes.
+                        </p>
+                        <div class="highlight-box">
+                            <h4 class="font-bold text-green-800 mb-3 text-xl">Resultado:</h4>
+                            <p class="text-green-700 text-lg">
+                                El modelo puede predecir que una fruta de 120g con textura suave es probablemente una manzana, basándose en los patrones aprendidos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Types Grid -->
+        <section class="mb-20">
+            <div class="content-card">
+                <h2 class="section-title">Principales Tipos de Aprendizaje Automático</h2>
+                <div class="accent-line"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Supervised Learning -->
+                    <a href="https://colab.research.google.com/drive/1wbIlUxPSVXL7-2dqeU4G4y7VKMeJxVJH?authuser=1#scrollTo=YCZrYp_Ot9EY" target="_blank" class="block">
+                        <div class="content-card card-hover cursor-pointer">
+                            <div class="type-icon bg-blue-100 text-primary">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-4">Aprendizaje Supervisado</h3>
+                            <p class="text-gray-600 mb-4">
+                                El sistema aprende a partir de ejemplos etiquetados. Como un estudiante con un profesor que le corrige, el algoritmo recibe datos con las respuestas correctas para aprender patrones y hacer predicciones.
+                            </p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Ejemplo: Clasificación de imágenes</span>
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Datos etiquetados</span>
+                            </div>
+                            <div class="p-3 bg-blue-50 rounded-lg">
+                                <p class="text-xs text-blue-800">
+                                    <strong>Ejemplo práctico:</strong> Clasificar correos como spam o no spam usando ejemplos previamente marcados.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Unsupervised Learning -->
+                    <div class="content-card card-hover">
+                        <div class="type-icon bg-purple-100 text-purple-600">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Aprendizaje No Supervisado</h3>
+                        <p class="text-gray-600 mb-4">
+                            El sistema encuentra patrones en datos sin etiquetar. Como explorar un territorio desconocido, descubre estructuras ocultas sin guía previa, agrupando datos similares.
+                        </p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Ejemplo: Segmentación de clientes</span>
+                            <span class="inline-block bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Datos sin etiquetar</span>
+                        </div>
+                        <div class="p-3 bg-purple-50 rounded-lg">
+                            <p class="text-xs text-purple-800">
+                                <strong>Ejemplo práctico:</strong> Agrupar clientes por comportamiento de compra sin saber de antemano cuántos grupos existen.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Reinforcement Learning -->
+                    <div class="content-card card-hover">
+                        <div class="type-icon bg-green-100 text-green-600">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Aprendizaje por Refuerzo</h3>
+                        <p class="text-gray-600 mb-4">
+                            El sistema aprende mediante prueba y error, recibiendo recompensas por acciones correctas. Similar a entrenar una mascota con premios y castigos, el agente aprende qué acciones maximizan las recompensas.
+                        </p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Ejemplo: Juegos de estrategia</span>
+                            <span class="inline-block bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Sistema de recompensas</span>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded-lg">
+                            <p class="text-xs text-green-800">
+                                <strong>Ejemplo práctico:</strong> Un robot que aprende a caminar recibiendo puntos por avanzar y perdiendo puntos por caerse.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Semi-supervised Learning -->
+                    <div class="content-card card-hover">
+                        <div class="type-icon bg-yellow-100 text-yellow-600">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Aprendizaje Semi-supervisado</h3>
+                        <p class="text-gray-600 mb-4">
+                            Combina una pequeña cantidad de datos etiquetados con muchos datos sin etiquetar. Como aprender un idioma con algunas lecciones y mucha práctica en el mundo real, aprovecha lo mejor de ambos mundos.
+                        </p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Ejemplo: Reconocimiento de voz</span>
+                            <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">Mezcla de datos</span>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded-lg">
+                            <p class="text-xs text-yellow-800">
+                                <strong>Ejemplo práctico:</strong> Entrenar un modelo de reconocimiento de voz con 1000 ejemplos etiquetados y 100,000 sin etiquetar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Self-supervised Learning -->
+                    <div class="content-card card-hover">
+                        <div class="type-icon bg-red-100 text-red-600">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Aprendizaje Auto-supervisado</h3>
+                        <p class="text-gray-600 mb-4">
+                            El sistema genera sus propias etiquetas a partir de los datos, creando tareas de aprendizaje. Como resolver acertijos para entender mejor un tema, el modelo se entrena a sí mismo.
+                        </p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Ejemplo: Modelos de lenguaje</span>
+                            <span class="inline-block bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Auto-generación</span>
+                        </div>
+                        <div class="p-3 bg-red-50 rounded-lg">
+                            <p class="text-xs text-red-800">
+                                <strong>Ejemplo práctico:</strong> GPT aprende a predecir la siguiente palabra en una frase, creando su propia tarea de entrenamiento.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Transfer Learning -->
+                    <div class="content-card card-hover">
+                        <div class="type-icon bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Aprendizaje por Transferencia</h3>
+                        <p class="text-gray-600 mb-4">
+                            Aplica conocimiento aprendido en una tarea a una nueva tarea relacionada. Como usar lo aprendido en piano para aprender órgano más fácilmente, aprovecha el conocimiento previo.
+                        </p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Ejemplo: Modelos pre-entrenados</span>
+                            <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Reutilización</span>
+                        </div>
+                        <div class="p-3 bg-indigo-50 rounded-lg">
+                            <p class="text-xs text-indigo-800">
+                                <strong>Ejemplo práctico:</strong> Usar un modelo entrenado para reconocer gatos y adaptarlo para reconocer perros con pocos datos adicionales.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="mb-20">
+            <div class="content-card">
+                <h2 class="section-title">Comparación Rápida</h2>
+                <div class="accent-line"></div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Tipo</th>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Datos Requeridos</th>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Complejidad</th>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Aplicación Típica</th>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Ejemplo Simple</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-primary">Supervisado</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Etiquetados</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Media</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Predicciones</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">Clasificar correos spam</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-purple-600">No Supervisado</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Sin etiquetar</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Alta</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Descubrimiento</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">Agrupar clientes</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">Refuerzo</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Interacción</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Muy Alta</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Toma de decisiones</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">Juego de ajedrez</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modelos de Regresión -->
+        <section class="mb-20">
+            <div class="content-card">
+                <h2 class="section-title">Modelos de Regresión en Machine Learning</h2>
+                <div class="accent-line"></div>
+                <p class="text-lg text-gray-600 mb-8 text-center max-w-4xl mx-auto leading-relaxed text-justify">
+                    Existen varios enfoques para realizar regresión en machine learning, desde modelos simples como el perceptrón hasta redes neuronales complejas. Cada uno tiene sus ventajas y aplicaciones específicas.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-12 mb-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fas fa-brain mr-3"></i>
+                            El Perceptrón: El Modelo Más Simple
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            El perceptrón es la unidad básica de las redes neuronales, inspirado en las neuronas biológicas. Fue propuesto por Frank Rosenblatt en 1957 y puede realizar regresión lineal de manera efectiva.
+                        </p>
+                        <div class="p-4 bg-blue-50 rounded-lg mb-6">
+                            <h4 class="font-bold text-blue-800 mb-3">Ecuación del Perceptrón:</h4>
+                            <p class="text-blue-700 font-mono text-sm">
+                                ŷ = f(w₀ + w₁x₁ + w₂x₂ + ... + wₘxₘ)
+                            </p>
+                            <p class="text-blue-700 text-sm mt-2">
+                                Donde f(x) = x (función de activación lineal)
+                            </p>
+                        </div>
+                        <div class="p-4 bg-green-50 rounded-lg">
+                            <h4 class="font-bold text-green-800 mb-2">Aprendizaje:</h4>
+                            <ul class="text-green-700 space-y-1 text-sm">
+                                <li>• Usa descenso por gradiente</li>
+                                <li>• Minimiza el error cuadrático medio (MSE)</li>
+                                <li>• Actualiza pesos iterativamente</li>
+                                <li>• Ideal para relaciones lineales</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                            <a href="https://www.juansensio.com/blog/012_perceptron1" target="_blank" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Leer más sobre Perceptrón
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-secondary flex items-center">
+                            <i class="fas fa-network-wired mr-3"></i>
+                            Redes Neuronales Artificiales
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            Las redes neuronales artificiales son modelos más complejos que pueden capturar relaciones no lineales en los datos, superando las limitaciones del perceptrón simple.
+                        </p>
+                        <div class="p-4 bg-purple-50 rounded-lg mb-6">
+                            <h4 class="font-bold text-purple-800 mb-3">Características:</h4>
+                            <ul class="text-purple-700 space-y-1 text-sm">
+                                <li>• Múltiples capas de neuronas</li>
+                                <li>• Funciones de activación no lineales</li>
+                                <li>• Capacidad de aprendizaje profundo</li>
+                                <li>• Mejor para patrones complejos</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-orange-50 rounded-lg">
+                            <h4 class="font-bold text-orange-800 mb-2">Ventajas:</h4>
+                            <ul class="text-orange-700 space-y-1 text-sm">
+                                <li>• Aprende relaciones no lineales</li>
+                                <li>• Mayor capacidad de modelado</li>
+                                <li>• Mejor rendimiento en datos complejos</li>
+                                <li>• Escalabilidad con más datos</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6">
+                            <a href="https://github.com/jdariasl/ML_IntroductoryCourse/blob/master/Clase%2008%20-%20Redes%20Neuronales%20Artificiales.ipynb" target="_blank" class="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Curso de Redes Neuronales
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparación de Modelos -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Comparación de Modelos de Regresión</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Modelo</th>
+                                    <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Complejidad</th>
+                                    <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Capacidad</th>
+                                    <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Aplicación Ideal</th>
+                                    <th scope="col" class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">Ventajas</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-blue-600">Regresión Lineal</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Baja</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Lineal</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Relaciones simples</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Interpretable, rápido</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">Perceptrón</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Baja</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Lineal</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Introducción a ML</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Conceptual, educativo</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-purple-600">Redes Neuronales</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">Alta</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">No lineal</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Problemas complejos</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Potente, flexible</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Evolución de Modelos -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                        <h4 class="font-bold text-blue-800 mb-3 flex items-center">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            Modelos Lineales
+                        </h4>
+                        <p class="text-blue-700 text-sm mb-4">
+                            Regresión lineal clásica y perceptrón. Ideales para relaciones lineales y como punto de partida en machine learning.
+                        </p>
+                        <ul class="text-blue-700 text-xs space-y-1">
+                            <li>• Fácil interpretación</li>
+                            <li>• Entrenamiento rápido</li>
+                            <li>• Pocos parámetros</li>
+                            <li>• Limitado a relaciones lineales</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-lg">
+                        <h4 class="font-bold text-green-800 mb-3 flex items-center">
+                            <i class="fas fa-sitemap mr-2"></i>
+                            Modelos No Lineales
+                        </h4>
+                        <p class="text-green-700 text-sm mb-4">
+                            Redes neuronales con múltiples capas. Capaces de capturar patrones complejos y no lineales en los datos.
+                        </p>
+                        <ul class="text-green-700 text-xs space-y-1">
+                            <li>• Mayor capacidad de modelado</li>
+                            <li>• Aprende patrones complejos</li>
+                            <li>• Requiere más datos</li>
+                            <li>• Menos interpretable</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg">
+                        <h4 class="font-bold text-purple-800 mb-3 flex items-center">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Aplicaciones Prácticas
+                        </h4>
+                        <p class="text-purple-700 text-sm mb-4">
+                            Desde predicción de precios hasta análisis de tendencias en ingeniería. Cada modelo tiene su nicho específico.
+                        </p>
+                        <ul class="text-purple-700 text-xs space-y-1">
+                            <li>• Predicción de precios</li>
+                            <li>• Análisis de resistencia</li>
+                            <li>• Control de calidad</li>
+                            <li>• Optimización de procesos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Regression Example -->
+        <section class="mb-20">
+            <div class="content-card">
+                <h2 class="section-title">Ejemplo: Regresión Lineal</h2>
+                <div class="accent-line"></div>
+                <p class="text-lg text-gray-600 mb-8 text-center max-w-4xl mx-auto">
+                    La regresión lineal conecta la estadística clásica con el machine learning. Es como encontrar la línea que mejor se ajusta a un conjunto de puntos de datos, pero ahora usando algoritmos de aprendizaje automático.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-12 mb-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Regresión Clásica vs Machine Learning
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+                                <h4 class="font-bold text-yellow-800 mb-2">Método Clásico (Estadística):</h4>
+                                <ul class="text-yellow-700 space-y-1">
+                                    <li>• Cálculo manual de coeficientes</li>
+                                    <li>• Fórmula: y = mx + b</li>
+                                    <li>• Método de mínimos cuadrados</li>
+                                    <li>• Análisis matemático directo</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                                <h4 class="font-bold text-blue-800 mb-2">Machine Learning:</h4>
+                                <ul class="text-blue-700 space-y-1">
+                                    <li>• Aprendizaje automático de parámetros</li>
+                                    <li>• Optimización iterativa</li>
+                                    <li>• Gradiente descendente</li>
+                                    <li>• Mejora continua con más datos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-secondary flex items-center">
+                            <i class="fas fa-cogs mr-3"></i>
+                            Proceso de Aprendizaje Supervisado
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                                <div>
+                                    <p class="font-medium">Datos de Entrenamiento</p>
+                                    <p class="text-sm text-gray-600">Pares (área, precio) con valores conocidos</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                                <div>
+                                    <p class="font-medium">Inicialización</p>
+                                    <p class="text-sm text-gray-600">Valores aleatorios para m y b</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                                <div>
+                                    <p class="font-medium">Predicción y Error</p>
+                                    <p class="text-sm text-gray-600">Calcula predicciones y mide el error</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                                <div>
+                                    <p class="font-medium">Actualización</p>
+                                    <p class="text-sm text-gray-600">Ajusta m y b para reducir el error</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">5</div>
+                                <div>
+                                    <p class="font-medium">Convergencia</p>
+                                    <p class="text-sm text-gray-600">Repite hasta encontrar los mejores valores</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-primary flex items-center">
+                            <i class="fas fa-database mr-3"></i>
+                            Datos de Entrenamiento
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            El algoritmo necesita ejemplos con las respuestas correctas para aprender la relación.
+                        </p>
+                        <div class="example-box">
+                            <h4 class="font-bold mb-4 text-xl">Ejemplos Etiquetados:</h4>
+                            <ul class="space-y-2 text-lg">
+                                <li class="flex items-center">
+                                    <i class="fas fa-home mr-3"></i>
+                                    Casa de 100m² → $150,000
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-home mr-3"></i>
+                                    Casa de 150m² → $200,000
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-home mr-3"></i>
+                                    Casa de 200m² → $250,000
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-home mr-3"></i>
+                                    Casa de 250m² → $300,000
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-secondary flex items-center">
+                            <i class="fas fa-calculator mr-3"></i>
+                            Resultado del Aprendizaje
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            Después del entrenamiento, el modelo ha aprendido la ecuación óptima.
+                        </p>
+                        <div class="highlight-box">
+                            <h4 class="font-bold text-green-800 mb-3 text-xl">Ecuación Aprendida:</h4>
+                            <p class="text-green-700 text-lg font-mono">
+                                Precio = 1000 × Área + 50,000
+                            </p>
+                            <p class="text-green-700 text-lg mt-4">
+                                <strong>Predicción:</strong> Casa de 175m² = $225,000
+                            </p>
+                        </div>
+                        <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                            <h4 class="font-bold text-blue-800 mb-2">Ventajas del Machine Learning:</h4>
+                            <ul class="text-blue-700 space-y-1">
+                                <li>• Maneja múltiples variables fácilmente</li>
+                                <li>• Se adapta a patrones no lineales</li>
+                                <li>• Mejora con más datos</li>
+                                <li>• Automatiza el proceso de modelado</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Real-world Applications -->
+        <section class="mb-20">
+            <div class="content-card">
+                <h2 class="section-title">Aplicaciones en el Mundo Real</h2>
+                <div class="accent-line"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="content-card card-hover border-l-4 border-primary">
+                        <h3 class="font-bold text-xl mb-3 flex items-center">
+                            <i class="fas fa-microphone mr-3 text-primary"></i>
+                            Reconocimiento de voz
+                        </h3>
+                        <p class="text-gray-600">Asistentes virtuales como Siri o Alexa usan aprendizaje supervisado para entender comandos de voz y responder apropiadamente.</p>
+                    </div>
+                    <div class="content-card card-hover border-l-4 border-secondary">
+                        <h3 class="font-bold text-xl mb-3 flex items-center">
+                            <i class="fas fa-thumbs-up mr-3 text-secondary"></i>
+                            Sistemas de Recomendación
+                        </h3>
+                        <p class="text-gray-600">Netflix y Spotify usan aprendizaje no supervisado para sugerir contenido basado en tus hábitos de visualización y escucha.</p>
+                    </div>
+                    <div class="content-card card-hover border-l-4 border-accent">
+                        <h3 class="font-bold text-xl mb-3 flex items-center">
+                            <i class="fas fa-car mr-3 text-accent"></i>
+                            Vehículos autónomos
+                        </h3>
+                        <p class="text-gray-600">Los coches autónomos combinan aprendizaje por refuerzo y supervisado para navegar calles y tomar decisiones en tiempo real.</p>
+                    </div>
+                    <div class="content-card card-hover border-l-4 border-purple-500">
+                        <h3 class="font-bold text-xl mb-3 flex items-center">
+                            <i class="fas fa-shield-alt mr-3 text-purple-500"></i>
+                            Detección de fraude
+                        </h3>
+                        <p class="text-gray-600">Bancos usan machine learning para detectar transacciones fraudulentas analizando patrones de comportamiento.</p>
+                    </div>
+                    <div class="content-card card-hover border-l-4 border-green-500">
+                        <h3 class="font-bold text-xl mb-3 flex items-center">
+                            <i class="fas fa-heartbeat mr-3 text-green-500"></i>
+                            Diagnóstico médico
+                        </h3>
+                        <p class="text-gray-600">Sistemas de IA ayudan a diagnosticar enfermedades analizando imágenes médicas como radiografías y resonancias.</p>
+                    </div>
+                    <div class="content-card card-hover border-l-4 border-red-500">
+                        <h3 class="font-bold text-xl mb-3 flex items-center">
+                            <i class="fas fa-language mr-3 text-red-500"></i>
+                            Traducción automática
+                        </h3>
+                        <p class="text-gray-600">Google Translate y otros servicios usan modelos de lenguaje para traducir entre idiomas de forma automática.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Concepts -->
+        <section class="mb-20">
+            <div class="content-card bg-gradient-to-r from-blue-50 to-purple-50">
+                <h2 class="section-title">Conceptos Clave del Machine Learning</h2>
+                <div class="accent-line"></div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="font-semibold text-primary mb-3 flex items-center">
+                                <i class="fas fa-database mr-3"></i>
+                                Datos de Entrenamiento
+                            </h3>
+                            <p class="text-gray-600">Los ejemplos que usa el algoritmo para aprender patrones. Cuantos más datos de calidad, mejor será el aprendizaje.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="font-semibold text-secondary mb-3 flex items-center">
+                                <i class="fas fa-tags mr-3"></i>
+                                Características (Features)
+                            </h3>
+                            <p class="text-gray-600">Las propiedades o atributos de los datos que el algoritmo usa para hacer predicciones (como peso, textura, color).</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="font-semibold text-accent mb-3 flex items-center">
+                                <i class="fas fa-exclamation-triangle mr-3"></i>
+                                Sobreajuste (Overfitting)
+                            </h3>
+                            <p class="text-gray-600">Cuando el modelo memoriza los datos de entrenamiento pero no generaliza bien a nuevos datos.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="font-semibold text-purple-600 mb-3 flex items-center">
+                                <i class="fas fa-check-double mr-3"></i>
+                                Validación
+                            </h3>
+                            <p class="text-gray-600">Proceso de evaluar el rendimiento del modelo con datos que no ha visto durante el entrenamiento.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="font-semibold text-green-600 mb-3 flex items-center">
+                                <i class="fas fa-bullseye mr-3"></i>
+                                Precisión
+                            </h3>
+                            <p class="text-gray-600">Medida de qué tan bien el modelo hace predicciones correctas en relación al total de predicciones.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <h3 class="font-semibold text-red-600 mb-3 flex items-center">
+                                <i class="fas fa-expand-arrows-alt mr-3"></i>
+                                Generalización
+                            </h3>
+                            <p class="text-gray-600">La capacidad del modelo de hacer buenas predicciones en datos nuevos que nunca ha visto antes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer con botón de regreso -->
+    <footer class="bg-dark text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="decorative-shape shape-top-left"></div>
+        <div class="decorative-shape shape-bottom-right"></div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="mb-8">
+                <a href="modulo1.html" class="nav-button-home">
+                    <i class="fas fa-arrow-left"></i>
+                    Regresar al Módulo 1
+                </a>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-gray-400 text-lg">
+                <p>Diplomado: Herramientas de Inteligencia Artificial para Educadores Innovadores.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

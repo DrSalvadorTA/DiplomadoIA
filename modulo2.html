@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Explorando Herramientas de IA Generativa - Presentación</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #fefefe 0%, #f0f9ff 100%);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .slide-title-main {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.8rem;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .slide-info {
+            font-size: 1.2rem;
+            color: #4299e1;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .slide-content-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accent-line {
+            height: 4px;
+            background: linear-gradient(90deg, #4299e1, #667eea);
+            border-radius: 2px;
+            width: 120px;
+            margin: 0 auto 35px auto;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1400px;
+            text-align: left;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1d4ed8;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .content-card h3 i {
+            margin-right: 15px;
+            color: #4299e1;
+            font-size: 2rem;
+        }
+        
+        .content-card p,
+        .content-card ul {
+            font-size: 1.2rem;
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .content-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .content-card ul li {
+            padding: 12px 0 12px 2.5em;
+            position: relative;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+        }
+        
+        .content-card ul li:hover {
+            transform: translateX(8px);
+            color: #1d4ed8;
+            background: rgba(66, 153, 225, 0.05);
+        }
+        
+        .content-card ul li i {
+            position: absolute;
+            left: 0;
+            top: 16px;
+            color: #4299e1;
+            font-size: 1.3rem;
+        }
+        
+        .decorative-shape {
+            position: absolute;
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .shape-top-left {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        .shape-bottom-right {
+            width: 250px;
+            height: 250px;
+            bottom: -125px;
+            right: -125px;
+        }
+        
+        .nav-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .nav-button-home {
+            background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+            font-size: 1.1rem;
+        }
+        
+        .nav-button-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(66, 153, 225, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-button-home i {
+            margin-right: 10px;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 1.1rem;
+            color: #667eea;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-icon {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 40px rgba(66, 153, 225, 0.4);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 6px solid #4299e1;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.1);
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .icon-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(66, 153, 225, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .icon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .icon-card i {
+            font-size: 2.5rem;
+            color: #4299e1;
+            margin-bottom: 15px;
+        }
+        
+        .icon-card h4 {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .icon-card p {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .wide-content {
+            max-width: 1600px;
+            width: 100%;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            border: 2px dashed #4299e1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(66, 153, 225, 0.2);
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .image-placeholder span {
+            color: #4299e1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+        
+        .split-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .tool-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 6px solid #4299e1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(66, 153, 225, 0.1);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .activity-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 2px solid rgba(66, 153, 225, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 1200px) {
+            .slide-title-main {
+                font-size: 3rem;
+            }
+            .content-card {
+                max-width: 1000px;
+            }
+            .split-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .icon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide-title-main {
+                font-size: 2.5rem;
+            }
+            .slide-content-title {
+                font-size: 2rem;
+            }
+            .content-card {
+                padding: 25px;
+                margin: 0 15px 20px 15px;
+            }
+            .icon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal de Imagen */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            display: block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .zoomable {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .zoomable:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide 1: Title Slide -->
+    <div class="slide">
+        <div class="decorative-shape shape-top-left"></div>
+        <div class="module-icon">
+            <i class="fas fa-robot"></i>
+        </div>
+        <h1 class="slide-title-main">Módulo 2:<br>Explorando Herramientas<br>de IA Generativa</h1>
+        <p class="slide-subtitle">ChatGPT, Gemini, Copilot y Más: Dominando la Nueva Generación de IA</p>
+        <div class="accent-line"></div>
+
+        <div style="max-width: 600px; height: 200px; text-align: center;">
+            <img src="imagenes/modulo2/imagen1.png" alt="Herramientas IA Generativa" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+        </div>
+
+        <p class="slide-info">
+            <i class="fas fa-chalkboard-teacher"></i> Dr. Salvador Tututi Ávila &nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-laptop-code"></i> I.Q. Juan José Alonso Tijerina
+        </p>
+        <p class="slide-info">
+            <i class="fas fa-clock"></i> Duración del Módulo: 8 horas (3 Síncronas / 5 Asíncronas)
+        </p>
+
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">1 / 26</div>
+        <div class="decorative-shape shape-bottom-right"></div>
+    </div>
+
+    <!-- Slide 2: Agenda del Módulo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Agenda del Módulo 2</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-list-ul"></i> Contenidos Principales</h3>
+                    <ul>
+                        <li><i class="fas fa-brain"></i> Fundamentos de los Grandes Modelos de Lenguaje (LLMs): Arquitectura y funcionamiento</li>
+                        <li><i class="fas fa-desktop"></i> Exploración completa de interfaces: ChatGPT, Gemini, Copilot, y Perplexity AI</li>
+                        <li><i class="fas fa-magic"></i> Ingeniería de Prompts: Técnicas avanzadas para resultados óptimos</li>
+                        <li><i class="fas fa-balance-scale"></i> Análisis comparativo: Fortalezas, debilidades y casos de uso específicos</li>
+                        <li><i class="fas fa-users"></i> Experimentación práctica: Sesión hands-on con múltiples herramientas</li>
+                        <li><i class="fas fa-tasks"></i> Proyecto asíncrono: Refinamiento de prompts y evaluación comparativa</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen2.png" alt="Agenda Módulo 2" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">2 / 26</div>
+    </div>
+
+    <!-- Slide 3: ¿Qué son los LLMs? -->
+    <div class="slide">
+        <h2 class="slide-content-title">¿Qué son los Grandes Modelos de Lenguaje?</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-brain"></i> Definición Fundamental</h3>
+                    <p>Los <strong>Grandes Modelos de Lenguaje (LLMs)</strong> representan el paradigma más avanzado de la inteligencia artificial contemporánea diseñado específicamente para el procesamiento del lenguaje natural. Son sistemas neuronales
+                        masivos capaces de comprender, generar y manipular texto humano con una sofisticación sin precedentes.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Capacidades revolucionarias:</strong> Estos modelos pueden realizar tareas cognitivas complejas como razonamiento, creatividad, traducción, síntesis de información, y generación de contenido original, todo a través de interfaces
+                            conversacionales naturales.</p>
+                    </div>
+
+                    <p>Los LLMs son entrenados con trillones de palabras de texto diverso —libros, artículos, código, conversaciones— lo que les permite desarrollar una comprensión emergente profunda de conceptos, relaciones y patrones lingüísticos.</p>
+
+                    <!-- Videos de NLP y Transformers -->
+                    <div style="margin-top: 30px;">
+                        <h4 style="font-size: 1.4rem; color: #1d4ed8; margin-bottom: 20px; text-align: center;">
+                            <i class="fas fa-play-circle"></i> Videos Complementarios sobre NLP y Transformers
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 20px;">
+                            <!-- Video 1: INTRO al Natural Language Processing (NLP) #1 -->
+                            <div style="text-align: center;">
+                                <h5 style="font-size: 1.1rem; font-weight: 600; color: #1d4ed8; margin-bottom: 15px; line-height: 1.3;">INTRO al NLP #1 - ¡De PALABRAS a VECTORES!</h5>
+                                <div style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/Tg1MjMIVArc" 
+                                        style="width: 100%; height: 200px; border: none; border-radius: 12px;"
+                                        title="INTRO al Natural Language Processing (NLP) #1"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+
+                            <!-- Video 2: INTRO al Natural Language Processing (NLP) #2 -->
+                            <div style="text-align: center;">
+                                <h5 style="font-size: 1.1rem; font-weight: 600; color: #1d4ed8; margin-bottom: 15px; line-height: 1.3;">INTRO al NLP #2 - ¿Qué es un EMBEDDING?</h5>
+                                <div style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/RkYuH_K7Fx4" 
+                                        style="width: 100%; height: 200px; border: none; border-radius: 12px;"
+                                        title="INTRO al Natural Language Processing (NLP) #2"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+
+                            <!-- Video 3: ¿Qué es un TRANSFORMER? -->
+                            <div style="text-align: center;">
+                                <h5 style="font-size: 1.1rem; font-weight: 600; color: #1d4ed8; margin-bottom: 15px; line-height: 1.3;">¿Qué es un TRANSFORMER? La Red Neuronal que lo cambió TODO!</h5>
+                                <div style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/aL-EmKuB078" 
+                                        style="width: 100%; height: 200px; border: none; border-radius: 12px;"
+                                        title="¿Qué es un TRANSFORMER?"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+
+                            <!-- Video 4: ¿Por qué estas REDES NEURONALES son tan POTENTES? -->
+                            <div style="text-align: center;">
+                                <h5 style="font-size: 1.1rem; font-weight: 600; color: #1d4ed8; margin-bottom: 15px; line-height: 1.3;">TRANSFORMERS Parte 2 - ¿Por qué son tan POTENTES? 🤔</h5>
+                                <div style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/xi94v_jl26U" 
+                                        style="width: 100%; height: 200px; border: none; border-radius: 12px;"
+                                        title="¿Por qué estas REDES NEURONALES son tan POTENTES?"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen3.png" alt="Concepto LLM" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3 / 26</div>
+    </div>
+
+    <!-- Slide 4: Arquitectura y Funcionamiento de LLMs -->
+    <div class="slide">
+        <h2 class="slide-content-title">Arquitectura Transformer: El Cerebro de los LLMs</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <a href="transformer.html" target="_blank" class="block">
+                        <img src="imagenes/modulo2/imagen4.png" alt="Arquitectura Transformer" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'">
+                    </a>
+                </div>
+                <div>
+                    <h3><i class="fas fa-cogs"></i> Mecanismo de Funcionamiento</h3>
+                    <p>Los LLMs modernos se basan en la <strong>arquitectura Transformer</strong>, introducida en 2017, que revolucionó el procesamiento de lenguaje natural mediante el mecanismo de "atención".</p>
+
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-eye" style="color: #10b981;"></i>
+                            <h4>Mecanismo de Atención</h4>
+                            <p>Permite al modelo "prestar atención" a diferentes partes del texto simultáneamente, capturando relaciones complejas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-layer-group" style="color: #3b82f6;"></i>
+                            <h4>Procesamiento Paralelo</h4>
+                            <p>A diferencia de modelos secuenciales, los Transformers procesan todo el contexto simultáneamente</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <i class="fas fa-compress-arrows-alt" style="color: #8b5cf6;"></i>
+                            <h4>Representaciones Densas</h4>
+                            <p>Convierte palabras en vectores matemáticos que capturan significado y contexto</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-forward" style="color: #f59e0b;"></i>
+                            <h4>Predicción Autoregresiva</h4>
+                            <p>Genera texto palabra por palabra, utilizando todo el contexto previo para predecir la siguiente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">4 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="transformer.html" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-brain mr-2"></i>Arquitectura Transformer</a>
+        </div>
+    </div>
+
+    <!-- Slide 5: Proceso de Entrenamiento -->
+    <div class="slide">
+        <h2 class="slide-content-title">Proceso de Entrenamiento de LLMs</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-graduation-cap"></i> Aprendizaje Autosupervisado</h3>
+                    <p>Los LLMs aprenden a través de un proceso revolucionario llamado <strong>aprendizaje autosupervisado</strong>, donde el modelo aprende de vastos corpus de texto sin supervisión humana explícita.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Proceso fundamental:</strong> El modelo lee billones de ejemplos de texto y aprende a predecir la siguiente palabra en una secuencia. Este proceso simple pero poderoso permite que emerjan capacidades cognitivas complejas.</p>
+                    </div>
+
+                    <h4><i class="fas fa-layer-group"></i> Fases del Entrenamiento:</h4>
+                    <ul>
+                        <li><i class="fas fa-database"></i> <strong>Pre-entrenamiento:</strong> Aprendizaje masivo en corpus de texto diverso (libros, internet, código)</li>
+                        <li><i class="fas fa-tools"></i> <strong>Fine-tuning:</strong> Ajuste específico para tareas particulares o dominios especializados</li>
+                        <li><i class="fas fa-user-check"></i> <strong>RLHF:</strong> Reinforcement Learning from Human Feedback para alinear con valores humanos</li>
+                        <li><i class="fas fa-shield-check"></i> <strong>Safety Training:</strong> Entrenamiento adicional para comportamientos seguros y éticos</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen5.png" alt="Entrenamiento LLM" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 20px;">
+                    
+                    <!-- Video complementario sobre entrenamiento de LLMs -->
+                    <div style="margin-top: 25px;">
+                        <h5 style="font-size: 1.2rem; font-weight: 600; color: #1d4ed8; margin-bottom: 15px; text-align: center;">
+                            <i class="fas fa-play-circle"></i> Video: Entrenamiento de Modelos de Lenguaje
+                        </h5>
+                        <div style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                            <iframe 
+                                src="https://www.youtube.com/embed/7xTGNNLPyMI?start=2185" 
+                                style="width: 100%; height: 250px; border: none; border-radius: 12px;"
+                                title="Entrenamiento de Modelos de Lenguaje"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">5 / 26</div>
+    </div>
+
+    <!-- Slide 6: Limitaciones y Consideraciones Críticas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Limitaciones y Consideraciones Críticas</h2>
+        <div class="accent-line"></div>
+        <!-- Banner Principal -->
+        <div style="width: 100%; max-width: 1600px; margin-bottom: 40px; text-align: center;">
+            <img src="imagenes/modulo2/imagen6.jpg" alt="Limitaciones LLM" style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); border: 3px solid rgba(255,255,255,0.8);">
+        </div>
+
+        <div class="content-card wide-content card-hover">
+
+            <div class="icon-grid">
+                <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                    <i class="fas fa-magic" style="color: #ef4444;"></i>
+                    <h4>Alucinaciones</h4>
+                    <p>Pueden generar información factualmente incorrecta con extrema confianza, requiriendo verificación constante de la información</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f97316;">
+                    <i class="fas fa-balance-scale" style="color: #f97316;"></i>
+                    <h4>Sesgos Inherentes</h4>
+                    <p>Reflejan sesgos presentes en datos de entrenamiento, potencialmente perpetuando desigualdades sociales</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #eab308;">
+                    <i class="fas fa-calendar-times" style="color: #eab308;"></i>
+                    <h4>Conocimiento Temporal</h4>
+                    <p>Su conocimiento está limitado a la fecha de entrenamiento, careciendo de información reciente</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #dc2626;">
+                    <i class="fas fa-brain" style="color: #dc2626;"></i>
+                    <h4>Comprensión Superficial</h4>
+                    <p>Operan mediante reconocimiento de patrones sofisticados, no verdadera comprensión conceptual</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #7c3aed;">
+                    <i class="fas fa-calculator" style="color: #7c3aed;"></i>
+                    <h4>Limitaciones Matemáticas</h4>
+                    <p>Dificultades con cálculos complejos y razonamiento lógico estricto sin herramientas auxiliares</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #059669;">
+                    <i class="fas fa-exclamation-triangle" style="color: #059669;"></i>
+                    <h4>Variabilidad de Resultados</h4>
+                    <p>Las respuestas pueden variar significativamente con prompts similares, requiriendo iteración cuidadosa</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Imperativo educativo:</strong> Comprender estas limitaciones es fundamental para un uso responsable y efectivo en contextos educativos, promoviendo el pensamiento crítico y la verificación de información.</p>
+            </div>
+        </div>
+        <div class="slide-number">6 / 26</div>
+    </div>
+
+    <!-- Slide 7: ChatGPT - La Revolución Conversacional -->
+    <div class="slide">
+        <h2 class="slide-content-title">ChatGPT: Pionero de la IA Conversacional</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-comments"></i> OpenAI ChatGPT</h3>
+                    <p>ChatGPT, desarrollado por OpenAI, marcó un hito histórico al democratizar el acceso a la IA conversacional avanzada. Basado en la arquitectura GPT (Generative Pre-trained Transformer), representa el estado del arte en generación de
+                        texto.
+                    </p>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-star"></i> Características Destacadas para Educadores:</h4>
+                        <ul>
+                            <li><i class="fas fa-brain"></i> <strong>Conversaciones contextuales:</strong> Mantiene coherencia a lo largo de intercambios extensos</li>
+                            <li><i class="fas fa-language"></i> <strong>Multilingüe nativo:</strong> Soporte robusto para múltiples idiomas</li>
+                            <li><i class="fas fa-code"></i> <strong>Generación de código:</strong> Creación y explicación de programas educativos</li>
+                            <li><i class="fas fa-palette"></i> <strong>Creatividad literaria:</strong> Poemas, historias, y contenido narrativo</li>
+                            <li><i class="fas fa-graduation-cap"></i> <strong>Explicaciones pedagógicas:</strong> Adaptación automática al nivel del estudiante</li>
+                            <li><i class="fas fa-robot"></i> <strong>ChatGPT Agent:</strong> Ejecuta tareas autónomas, navegación web y uso de herramientas</li>
+                            <li><i class="fas fa-microphone"></i> <strong>Voz avanzada:</strong> Conversaciones naturales con reconocimiento de voz</li>
+                            <li><i class="fas fa-memory"></i> <strong>Memoria:</strong> Recuerda conversaciones previas y preferencias</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h5 style="font-size: 1.1rem; color: #1d4ed8; margin-bottom: 10px;"><i class="fas fa-ticket-alt"></i> Planes Disponibles (Julio 2025):</h5>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #10b981;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">🆓 Gratuito</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">GPT-3.5 + GPT-4o mini</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #3b82f6;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">💎 Plus - $20/mes</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">GPT-4o + GPT-4.5 + Agent</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #8b5cf6;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">🚀 Pro - $200/mes</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">Todo Plus + o1-pro + Deep Research</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #f59e0b;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">👥 Team - $25-30/usuario</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">Plus + Colaboración + Controles</p>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.9rem;"><strong>Acceso:</strong> <a href="https://chat.openai.com" target="_blank" style="color: #4299e1;">chat.openai.com</a></p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://chatgpt.com/" target="_blank" class="block">
+                        <img src="imagenes/modulo2/imagen7.png" alt="Interfaz ChatGPT" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">7 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://chat.openai.com" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-comments mr-2"></i>ChatGPT</a>
+        </div>
+    </div>
+
+    <!-- Slide 8: Google Gemini - Integración Ecosistémica -->
+    <div class="slide">
+        <h2 class="slide-content-title">Google Gemini: Integración Total del Ecosistema</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <a href="https://gemini.google.com/app" target="_blank" class="block">
+                        <img src="imagenes/modulo2/imagen8.png" alt="Interfaz Gemini" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'">
+                    </a>
+                </div>
+                <div>
+                    <h3><i class="fas fa-google"></i> Google Gemini 2.5 Pro</h3>
+                    <p>Gemini 2.5 Pro representa el modelo más avanzado de Google, clasificado como #1 en el Chatbot Arena LLM Leaderboard. Con capacidades revolucionarias de contexto y razonamiento, está diseñado para tareas complejas de desarrollo y análisis.</p>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-rocket"></i> Características Revolucionarias (2025):</h4>
+                        <ul>
+                            <li><i class="fas fa-brain"></i> <strong>Ventana de contexto masiva:</strong> Hasta 1 millón de tokens (próximamente 2M) - equivalente a 30,000 líneas de código</li>
+                            <li><i class="fas fa-cogs"></i> <strong>Razonamiento avanzado:</strong> Mejor rendimiento en benchmarks de programación (SWE-Bench, LiveCodeBench)</li>
+                            <li><i class="fas fa-eye"></i> <strong>Multimodalidad nativa:</strong> Texto, código, imágenes, audio y video en una sola entrada</li>
+                            <li><i class="fas fa-code"></i> <strong>Ejecución de código:</strong> Puede ejecutar Python para cálculos y pruebas de lógica</li>
+                            <li><i class="fas fa-search"></i> <strong>Grounding con Google Search:</strong> Información actualizada en tiempo real</li>
+                            <li><i class="fas fa-tools"></i> <strong>Function calling mejorado:</strong> Uso de herramientas externas y APIs</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h5 style="font-size: 1.1rem; color: #1d4ed8; margin-bottom: 10px;"><i class="fas fa-trophy"></i> Planes Disponibles (Mayo 2025):</h5>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #10b981;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">🆓 Google AI Studio</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">Tier gratuito generoso para experimentación</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #3b82f6;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">💎 Gemini Advanced - $19.99/mes</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">Google One AI Premium + Workspace</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #8b5cf6;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">☁️ Vertex AI (Enterprise)</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">Pay-as-you-go para aplicaciones productivas</p>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.9rem;"><strong>Acceso:</strong> <a href="https://gemini.google.com" target="_blank" style="color: #4299e1;">gemini.google.com</a> | <a href="https://aistudio.google.com" target="_blank" style="color: #4299e1;">aistudio.google.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">8 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://gemini.google.com/app" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-robot mr-2"></i>Google Gemini</a>
+        </div>
+    </div>
+
+    <!-- Slide 9: Microsoft Copilot - Productividad Integrada -->
+    <div class="slide">
+        <h2 class="slide-content-title">Microsoft Copilot: Productividad y Creatividad</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-microsoft"></i> Microsoft Copilot (2025)</h3>
+                    <p>Microsoft Copilot representa la integración más profunda de IA en el ecosistema de productividad, evolucionando de Bing Chat a una plataforma unificada que combina GPT-4o, DALL-E 3 y capacidades nativas de Microsoft 365.</p>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-magic"></i> Capacidades Avanzadas (2025):</h4>
+                        <ul>
+                            <li><i class="fas fa-brain"></i> <strong>GPT-4o integrado:</strong> Modelo multimodal más avanzado de OpenAI</li>
+                            <li><i class="fas fa-paint-brush"></i> <strong>DALL-E 3 nativo:</strong> Generación de imágenes de alta calidad sin límites</li>
+                            <li><i class="fas fa-desktop"></i> <strong>Microsoft 365 Copilot:</strong> Integración profunda con Word, PowerPoint, Excel, Teams</li>
+                            <li><i class="fas fa-code"></i> <strong>GitHub Copilot:</strong> Asistente de programación con contexto completo</li>
+                            <li><i class="fas fa-search"></i> <strong>Búsqueda web en tiempo real:</strong> Información actualizada con fuentes verificables</li>
+                            <li><i class="fas fa-file-alt"></i> <strong>Análisis de documentos:</strong> Procesamiento de PDFs, imágenes y archivos</li>
+                            <li><i class="fas fa-chart-line"></i> <strong>Análisis de datos avanzado:</strong> Interpretación de gráficos, tablas y datasets</li>
+                            <li><i class="fas fa-robot"></i> <strong>Copilot Studio:</strong> Creación de copilots personalizados para organizaciones</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h5 style="font-size: 1.1rem; color: #1d4ed8; margin-bottom: 10px;"><i class="fas fa-ticket-alt"></i> Planes Disponibles (2025):</h5>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #10b981;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">🆓 Copilot Gratuito</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">Acceso básico con limitaciones de uso</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #3b82f6;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">💎 Copilot Pro - $20/mes</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">Sin límites + Microsoft 365 Apps</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #8b5cf6;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">🏢 Copilot for Microsoft 365</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">$30/usuario/mes + suscripción Microsoft 365</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #f59e0b;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">⚙️ Copilot Studio</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">$200/mes para copilots personalizados</p>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.9rem;"><strong>Acceso:</strong> <a href="https://copilot.microsoft.com" target="_blank" style="color: #4299e1;">copilot.microsoft.com</a></p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://copilot.microsoft.com/chats/rPyH6GzvDbJ77qtyfhp8n" target="_blank" class="block">
+                        <img src="imagenes/modulo2/imagen9.png" alt="Interfaz Copilot" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">9 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://copilot.microsoft.com" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-microsoft mr-2"></i>Microsoft Copilot</a>
+        </div>
+    </div>
+
+    <!-- Slide 10: Perplexity AI - Investigación Avanzada -->
+    <div class="slide">
+        <h2 class="slide-content-title">Perplexity AI: Motor de Investigación Inteligente</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <a href="https://www.perplexity.ai/" target="_blank" class="block">
+                        <img src="imagenes/modulo2/imagen10.png" alt="Interfaz Perplexity" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'">
+                    </a>
+                </div>
+                <div>
+                    <h3><i class="fas fa-search-plus"></i> Perplexity AI (2025)</h3>
+                    <p>Perplexity AI ha evolucionado de un motor de búsqueda conversacional a una plataforma integral de investigación, combinando múltiples modelos de IA (Claude 3.5 Sonnet, GPT-4o, Gemini 2.5 Pro) con acceso en tiempo real a fuentes web verificables.</p>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-microscope"></i> Capacidades de Investigación Avanzadas:</h4>
+                        <ul>
+                            <li><i class="fas fa-brain"></i> <strong>Múltiples modelos de IA:</strong> Claude 3.5 Sonnet, GPT-4o, Gemini 2.5 Pro, Mixtral 8x7B</li>
+                            <li><i class="fas fa-quote-right"></i> <strong>Citas automáticas:</strong> Referencias precisas con enlaces directos a fuentes</li>
+                            <li><i class="fas fa-clock"></i> <strong>Información en tiempo real:</strong> Acceso a datos actualizados y noticias recientes</li>
+                            <li><i class="fas fa-filter"></i> <strong>Filtros especializados:</strong> Academic, news, Reddit, YouTube, Wolfram Alpha</li>
+                            <li><i class="fas fa-file-alt"></i> <strong>Análisis de documentos:</strong> Procesamiento de PDFs y archivos</li>
+                            <li><i class="fas fa-share-alt"></i> <strong>Páginas compartibles:</strong> Resultados de investigación persistentes y colaborativos</li>
+                            <li><i class="fas fa-history"></i> <strong>Threads de investigación:</strong> Conversaciones estructuradas y organizadas</li>
+                            <li><i class="fas fa-chart-bar"></i> <strong>Análisis de datos:</strong> Interpretación de gráficos y tablas</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h5 style="font-size: 1.1rem; color: #1d4ed8; margin-bottom: 10px;"><i class="fas fa-ticket-alt"></i> Planes Disponibles (2025):</h5>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #10b981;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">🆓 Perplexity Gratuito</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">5 búsquedas/día, modelo básico</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #3b82f6;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">💎 Perplexity Pro - $20/mes</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">Sin límites + modelos premium</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 8px; padding: 12px; border-left: 4px solid #8b5cf6;">
+                                <h6 style="font-weight: 600; color: #1d4ed8; margin-bottom: 5px;">🏢 Perplexity Enterprise</h6>
+                                <p style="font-size: 0.9rem; color: #6b7280; margin: 0;">Solución personalizada para organizaciones</p>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 0.9rem;"><strong>Acceso:</strong> <a href="https://www.perplexity.ai" target="_blank" style="color: #4299e1;">perplexity.ai</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://www.perplexity.ai" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-search-plus mr-2"></i>Perplexity AI</a>
+        </div>
+    </div>
+
+    <!-- Slide 10.1: Otras Herramientas de IA de Ayuda -->
+    <div class="slide">
+        <h2 class="slide-content-title">Otras Herramientas de IA de Ayuda</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-toolbox"></i> Explora más herramientas de IA</h3>
+                    <p>Además de las plataformas principales, existen muchas otras herramientas de inteligencia artificial que pueden potenciar la productividad, creatividad y aprendizaje. Estas herramientas abarcan desde asistentes para flujos de trabajo, automatización, generación de imágenes, audio, video y mucho más.</p>
+                    <div class="highlight-box">
+                        <p>Consulta una recopilación visual y actualizada de herramientas de IA en el siguiente enlace:</p>
+                        <a href="https://25marchwk2.my.canva.site/riley-s-boards" target="_blank" style="color: #4299e1; font-weight: bold; text-decoration: underline;">The AI Tool Stack - Riley's Boards</a>
+                    </div>
+                    <!-- Imagen agregada: Herramientas.png -->
+                    <div style="text-align: center; margin-top: 20px;">
+                        <img src="imagenes/modulo2/Herramientas.png" alt="Herramientas de IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <iframe width="420" height="236" src="https://www.youtube.com/embed/2itM7IdThvA?start=1209" title="AI Tool Stack Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10.1 / 26</div>
+    </div>
+
+    <!-- Slide 11: Fundamentos de Ingeniería de Prompts -->
+    <div class="slide">
+        <h2 class="slide-content-title">Ingeniería de Prompts: El Arte de Comunicarse con IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-lightbulb"></i> ¿Por qué es Crucial para Educadores?</h3>
+                    <p>La <strong>Ingeniería de Prompts</strong> es la disciplina que define la diferencia entre obtener respuestas mediocres y generar contenido educativo excepcional. Es el puente comunicativo entre la intención pedagógica del educador
+                        y la capacidad generativa de la IA.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Principio fundamental:</strong> "La calidad de la salida es directamente proporcional a la calidad de la entrada" - Un prompt bien diseñado es la diferencia entre una herramienta frustrante y un asistente pedagógico revolucionario.</p>
+                    </div>
+
+                    <div class="icon-grid">
+                        <div class="icon-card">
+                            <i class="fas fa-bullseye"></i>
+                            <h4>Precisión Pedagógica</h4>
+                            <p>Dirige la IA hacia objetivos educativos específicos y medibles</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Eficiencia Temporal</h4>
+                            <p>Reduce iteraciones innecesarias y acelera la creación de contenido</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-user-cog"></i>
+                            <h4>Control Creativo</h4>
+                            <p>Mantiene la visión pedagógica del educador en el centro del proceso</p>
+                        </div>
+                        <div class="icon-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Resultados Consistentes</h4>
+                            <p>Genera outputs predecibles y alineados con estándares educativos</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen11.png" alt="Ingeniería de Prompts" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11 / 26</div>
+    </div>
+
+    <!-- Slide 12: Anatomía de un Prompt Efectivo -->
+    <div class="slide">
+        <h2 class="slide-content-title">Anatomía de un Prompt Efectivo</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen12.png" alt="Anatomía Prompt" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 20px;">
+                    <img src="imagenes/modulo2/Rules.png" alt="Reglas de Prompting" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-dna"></i> Componentes Esenciales del Prompt</h3>
+                    <p>Un prompt educativo efectivo sigue una estructura sistemática que maximiza la probabilidad de obtener resultados alineados con objetivos pedagógicos específicos.</p>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-list-ol"></i> Framework C.R.E.A.R:</h4>
+                        <ul>
+                            <li><i class="fas fa-bullseye"></i> <strong>C - Contexto:</strong> "Actúa como un experto pedagogo especializado en [materia]"</li>
+                            <li><i class="fas fa-user-graduate"></i> <strong>R - Rol:</strong> "Tu audiencia son estudiantes de [nivel] con [características]"</li>
+                            <li><i class="fas fa-clipboard-list"></i> <strong>E - Especificación:</strong> "Crea [tipo de contenido] que incluya [elementos específicos]"</li>
+                            <li><i class="fas fa-palette"></i> <strong>A - Aspecto:</strong> "Utiliza un tono [descripción] y formato [estructura]"</li>
+                            <li><i class="fas fa-check-square"></i> <strong>R - Restricciones:</strong> "Limita a [extensión] y evita [elementos no deseados]"</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Ejemplo aplicado:</strong> "Actúa como un experto en biología molecular. Tu audiencia son estudiantes de bachillerato científico. Crea una explicación de la transcripción del ADN que incluya analogías familiares y un diagrama
+                            textual. Utiliza un tono entusiasta y formato de párrafos cortos. Limita a 200 palabras y evita terminología excesivamente técnica."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">12 / 26</div>
+    </div>
+
+    <!-- Slide 13: Técnicas Avanzadas de Prompting -->
+    <div class="slide">
+        <h2 class="slide-content-title">Técnicas Avanzadas de Prompting</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-rocket"></i> Estrategias de Prompting Avanzadas</h3>
+                    <p>Estas técnicas sofisticadas permiten obtener resultados de calidad profesional y aprovechar al máximo las capacidades emergentes de los LLMs más avanzados.</p>
+
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-chain" style="color: #10b981;"></i>
+                            <h4>Chain-of-Thought</h4>
+                            <p>"Explica paso a paso tu razonamiento" - Mejora significativamente la lógica y precisión de las respuestas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-clone" style="color: #3b82f6;"></i>
+                            <h4>Few-Shot Learning</h4>
+                            <p>Proporcionar 2-3 ejemplos del output deseado para guiar el estilo y formato específico</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <i class="fas fa-user-tie" style="color: #8b5cf6;"></i>
+                            <h4>Role-Playing</h4>
+                            <p>"Actúa como [experto específico]" - Activa conocimientos especializados y tonos apropiados</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-not-equal" style="color: #f59e0b;"></i>
+                            <h4>Negative Prompting</h4>
+                            <p>"No incluyas/evita..." - Previene outputs no deseados y refina la precisión</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                            <i class="fas fa-thermometer-half" style="color: #ef4444;"></i>
+                            <h4>Temperature Control</h4>
+                            <p>Ajustar creatividad vs. precisión: "Sé creativo" o "Mantén precisión factual estricta"</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #06b6d4;">
+                            <i class="fas fa-sync-alt" style="color: #06b6d4;"></i>
+                            <h4>Iterative Refinement</h4>
+                            <p>Mejoramiento progresivo: "Ahora hazlo más [específico]" en conversaciones consecutivas</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://www.promptingguide.ai/techniques" target="_blank" class="block">
+                        <img src="imagenes/modulo2/imagen13.png" alt="Técnicas Avanzadas" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">13 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://www.promptingguide.ai/techniques" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-book mr-2"></i>Prompt Engineering Guide</a>
+        </div>
+    </div>
+
+    <!-- Slide 14: Actividad Síncrona - Comparación de Prompts -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Síncrona: Comparación de Prompts</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-users"></i> Actividad Práctica Síncrona</h3>
+                    <div class="highlight-box">
+                        <p><strong>Modalidad:</strong> Actividad Síncrona - Trabajo en tiempo real</p>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-tasks" style="color: #10b981;"></i> Instrucciones de la Actividad</h4>
+                        <ol style="padding-left: 25px; margin-top: 20px;">
+                            <li style="margin-bottom: 15px;"><strong>Entra a ChatGPT o a otra plataforma de tu preferencia</strong> y abre un nuevo chat</li>
+                            <li style="margin-bottom: 15px;"><strong>Pega el prompt establecido en la guía de actividades</strong> (prompt básico)</li>
+                            <li style="margin-bottom: 15px;"><strong>Pide una tarea</strong> específica relacionada con tu área de enseñanza</li>
+                            <li style="margin-bottom: 15px;"><strong>Repite el proceso con el prompt mejorado</strong> (versión optimizada)</li>
+                            <li style="margin-bottom: 15px;"><strong>Compara los resultados</strong> del prompt básico vs. el prompt mejorado</li>
+                            <li style="margin-bottom: 15px;"><strong>Provee una discusión de los resultados</strong> con tus compañeros</li>
+                        </ol>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-balance-scale" style="color: #3b82f6;"></i> Criterios de Comparación</h4>
+                        <ul style="margin-top: 15px;">
+                            <li><i class="fas fa-check-circle"></i> <strong>Claridad:</strong> ¿Cuál respuesta es más clara y específica?</li>
+                            <li><i class="fas fa-target"></i> <strong>Relevancia:</strong> ¿Cuál se adapta mejor a tu contexto educativo?</li>
+                            <li><i class="fas fa-tools"></i> <strong>Utilidad práctica:</strong> ¿Cuál puedes implementar inmediatamente?</li>
+                            <li><i class="fas fa-graduation-cap"></i> <strong>Valor pedagógico:</strong> ¿Cuál tendría mayor impacto en el aprendizaje?</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Objetivo:</strong> Experimentar directamente el impacto de la ingeniería de prompts en la calidad y relevancia de las respuestas de IA para contextos educativos específicos</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen13.png" alt="Comparación de Prompts" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">14 / 26</div>
+    </div>
+
+    <!-- Slide 15: Prompts Educativos: Ejemplos Prácticos -->
+    <div class="slide">
+        <h2 class="slide-content-title">Prompts Educativos: Casos de Uso para Ingeniería Química</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div style="height: 200px; margin-bottom: 30px; text-align: center;">
+                <img src="imagenes/modulo2/imagen14.png" alt="Ejemplos Prompts" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+            </div>
+
+            <div class="icon-grid">
+                <div class="activity-card">
+                    <h4><i class="fas fa-flask" style="color: #10b981;"></i> Aprendizaje Basado en Problemas (ABP)</h4>
+                    <p><strong>Prompt:</strong> "Actúa como un experto en pedagogía constructivista especializado en ingeniería química. Diseña un problema auténtico sobre contaminación de aguas residuales industriales para estudiantes de licenciatura. Incluye: contexto real de una empresa química, datos técnicos específicos, dilemas éticos, y criterios de evaluación holística. Aplica la metodología ABP de Barrows con facilitación guiada y reflexión metacognitiva."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-brain" style="color: #3b82f6;"></i> Desarrollo de Pensamiento Crítico en Cinética Química</h4>
+                    <p><strong>Prompt:</strong> "Como especialista en taxonomía de Bloom aplicada a ingeniería, crea una secuencia de preguntas para analizar críticamente la cinética de reacciones catalíticas. Progresa desde conocimiento factual hasta evaluación crítica. Incluye: análisis de gráficos experimentales, evaluación de mecanismos propuestos, síntesis de condiciones óptimas. Incorpora el modelo de pensamiento crítico de Paul & Elder con elementos de razonamiento específicos para química."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-cogs" style="color: #8b5cf6;"></i> Aprendizaje Experiencial en Operaciones Unitarias</h4>
+                    <p><strong>Prompt:</strong> "Eres un experto en la teoría de aprendizaje experiencial de Kolb aplicada a ingeniería química. Diseña una actividad completa sobre destilación fraccionada que incluya las 4 etapas del ciclo: experiencia concreta (simulación virtual), observación reflexiva (análisis de datos), conceptualización abstracta (principios termodinámicos), y experimentación activa (optimización de parámetros). Incluye instrumentos de evaluación auténtica y reflexión metacognitiva."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-users" style="color: #f59e0b;"></i> Aprendizaje Colaborativo en Diseño de Procesos</h4>
+                    <p><strong>Prompt:</strong> "Como especialista en aprendizaje colaborativo de Johnson & Johnson para STEM, estructura una actividad de diseño de planta química aplicando interdependencia positiva. Asigna roles específicos: ingeniero de procesos, analista económico, especialista en seguridad, evaluador ambiental. Incluye: protocolo de funcionamiento grupal, evaluación individual y grupal, procesamiento de grupo final. El proyecto debe abordar síntesis de amoníaco con consideraciones de sostenibilidad."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-chart-line" style="color: #e11d48;"></i> Zona de Desarrollo Próximo en Termodinámica</h4>
+                    <p><strong>Prompt:</strong> "Actúa como experto en la teoría sociocultural de Vygotsky aplicada a ingeniería química. Diseña andamios educativos progresivos para enseñar equilibrio químico y principio de Le Chatelier. Identifica conocimientos previos necesarios, crea mediadores semióticos (diagramas, analogías), establece niveles de ayuda decreciente, e incluye evaluación de la ZDP. Los andamios deben facilitar la transición de control externo a autorregulación del aprendizaje."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-lightbulb" style="color: #7c3aed;"></i> Aprendizaje Significativo en Balance de Materia</h4>
+                    <p><strong>Prompt:</strong> "Como especialista en la teoría de Ausubel sobre aprendizaje significativo, desarrolla organizadores avanzados para enseñar balances de materia en procesos químicos complejos. Conecta con conocimientos previos de química general, crea mapas conceptuales progresivos, diseña analogías efectivas (sistema hidráulico/sistema químico), e incluye diferenciación progresiva y reconciliación integradora. Evalúa aprendizaje significativo vs. memorístico con preguntas de transferencia."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-sync-alt" style="color: #059669;"></i> Metacognición en Resolución de Problemas de Reactores</h4>
+                    <p><strong>Prompt:</strong> "Eres un experto en metacognición educativa de Flavell aplicada a resolución de problemas en ingeniería química. Diseña una estrategia de enseñanza para reactores químicos que incluya: conocimiento metacognitivo (conocer estrategias de resolución), experiencias metacognitivas (monitoreo del proceso), y estrategias metacognitivas (planificación, monitoreo, evaluación). Crea protocolos de pensamiento en voz alta, autoevaluación reflexiva, y transferencia estratégica a nuevos tipos de reactores."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-atom" style="color: #dc2626;"></i> Constructivismo Social en Fenómenos de Transporte</h4>
+                    <p><strong>Prompt:</strong> "Como especialista en constructivismo social de Vygotsky aplicado a ingeniería, diseña una comunidad de práctica para el aprendizaje de transferencia de calor, masa y momentum. Incluye: participación periférica legítima (observación de expertos), progresión hacia participación central (liderazgo de proyectos), artefactos culturales compartidos (simuladores, bases de datos), y negociación de significados en lenguaje técnico. Evalúa la construcción social del conocimiento a través de discurso científico colaborativo."</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">15 / 26</div>
+    </div>
+
+    <!-- Slide 16: Prompts Generales para Ingeniería -->
+    <div class="slide">
+        <h2 class="slide-content-title">Prompts Generales para Ingenierías</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div style="height: 200px; margin-bottom: 30px; text-align: center;">
+                <img src="imagenes/modulo2/imagen14.png" alt="Prompts Ingeniería" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+            </div>
+
+            <div class="icon-grid">
+                <div class="activity-card">
+                    <h4><i class="fas fa-rocket" style="color: #10b981;"></i> Aprendizaje Basado en Proyectos (ABPr)</h4>
+                    <p><strong>Prompt:</strong> "Actúa como un experto en pedagogía de proyectos aplicada a ingeniería. Diseña un proyecto multidisciplinario de 8 semanas donde estudiantes de diferentes ingenierías colaboren para resolver un desafío de sostenibilidad urbana. Incluye: fases del proyecto, entregables específicos, roles por especialidad (civil, industrial, sistemas, ambiental), criterios de evaluación auténtica, y reflexión sobre competencias profesionales desarrolladas."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-puzzle-piece" style="color: #3b82f6;"></i> Pensamiento de Diseño (Design Thinking)</h4>
+                    <p><strong>Prompt:</strong> "Como especialista en Design Thinking para ingeniería, estructura una actividad completa que aplique las 5 etapas (empatizar, definir, idear, prototipar, testear) para diseñar una solución tecnológica accesible. Incluye: técnicas específicas para cada etapa, herramientas de prototipado rápido, métodos de validación con usuarios, criterios de evaluación del proceso creativo, y conexión con principios de ingeniería centrada en el humano."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-calculator" style="color: #8b5cf6;"></i> Aprendizaje Basado en Casos para Análisis Matemático</h4>
+                    <p><strong>Prompt:</strong> "Eres un experto en metodología de casos aplicada a matemáticas para ingeniería. Desarrolla un caso de estudio sobre el colapso del puente de Tacoma Narrows para enseñar ecuaciones diferenciales y análisis de vibraciones. Incluye: narrativa del caso con datos reales, preguntas progresivas que guíen el análisis matemático, conexiones interdisciplinarias, dilemas éticos de la ingeniería, y evaluación basada en razonamiento matemático aplicado."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-cogs" style="color: #f59e0b;"></i> Gamificación en Sistemas Complejos</h4>
+                    <p><strong>Prompt:</strong> "Como especialista en gamificación educativa para STEM, diseña un juego de simulación para enseñar optimización de sistemas en ingeniería. Incluye: mecánicas de juego (puntos, niveles, desafíos), narrativa inmersiva con contexto industrial, elementos de competencia y colaboración, retroalimentación inmediata, progresión adaptativa según desempeño, y evaluación de competencias de optimización y toma de decisiones bajo incertidumbre."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-globe" style="color: #e11d48;"></i> Aprendizaje Contextualizado en Problemas Globales</h4>
+                    <p><strong>Prompt:</strong> "Actúa como experto en aprendizaje situado aplicado a ingeniería global. Diseña una secuencia didáctica sobre cambio climático que integre múltiples disciplinas de ingeniería. Incluye: análisis de datos reales de IPCC, modelado matemático de escenarios climáticos, evaluación de tecnologías de mitigación, consideraciones socioeconómicas, dilemas éticos globales, y propuesta de soluciones ingenieriles contextualizadas a diferentes regiones del mundo."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-microchip" style="color: #7c3aed;"></i> Flipped Learning en Programación y Simulación</h4>
+                    <p><strong>Prompt:</strong> "Eres un especialista en aula invertida para ingeniería computacional. Estructura un módulo de programación en MATLAB/Python para simulaciones de ingeniería que incluya: contenidos pregrabados con micro-aprendizaje, actividades presenciales de programación colaborativa, proyectos de simulación auténticos, evaluación formativa continua, autoevaluación de competencias digitales, y transferencia a software especializado de la disciplina."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-handshake" style="color: #059669;"></i> Aprendizaje Servicio en Ingeniería Social</h4>
+                    <p><strong>Prompt:</strong> "Como experto en aprendizaje-servicio para ingeniería, diseña un programa donde estudiantes resuelvan problemas reales de comunidades vulnerables aplicando conocimientos técnicos. Incluye: identificación participativa de necesidades comunitarias, diseño colaborativo de soluciones tecnológicas apropiadas, implementación con supervisión académica, evaluación de impacto social y técnico, reflexión sobre responsabilidad social del ingeniero, y sistematización de aprendizajes para replicación."</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-network-wired" style="color: #dc2626;"></i> Pensamiento Sistémico en Complejidad Ingenieril</h4>
+                    <p><strong>Prompt:</strong> "Actúa como especialista en pensamiento sistémico aplicado a ingeniería de sistemas complejos. Desarrolla una metodología para enseñar análisis de sistemas industriales que incluya: mapeo de relaciones causales, identificación de bucles de retroalimentación, análisis de emergencia sistémica, modelado dinámico de sistemas, evaluación de intervenciones sistémicas, y desarrollo de competencias de pensamiento no-lineal para abordar la complejidad ingenieril contemporánea."</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">16 / 26</div>
+    </div>
+
+    <!-- Slide 17: Errores Comunes y Mejores Prácticas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Errores Comunes y Mejores Prácticas</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-exclamation-triangle"></i> Errores Frecuentes a Evitar</h3>
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                            <i class="fas fa-question" style="color: #ef4444;"></i>
+                            <h4>Ambigüedad</h4>
+                            <p>"Explica la Guerra Civil" vs. "Explica las causas económicas de la Guerra Civil Americana para estudiantes de 9° grado"</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f97316;">
+                            <i class="fas fa-file-alt" style="color: #f97316;"></i>
+                            <h4>Sin Especificar Formato</h4>
+                            <p>No indicar si quieres lista, párrafo, tabla, etc. Siempre especifica la estructura deseada</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #eab308;">
+                            <i class="fas fa-users" style="color: #eab308;"></i>
+                            <h4>Audiencia Indefinida</h4>
+                            <p>No especificar nivel, edad, conocimientos previos. Cada audiencia requiere enfoques diferentes</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #dc2626;">
+                            <i class="fas fa-infinity" style="color: #dc2626;"></i>
+                            <h4>Sin Limitaciones</h4>
+                            <p>No establecer longitud, alcance, o restricciones. Puede resultar en outputs impracticables</p>
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-star"></i> Mejores Prácticas Comprobadas</h3>
+                    <ul style="margin-top: 20px;">
+                        <li><i class="fas fa-sync-alt"></i> <strong>Itera y refina:</strong> Los mejores prompts son resultado de múltiples versiones</li>
+                        <li><i class="fas fa-save"></i> <strong>Guarda prompts exitosos:</strong> Crea una biblioteca personal de prompts efectivos</li>
+                        <li><i class="fas fa-test-tube"></i> <strong>Experimenta con variaciones:</strong> Pequeños cambios pueden generar mejoras significativas</li>
+                        <li><i class="fas fa-balance-scale"></i> <strong>Verifica outputs:</strong> Siempre revisa la precisión factual del contenido generado</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://www.theknowledgeacademy.com/blog/prompt-engineering-best-practices/" target="_blank" class="block">
+                        <img src="imagenes/modulo2/imagen15.png" alt="Mejores Prácticas" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">17 / 26</div>
+    </div>
+
+    <!-- Slide 18: Criterios de Comparación de Herramientas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Criterios de Evaluación de Herramientas IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-list-check"></i> Framework de Evaluación Educativa</h3>
+                    <p>Elegir la herramienta IA correcta para cada contexto educativo requiere una evaluación sistemática basada en criterios pedagógicos específicos y consideraciones prácticas de implementación.</p>
+
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-bullseye" style="color: #10b981;"></i>
+                            <h4>Precisión Académica</h4>
+                            <p>Fiabilidad factual, capacidad de citar fuentes, minimización de alucinaciones</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-user-cog" style="color: #3b82f6;"></i>
+                            <h4>Facilidad de Uso</h4>
+                            <p>Interfaz intuitiva, curva de aprendizaje, accesibilidad para educadores</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <i class="fas fa-link" style="color: #8b5cf6;"></i>
+                            <h4>Integración Ecosistémica</h4>
+                            <p>Compatibilidad con LMS, Google/Microsoft, herramientas existentes</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-dollar-sign" style="color: #f59e0b;"></i>
+                            <h4>Modelo de Costos</h4>
+                            <p>Opciones gratuitas, limitaciones, precio de versiones premium, ROI educativo</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                            <i class="fas fa-shield-alt" style="color: #ef4444;"></i>
+                            <h4>Privacidad y Seguridad</h4>
+                            <p>Políticas de datos estudiantiles, FERPA compliance, transparencia ética</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #06b6d4;">
+                            <i class="fas fa-tools" style="color: #06b6d4;"></i>
+                            <h4>Capacidades Especializadas</h4>
+                            <p>Multimodalidad, análisis de datos, generación de imágenes, plugins</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://llm-stats.com/" target="_blank" class="block">
+                        <img src="imagenes/modulo2/imagen16.png" alt="Criterios Evaluación" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">18 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://llm-stats.com/" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-chart-bar mr-2"></i>LLM Stats</a>
+        </div>
+    </div>
+
+    <!-- Slide 19: Matriz Comparativa de Herramientas -->
+    <div class="slide">
+        <h2 class="slide-content-title">Matriz Comparativa: Fortalezas y Aplicaciones</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Herramienta</th>
+                        <th>Fortalezas Principales</th>
+                        <th>Ideal Para</th>
+                        <th>Limitaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ChatGPT</strong></td>
+                        <td>Conversación natural, creatividad, código, multilingüe</td>
+                        <td>Creación de contenido, explicaciones, lluvia de ideas</td>
+                        <td>Sin internet, datos hasta 2023, alucinaciones</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gemini</strong></td>
+                        <td>Integración Google, internet real-time, análisis imágenes</td>
+                        <td>Investigación actualizada, Google Workspace</td>
+                        <td>Menos creativo, respuestas más conservadoras</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Copilot</strong></td>
+                        <td>DALL-E integrado, Office 365, búsqueda + citas</td>
+                        <td>Contenido multimodal, instituciones Microsoft</td>
+                        <td>Limitaciones gratuitas, menos conversacional</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perplexity</strong></td>
+                        <td>Citas precisas, fuentes académicas, investigación</td>
+                        <td>Verificación de hechos, investigación académica</td>
+                        <td>Menos creativo, enfoque puramente informativo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-number">19 / 26</div>
+    </div>
+
+    <!-- Slide 20: Casos de Uso Específicos por Herramienta -->
+    <div class="slide">
+        <h2 class="slide-content-title">Casos de Uso Específicos por Herramienta</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <h3><i class="fas fa-route"></i> Guía de Selección por Tarea Educativa</h3>
+
+            <div class="icon-grid">
+                <div class="tool-card">
+                    <h4><i class="fas fa-comments" style="color: #10b981;"></i> ChatGPT - Mejor para:</h4>
+                    <ul>
+                        <li>Generación de contenido creativo y narrativo</li>
+                        <li>Explicaciones pedagógicas adaptadas por nivel</li>
+                        <li>Creación de ejercicios y actividades interactivas</li>
+                        <li>Simulaciones de diálogo y role-playing educativo</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <h4><i class="fas fa-google" style="color: #3b82f6;"></i> Gemini - Mejor para:</h4>
+                    <ul>
+                        <li>Investigación de temas actuales con fuentes</li>
+                        <li>Análisis de imágenes y contenido visual</li>
+                        <li>Integración fluida con Google Classroom</li>
+                        <li>Verificación de información contemporánea</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <h4><i class="fas fa-microsoft" style="color: #8b5cf6;"></i> Copilot - Mejor para:</h4>
+                    <ul>
+                        <li>Creación de presentaciones con imágenes</li>
+                        <li>Integración con documentos Office</li>
+                        <li>Generación de recursos visuales educativos</li>
+                        <li>Instituciones con ecosistema Microsoft</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <h4><i class="fas fa-search-plus" style="color: #f59e0b;"></i> Perplexity - Mejor para:</h4>
+                    <ul>
+                        <li>Investigación académica con citas</li>
+                        <li>Verificación de hechos y datos</li>
+                        <li>Búsqueda de fuentes primarias</li>
+                        <li>Preparación de materiales basados en evidencia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">20 / 26</div>
+    </div>
+
+    <!-- Slide 21: Actividad en Equipo - Comparación de Plataformas IA -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad: Comparación de Plataformas IA</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-users"></i> Actividad con Prompt Avanzado</h3>
+                    <p>Actividad para comparar resultados de diferentes plataformas de IA utilizando un mismo prompt avanzado, desarrollando criterios de evaluación y análisis comparativo.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-cogs"></i> Proceso de Trabajo:</h4>
+                        <ol style="padding-left: 25px; margin-top: 20px;">
+                            <li style="margin-bottom: 15px;"><strong>Genera tu prompt avanzado con Lyria</strong> utilizando técnicas de ingeniería de prompts</li>
+                            <li style="margin-bottom: 15px;"><strong>Selecciona una plataforma de IA</strong> para tu experimento comparativo</li>
+                            <li style="margin-bottom: 15px;"><strong>Aplica el mismo prompt</strong> en la plataforma seleccionada</li>
+                            <li style="margin-bottom: 15px;"><strong>Documenta y compara los resultados</strong> obtenidos</li>
+                            <li style="margin-bottom: 15px;"><strong>Sigue las instrucciones de la guía de actividades</strong> para el análisis</li>
+                        </ol>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-lightbulb"></i> Ideas de Casos de Uso:</h4>
+                        <ul style="margin-top: 15px;">
+                            <li><i class="fas fa-question-circle"></i> <strong>Generar Quiz:</strong> Crear evaluaciones personalizadas para tu materia</li>
+                            <li><i class="fas fa-calendar-alt"></i> <strong>Realizar un plan de clase:</strong> Estructurar contenidos por tema y nivel</li>
+                            <li><i class="fas fa-brain"></i> <strong>Explicar concepto o tópico de interés:</strong> Desarrollar explicaciones pedagógicas adaptadas</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Entregable:</strong> Establece claramente el prompt usado en tu experimento y presenta los resultados comparativos siguiendo el formato establecido en la guía de actividades.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Objetivo:</strong> Desarrollar competencias para evaluar críticamente diferentes herramientas IA y seleccionar la más apropiada para casos de uso educativos específicos.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen19.png" alt="Comparación Plataformas IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">21 / 26</div>
+    </div>
+
+    <!-- Slide 22: Ejemplos -->
+    <div class="slide">
+        <h2 class="slide-content-title">Ejemplos</h2>
+        <div class="accent-line"></div>
+        <!-- Banner Principal -->
+        <div class="content-card wide-content card-hover">
+
+            <div class="icon-grid">
+                <div class="activity-card">
+                    <h4><i class="fas fa-lightbulb" style="color: #10b981;"></i> Ejemplo 1: Creación de Contenido</h4>
+                    <p><strong>Desafío:</strong> Crear un plan de clase de 45 minutos sobre "Cambio Climático" para estudiantes de secundaria</p>
+                    <p><strong>Prompt base:</strong> "Diseña una lección interactiva que incluya: introducción, 3 actividades principales, evaluación formativa y recursos adicionales"</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-question-circle" style="color: #3b82f6;"></i> Ejemplo 2: Evaluación y Assessments</h4>
+                    <p><strong>Desafío:</strong> Desarrollar un quiz adaptativo sobre "Sistemas del Cuerpo Humano" con 3 niveles de dificultad</p>
+                    <p><strong>Prompt base:</strong> "Crea preguntas diferenciadas: básico (comprensión), intermedio (aplicación), avanzado (síntesis)"</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-search" style="color: #8b5cf6;"></i> Ejemplo 3: Investigación y Verificación</h4>
+                    <p><strong>Desafío:</strong> Investigar y verificar información actual sobre "Inteligencia Artificial en la Medicina"</p>
+                    <p><strong>Prompt base:</strong> "Encuentra desarrollos recientes (2024) con fuentes académicas verificables y aplicaciones clínicas específicas"</p>
+                </div>
+
+                <div class="activity-card">
+                    <h4><i class="fas fa-palette" style="color: #f59e0b;"></i> Ejemplo 4: Contenido Multimodal</h4>
+                    <p><strong>Desafío:</strong> Crear materiales visuales y narrativos sobre "Energías Renovables"</p>
+                    <p><strong>Prompt base:</strong> "Genera: infografía descriptiva, historia corta inspiradora, y actividad práctica con materiales reciclados"</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">22 / 26</div>
+    </div>
+
+    <!-- Slide 23: Actividad Asíncrona - Resolución de Problemas de Ingeniería -->
+    <div class="slide">
+        <h2 class="slide-content-title">Actividad Asíncrona: Resolución de Problemas de Ingeniería con Código</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen21.png" alt="Ingeniería con Código" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+                <div>
+                    <h3><i class="fas fa-code"></i> Desarrollo de Soluciones Técnicas con IA</h3>
+                    <p>Actividad asíncrona orientada a resolver problemas de ingeniería utilizando técnicas avanzadas de prompting para generar código funcional y soluciones técnicas innovadoras.</p>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-cogs"></i> Proceso de Desarrollo:</h4>
+                        <ol style="padding-left: 25px; margin-top: 20px;">
+                            <li style="margin-bottom: 15px;"><strong>Identifica un problema técnico específico</strong> relacionado con tu área de especialización</li>
+                            <li style="margin-bottom: 15px;"><strong>Consulta la guía de técnicas avanzadas</strong> en el <a href="https://www.promptingguide.ai/techniques" target="_blank" style="color: #4299e1; text-decoration: underline;">Prompt Engineering Guide</a></li>
+                            <li style="margin-bottom: 15px;"><strong>Diseña prompts especializados</strong> para generar código que resuelva el problema</li>
+                            <li style="margin-bottom: 15px;"><strong>Implementa y prueba la solución</strong> generada por la IA</li>
+                            <li style="margin-bottom: 15px;"><strong>Documenta el proceso y resultados</strong> con análisis crítico</li>
+                        </ol>
+                    </div>
+
+                    <div class="activity-card">
+                        <h4><i class="fas fa-lightbulb"></i> Ejemplos de Problemas de Ingeniería:</h4>
+                        <ul style="margin-top: 15px;">
+                            <li><i class="fas fa-calculator"></i> <strong>Algoritmos de optimización:</strong> Sistemas de programación de horarios educativos</li>
+                            <li><i class="fas fa-chart-line"></i> <strong>Análisis de datos:</strong> Procesamiento de calificaciones y métricas de rendimiento</li>
+                            <li><i class="fas fa-robot"></i> <strong>Automatización educativa:</strong> Sistemas de retroalimentación automatizada</li>
+                            <li><i class="fas fa-network-wired"></i> <strong>Interfaces educativas:</strong> Aplicaciones web para gestión de cursos</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Recurso clave:</strong> Utiliza las técnicas avanzadas del <a href="https://www.promptingguide.ai/techniques" target="_blank" style="color: #4299e1; text-decoration: underline;">Prompt Engineering Guide</a> para crear prompts que generen código eficiente y bien documentado.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Entregable:</strong> Repositorio de código con documentación completa, incluyendo: descripción del problema, prompts utilizados, código generado, pruebas realizadas y análisis de viabilidad educativa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">23 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://www.promptingguide.ai/techniques" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-book mr-2"></i>Prompt Engineering Guide</a>
+        </div>
+    </div>
+
+    <!-- Slide 24: Herramientas Emergentes y Tendencias Futuras -->
+    <div class="slide">
+        <h2 class="slide-content-title">Herramientas Emergentes y Tendencias Futuras</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="icon-grid">
+                <div class="icon-card" style="border-left: 6px solid #10b981;">
+                    <i class="fas fa-video" style="color: #10b981;"></i>
+                    <h4>IA de Video Educativo</h4>
+                    <p>Runway, Pika Labs: Creación automática de contenido visual dinámico para explicaciones complejas</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                    <i class="fas fa-microphone" style="color: #3b82f6;"></i>
+                    <h4>Clonación de Voz</h4>
+                    <p>ElevenLabs, Speechify: Narración personalizada de contenidos en múltiples idiomas y estilos</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                    <i class="fas fa-cube" style="color: #8b5cf6;"></i>
+                    <h4>IA 3D y Realidad Virtual</h4>
+                    <p>Immersive learning experiences, laboratorios virtuales, simulaciones educativas avanzadas</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                    <i class="fas fa-robot" style="color: #f59e0b;"></i>
+                    <h4>Agentes IA Especializados</h4>
+                    <p>AutoGPT, Custom GPTs: Asistentes virtuales especializados por materia y nivel educativo</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #ef4444;">
+                    <i class="fas fa-brain" style="color: #ef4444;"></i>
+                    <h4>IA Multimodal Avanzada</h4>
+                    <p>GPT-4V, Gemini Ultra: Análisis simultáneo de texto, imagen, audio y video para evaluación integral</p>
+                </div>
+                <div class="icon-card" style="border-left: 6px solid #06b6d4;">
+                    <i class="fas fa-graduation-cap" style="color: #06b6d4;"></i>
+                    <h4>Tutores IA Personalizados</h4>
+                    <p>Khan Academy Khanmigo: Asistentes adaptativos que aprenden del progreso individual del estudiante</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Implicación estratégica:</strong> Las habilidades de prompting desarrolladas hoy son transferibles a estas tecnologías emergentes. Dominar los fundamentos ahora prepara para liderar la adopción futura.</p>
+            </div>
+        </div>
+        <div class="slide-number">24 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://llm-stats.com/" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-chart-bar mr-2"></i>LLM Stats</a>
+        </div>
+    </div>
+
+    <!-- Slide 25: Recursos Complementarios y Comunidades -->
+    <div class="slide">
+        <h2 class="slide-content-title">Recursos Complementarios y Comunidades</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-book-open"></i> Biblioteca de Recursos Extendida</h3>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-globe"></i> Plataformas de Experimentación:</h4>
+                        <ul>
+                            <li><i class="fas fa-external-link-alt"></i> <strong>LMSYS Chatbot Arena:</strong> Comparaciones ciegas entre modelos</li>
+                            <li><i class="fas fa-external-link-alt"></i> <strong>Hugging Face:</strong> Modelos open-source para experimentación</li>
+                            <li><i class="fas fa-external-link-alt"></i> <strong>Poe by Quora:</strong> Acceso múltiple a diferentes modelos</li>
+                        </ul>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-users"></i> Comunidades Educativas IA:</h4>
+                        <ul>
+                            <li><i class="fas fa-twitter"></i> <strong>#AIEd Twitter Community:</strong> Discusiones y recursos diarios</li>
+                            <li><i class="fas fa-discord"></i> <strong>AI for Education Discord:</strong> Soporte peer-to-peer 24/7</li>
+                            <li><i class="fas fa-linkedin"></i> <strong>LinkedIn AI in Education Groups:</strong> Networking profesional</li>
+                        </ul>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><i class="fas fa-book"></i> Lecturas Especializadas:</h4>
+                        <ul>
+                            <li><i class="fas fa-file-pdf"></i> <strong>"Prompt Engineering Guide"</strong> - DAIR.AI</li>
+                            <li><i class="fas fa-file-pdf"></i> <strong>"AI for People"</strong> - UNESCO Education</li>
+                            <li><i class="fas fa-file-pdf"></i> <strong>"Future of Work in Education"</strong> - World Economic Forum</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen24.png" alt="Recursos Complementarios" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">25 / 26</div>
+        <div class="flex flex-wrap gap-4 justify-center mt-4 mb-2">
+            <a href="https://www.theknowledgeacademy.com/blog/prompt-engineering-best-practices/" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 text-sm font-semibold" target="_blank"><i class="fas fa-graduation-cap mr-2"></i>Best Practices Guide</a>
+            <a href="https://lmsys.org/blog/2023-05-03-arena/" class="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 text-sm font-semibold" target="_blank"><i class="fas fa-robot mr-2"></i>Chatbot Arena</a>
+            <a href="https://huggingface.co/" class="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 text-sm font-semibold" target="_blank"><i class="fas fa-code mr-2"></i>Hugging Face</a>
+        </div>
+    </div>
+
+    <!-- Slide 26: Síntesis y Proyección al Módulo 3 -->
+    <div class="slide">
+        <h2 class="slide-content-title">Síntesis del Módulo 2 y Proyección Futura</h2>
+        <div class="accent-line"></div>
+        <div class="content-card wide-content card-hover">
+            <div class="split-content">
+                <div>
+                    <h3><i class="fas fa-star"></i> Logros de Aprendizaje Alcanzados</h3>
+                    <div class="icon-grid">
+                        <div class="icon-card" style="border-left: 6px solid #10b981;">
+                            <i class="fas fa-brain" style="color: #10b981;"></i>
+                            <h4>Comprensión Técnica</h4>
+                            <p>Dominio conceptual de LLMs, arquitectura Transformer, y procesos de entrenamiento</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #3b82f6;">
+                            <i class="fas fa-tools" style="color: #3b82f6;"></i>
+                            <h4>Competencias Prácticas</h4>
+                            <p>Habilidades avanzadas de ingeniería de prompts y evaluación comparativa de herramientas</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #8b5cf6;">
+                            <i class="fas fa-balance-scale" style="color: #8b5cf6;"></i>
+                            <h4>Criterio Evaluativo</h4>
+                            <p>Capacidad de seleccionar herramientas apropiadas para contextos educativos específicos</p>
+                        </div>
+                        <div class="icon-card" style="border-left: 6px solid #f59e0b;">
+                            <i class="fas fa-lightbulb" style="color: #f59e0b;"></i>
+                            <h4>Visión Estratégica</h4>
+                            <p>Comprensión de tendencias emergentes y preparación para adopción tecnológica futura</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🚀 Adelanto del Módulo 3:</strong> "IA para Planificación Educativa y Diseño Curricular" - Transforma la experiencia práctica adquirida en estrategias sistemáticas para revolucionar la planificación de clases, diseño de
+                            actividades y evaluación del aprendizaje. ¡Prepárate para reimaginar completamente tu práctica pedagógica!</p>
+                    </div>
+
+                    <div class="activity-card" style="margin-top: 20px;">
+                        <p><strong>Reflexión final:</strong> Has desarrollado las competencias fundamentales para comunicarte efectivamente con la IA. Ahora tienes las herramientas para convertir cualquier desafío pedagógico en una conversación productiva
+                            con asistentes inteligentes. El futuro de la educación no es la IA reemplazando al educador, sino educadores empoderados con IA transformando la experiencia de aprendizaje.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="imagenes/modulo2/imagen25.png" alt="Futuro Educación IA" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">
+            <a href="index.html" class="nav-button-home"><i class="fas fa-home"></i> Ir al Inicio del Diplomado</a>
+        </div>
+        <div class="slide-number">26 / 26</div>
+    </div>
+
+    <footer>
+        <!-- Contenido del pie de página -->
+    </footer>
+
+    <!-- Modal para imágenes -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Funcionalidad del modal de imágenes
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        // Agregar clase zoomable a todas las imágenes excepto en las diapositivas específicas
+        document.querySelectorAll('img').forEach(img => {
+            // Buscar el elemento más cercano con clase 'slide' y obtener su número de diapositiva
+            const slideElement = img.closest('.slide');
+            const slideNumber = slideElement ? slideElement.querySelector('.slide-number')?.textContent : '';
+            
+            // Excluir imágenes de la diapositiva 15/26 y las que están dentro de enlaces
+            if (!img.classList.contains('modal-content') && 
+                slideNumber !== '15 / 26' && 
+                !img.closest('a')) {
+                img.classList.add('zoomable');
+                img.onclick = function() {
+                    modal.style.display = 'flex';
+                    modalImg.src = this.src;
+                    setTimeout(() => modal.classList.add('show'), 10);
+                }
+            }
+        });
+
+        // Cerrar modal
+        closeBtn.onclick = function() {
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        // Cerrar modal al hacer clic fuera de la imagen
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            }
+        }
+
+        // Cerrar modal con la tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Introducción a la IA en Educación</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+        }
+        .slide {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .module-icon {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .nav-button {
+            background: linear-gradient(135deg, #4299e1 0%, #2b6cb0 100%);
+            transition: all 0.3s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
+        }
+        .accent-line {
+            height: 4px;
+            background: linear-gradient(90deg, #4299e1, #667eea);
+            border-radius: 2px;
+        }
+        .timeline-dot {
+            background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Navigation Header -->
+        <nav class="gradient-bg text-white p-4 shadow-lg">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="flex items-center text-white hover:text-blue-200 transition-colors">
+                        <i class="fas fa-home mr-2"></i>
+                        <span>Inicio</span>
+                    </a>
+                    <span class="text-blue-200">|</span>
+                    <span class="font-semibold">Módulo 1</span>
+                </div>
+                <div class="text-sm">
+                    <i class="fas fa-clock mr-1"></i>
+                    6 horas (2S + 4A)
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mx-auto p-6">
+            <!-- Module Header -->
+            <div class="text-center mb-12">
+                <div class="module-icon mx-auto">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                    Módulo 1: Introducción a la Inteligencia Artificial en la Educación
+                </h1>
+                <div class="accent-line w-32 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Fundamentos de la IA y su aplicación transformadora en el ámbito educativo
+                </p>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <!-- Conceptos Clave -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-lightbulb text-blue-600 text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Conceptos Clave de IA</h2>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span><strong>Machine Learning:</strong> Algoritmos que aprenden de datos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span><strong>Redes Neuronales:</strong> Modelos inspirados en el cerebro</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span><strong>IA Generativa:</strong> Creación de contenido nuevo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span><strong>Procesamiento de Lenguaje Natural:</strong> Comprensión de texto</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tipos de IA Relevantes -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-cogs text-purple-600 text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Tipos de IA en Educación</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="font-semibold text-gray-800">IA Generativa</h3>
+                            <p class="text-gray-600">ChatGPT, Gemini, DALL-E</p>
+                        </div>
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h3 class="font-semibold text-gray-800">Sistemas de Tutoría</h3>
+                            <p class="text-gray-600">Asistentes inteligentes personalizados</p>
+                        </div>
+                        <div class="border-l-4 border-orange-500 pl-4">
+                            <h3 class="font-semibold text-gray-800">Análisis de Aprendizaje</h3>
+                            <p class="text-gray-600">Evaluación automática y feedback</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historia y Evolución -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-history text-indigo-600 text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Evolución de la IA</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="timeline-dot mr-4 flex-shrink-0"></div>
+                            <div>
+                                <p class="font-semibold">1950s</p>
+                                <p class="text-gray-600">Primeros conceptos de IA</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="timeline-dot mr-4 flex-shrink-0"></div>
+                            <div>
+                                <p class="font-semibold">2000s</p>
+                                <p class="text-gray-600">Machine Learning en educación</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="timeline-dot mr-4 flex-shrink-0"></div>
+                            <div>
+                                <p class="font-semibold">2020+</p>
+                                <p class="text-gray-600">Era de la IA Generativa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Potencial Transformador -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-yellow-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-rocket text-yellow-600 text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Potencial Transformador</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                            <i class="fas fa-user-graduate text-blue-600 text-2xl mb-2"></i>
+                            <p class="font-semibold text-gray-800">Personalización</p>
+                            <p class="text-sm text-gray-600">Aprendizaje adaptativo</p>
+                        </div>
+                        <div class="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg">
+                            <i class="fas fa-magic text-green-600 text-2xl mb-2"></i>
+                            <p class="font-semibold text-gray-800">Creatividad</p>
+                            <p class="text-sm text-gray-600">Generación de contenido</p>
+                        </div>
+                        <div class="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg">
+                            <i class="fas fa-chart-bar text-purple-600 text-2xl mb-2"></i>
+                            <p class="font-semibold text-gray-800">Análisis</p>
+                            <p class="text-sm text-gray-600">Datos de aprendizaje</p>
+                        </div>
+                        <div class="text-center p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-lg">
+                            <i class="fas fa-clock text-red-600 text-2xl mb-2"></i>
+                            <p class="font-semibold text-gray-800">Eficiencia</p>
+                            <p class="text-sm text-gray-600">Automatización</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consideraciones Éticas -->
+            <div class="bg-red-50 border-l-4 border-red-500 p-8 rounded-lg mb-12">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-shield-alt text-red-600 text-3xl mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Consideraciones Éticas Fundamentales</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <i class="fas fa-balance-scale text-red-500 text-2xl mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Sesgos</h3>
+                        <p class="text-gray-600">Identificar y mitigar sesgos en algoritmos y datos</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <i class="fas fa-lock text-red-500 text-2xl mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Privacidad</h3>
+                        <p class="text-gray-600">Protección de datos estudiantiles y personales</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <i class="fas fa-copy text-red-500 text-2xl mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Integridad Académica</h3>
+                        <p class="text-gray-600">Prevenir plagio y promover uso responsable</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actividades del Módulo -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+                <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">
+                    <i class="fas fa-tasks text-blue-600 mr-3"></i>
+                    Actividades del Módulo
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Actividades Síncronas -->
+                    <div class="border-l-4 border-blue-500 pl-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                            <i class="fas fa-video text-blue-500 mr-2"></i>
+                            Síncronas (2 horas)
+                        </h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-play-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>Conferencia magistral: Fundamentos de IA</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-comments text-blue-500 mt-1 mr-3"></i>
+                                <span>Discusión grupal sobre aplicaciones educativas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-question-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>Sesión de preguntas y respuestas</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Actividades Asíncronas -->
+                    <div class="border-l-4 border-green-500 pl-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                            <i class="fas fa-laptop text-green-500 mr-2"></i>
+                            Asíncronas (4 horas)
+                        </h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-book text-green-500 mt-1 mr-3"></i>
+                                <span>Lecturas complementarias sobre IA educativa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-forum text-green-500 mt-1 mr-3"></i>
+                                <span>Foro de discusión: Percepciones y preocupaciones éticas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-square text-green-500 mt-1 mr-3"></i>
+                                <span>Quiz de conceptos básicos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation to Other Modules -->
+            <div class="text-center">
+                <h3 class="text-xl font-semibold text-gray-800 mb-6">Navegación del Curso</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="index.html" class="nav-button text-white px-6 py-3 rounded-lg font-semibold">
+                        <i class="fas fa-home mr-2"></i>Inicio
+                    </a>
+                    <a href="modulo2.html" class="nav-button text-white px-6 py-3 rounded-lg font-semibold">
+                        <i class="fas fa-arrow-right mr-2"></i>Módulo 2
+                    </a>
+                    <a href="modulo3.html" class="nav-button text-white px-6 py-3 rounded-lg font-semibold">
+                        Módulo 3
+                    </a>
+                    <a href="modulo4.html" class="nav-button text-white px-6 py-3 rounded-lg font-semibold">
+                        Módulo 4
+                    </a>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 mt-4">
+                    <a href="modulo5.html" class="nav-button text-white px-6 py-3 rounded-lg font-semibold">
+                        Módulo 5
+                    </a>
+                    <a href="modulo6.html" class="nav-button text-white px-6 py-3 rounded-lg font-semibold">
+                        Módulo 6
+                    </a>
+                    <a href="modulo7.html" class="nav-button text-white px-6 py-3 rounded-lg font-semibold">
+                        Módulo 7
+                    </a>
+                    <a href="modulo8.html" class="nav-button text-white px-6 py-3 rounded-lg font-semibold">
+                        Módulo 8
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="gradient-bg text-white p-6 mt-12">
+            <div class="container mx-auto text-center">
+                <p class="mb-2">
+                    <strong>Diplomado:</strong> Herramientas de Inteligencia Artificial para Educadores Innovadores
+                </p>
+                <p class="text-blue-200">
+                    Dr. Salvador Tututi Ávila | I.Q. Juan José Alonso Tijerina
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
