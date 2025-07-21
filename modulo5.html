@@ -462,8 +462,8 @@
                 grid-template-columns: 1fr;
             }
         }
-
         /* Modal de Imagen */
+        
         .modal {
             display: none;
             position: fixed;
@@ -480,12 +480,12 @@
             pointer-events: none;
             transition: opacity 0.3s ease;
         }
-
+        
         .modal.show {
             opacity: 1;
             pointer-events: auto;
         }
-
+        
         .modal-content {
             max-width: 90%;
             max-height: 90vh;
@@ -495,11 +495,11 @@
             transform: scale(0.9);
             transition: transform 0.3s ease;
         }
-
+        
         .modal.show .modal-content {
             transform: scale(1);
         }
-
+        
         .close {
             position: absolute;
             top: 15px;
@@ -509,12 +509,12 @@
             font-weight: bold;
             cursor: pointer;
         }
-
+        
         img {
             cursor: pointer;
             transition: transform 0.3s ease;
         }
-
+        
         img:hover {
             transform: scale(1.02);
         }
@@ -991,10 +991,13 @@
                 </div>
                 <div>
                     <h3><i class="fas fa-flask"></i> Rúbricas Especializadas para Ciencias Químicas</h3>
-                    <p>Las rúbricas en ciencias químicas requieren enfoques específicos que evalúen competencias en química analítica, síntesis, procesos industriales, control de calidad y seguridad. La IA puede generar rúbricas que reflejen estándares profesionales y marcos de competencias químicas aplicadas a industria, farmacología y medio ambiente.</p>
+                    <p>Las rúbricas en ciencias químicas requieren enfoques específicos que evalúen competencias en química analítica, síntesis, procesos industriales, control de calidad y seguridad. La IA puede generar rúbricas que reflejen estándares profesionales
+                        y marcos de competencias químicas aplicadas a industria, farmacología y medio ambiente.</p>
 
                     <div class="highlight-box">
-                        <p><strong>Enfoque especializado:</strong> Las rúbricas en ciencias químicas deben evaluar conocimientos fundamentales, competencias de laboratorio, análisis de procesos químicos, comunicación científica, seguridad industrial y consideraciones ambientales.</p>
+                        <p><strong>Enfoque especializado:</strong> Las rúbricas en ciencias químicas deben evaluar conocimientos fundamentales, competencias de laboratorio, análisis de procesos químicos, comunicación científica, seguridad industrial y consideraciones
+                            ambientales.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1003,35 +1006,51 @@
                 <div class="icon-card" style="border-left: 6px solid #10b981; margin-bottom: 20px;">
                     <h4><i class="fas fa-flask" style="color: #10b981; margin-right: 10px;"></i> Ejemplo 1: Proyecto de Diseño de Proceso Químico</h4>
                     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
-                        "Crea una rúbrica para evaluar un proyecto de diseño de una planta química para producción de acetona por deshidrogenación de isopropanol para estudiantes de ingeniería química (8vo semestre). Incluye criterios específicos: análisis de factibilidad técnica y económica, balance de materia y energía, diagramas de flujo de proceso (PFD) y de tuberías e instrumentación (P&ID), diseño de equipos principales (reactores, columnas de destilación, intercambiadores), cálculos de transferencia de masa y calor, análisis de seguridad de procesos (HAZOP), evaluación de impacto ambiental, simulación en Aspen Plus/HYSYS, estimación de costos y análisis económico (VPN, TIR), y consideraciones de control automático. Utiliza escala de 4 niveles: Sobresaliente (4), Competente (3), En desarrollo (2), Inadecuado (1). Ponderación: diseño técnico 35%, análisis económico 20%, seguridad y ambiente 20%, documentación 15%, presentación 10%."
+                        "Crea una rúbrica para evaluar un proyecto de diseño de una planta química para producción de acetona por deshidrogenación de isopropanol para estudiantes de ingeniería química (8vo semestre). Incluye criterios específicos: análisis de factibilidad técnica
+                        y económica, balance de materia y energía, diagramas de flujo de proceso (PFD) y de tuberías e instrumentación (P&ID), diseño de equipos principales (reactores, columnas de destilación, intercambiadores), cálculos de transferencia
+                        de masa y calor, análisis de seguridad de procesos (HAZOP), evaluación de impacto ambiental, simulación en Aspen Plus/HYSYS, estimación de costos y análisis económico (VPN, TIR), y consideraciones de control automático. Utiliza
+                        escala de 4 niveles: Sobresaliente (4), Competente (3), En desarrollo (2), Inadecuado (1). Ponderación: diseño técnico 35%, análisis económico 20%, seguridad y ambiente 20%, documentación 15%, presentación 10%."
                     </div>
                 </div>
 
                 <div class="icon-card" style="border-left: 6px solid #3b82f6; margin-bottom: 20px;">
                     <h4><i class="fas fa-vial" style="color: #3b82f6; margin-right: 10px;"></i> Ejemplo 2: Análisis Farmacológico Cuantitativo</h4>
                     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
-                        "Desarrolla una rúbrica para evaluar análisis cuantitativo de principios activos en medicamentos para estudiantes de químico farmacobiólogo. Criterios técnicos: preparación de muestras siguiendo protocolos farmacéuticos, validación de métodos analíticos (linealidad, precisión, exactitud, especificidad), uso correcto de técnicas instrumentales (HPLC, espectrofotometría UV-Vis, cromatografía de gases), cálculos estadísticos y tratamiento de datos, interpretación de resultados según farmacopeas (USP, Ph. Eur.), cumplimiento de buenas prácticas de laboratorio (BPL), evaluación de incertidumbre analítica, documentación completa del proceso, análisis de interferencias y estabilidad, y conclusiones sobre calidad del producto farmacéutico. Incluye evaluación de competencias regulatorias y de control de calidad farmacéutico."
+                        "Desarrolla una rúbrica para evaluar análisis cuantitativo de principios activos en medicamentos para estudiantes de químico farmacobiólogo. Criterios técnicos: preparación de muestras siguiendo protocolos farmacéuticos, validación de métodos analíticos
+                        (linealidad, precisión, exactitud, especificidad), uso correcto de técnicas instrumentales (HPLC, espectrofotometría UV-Vis, cromatografía de gases), cálculos estadísticos y tratamiento de datos, interpretación de resultados según
+                        farmacopeas (USP, Ph. Eur.), cumplimiento de buenas prácticas de laboratorio (BPL), evaluación de incertidumbre analítica, documentación completa del proceso, análisis de interferencias y estabilidad, y conclusiones sobre calidad
+                        del producto farmacéutico. Incluye evaluación de competencias regulatorias y de control de calidad farmacéutico."
                     </div>
                 </div>
 
                 <div class="icon-card" style="border-left: 6px solid #8b5cf6; margin-bottom: 20px;">
                     <h4><i class="fas fa-industry" style="color: #8b5cf6; margin-right: 10px;"></i> Ejemplo 3: Optimización de Proceso Industrial Químico</h4>
                     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
-                        "Genera una rúbrica para evaluar proyecto de optimización de proceso de polimerización en una planta petroquímica para estudiantes de ingeniería industrial con énfasis químico. Evalúa: análisis del proceso actual (identificación de cuellos de botella, eficiencias de conversión), aplicación de metodologías de mejora continua (Six Sigma, Kaizen), diseño de experimentos (DOE) para optimización de variables de proceso, análisis estadístico de datos de producción, modelado y simulación del proceso (software SuperPro Designer), evaluación de indicadores KPI (rendimiento, calidad, costos), implementación de control estadístico de procesos (SPC), análisis de riesgos operacionales, propuesta de mejoras técnicas y organizacionales, evaluación económica del proyecto de mejora, y plan de implementación con cronograma y recursos. Considera competencias en gestión de la producción química y mejora continua."
+                        "Genera una rúbrica para evaluar proyecto de optimización de proceso de polimerización en una planta petroquímica para estudiantes de ingeniería industrial con énfasis químico. Evalúa: análisis del proceso actual (identificación de cuellos de botella,
+                        eficiencias de conversión), aplicación de metodologías de mejora continua (Six Sigma, Kaizen), diseño de experimentos (DOE) para optimización de variables de proceso, análisis estadístico de datos de producción, modelado y simulación
+                        del proceso (software SuperPro Designer), evaluación de indicadores KPI (rendimiento, calidad, costos), implementación de control estadístico de procesos (SPC), análisis de riesgos operacionales, propuesta de mejoras técnicas y
+                        organizacionales, evaluación económica del proyecto de mejora, y plan de implementación con cronograma y recursos. Considera competencias en gestión de la producción química y mejora continua."
                     </div>
                 </div>
 
                 <div class="icon-card" style="border-left: 6px solid #f59e0b; margin-bottom: 20px;">
                     <h4><i class="fas fa-recycle" style="color: #f59e0b; margin-right: 10px;"></i> Ejemplo 4: Proyecto de Ingeniería Ambiental</h4>
                     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
-                        "Diseña una rúbrica para evaluar proyecto de tratamiento de aguas residuales industriales con contaminantes químicos para estudiantes de ingeniería ambiental. Criterios: caracterización fisicoquímica del efluente (DQO, DBO, metales pesados, pH, SST), selección y diseño de tecnologías de tratamiento (coagulación-floculación, oxidación avanzada, filtración, adsorción), cálculos de dimensionamiento de reactores y equipos, evaluación de eficiencias de remoción, análisis de cinética de reacciones químicas, cumplimiento de normatividad ambiental (NOM, límites de descarga), evaluación de impacto ambiental y huella de carbono, análisis de costos de inversión y operación, gestión de lodos y subproductos, propuesta de monitoreo y control automático, y evaluación de sostenibilidad del proceso. Incluye competencias en legislación ambiental y gestión integral de residuos."
+                        "Diseña una rúbrica para evaluar proyecto de tratamiento de aguas residuales industriales con contaminantes químicos para estudiantes de ingeniería ambiental. Criterios: caracterización fisicoquímica del efluente (DQO, DBO, metales pesados, pH, SST),
+                        selección y diseño de tecnologías de tratamiento (coagulación-floculación, oxidación avanzada, filtración, adsorción), cálculos de dimensionamiento de reactores y equipos, evaluación de eficiencias de remoción, análisis de cinética
+                        de reacciones químicas, cumplimiento de normatividad ambiental (NOM, límites de descarga), evaluación de impacto ambiental y huella de carbono, análisis de costos de inversión y operación, gestión de lodos y subproductos, propuesta
+                        de monitoreo y control automático, y evaluación de sostenibilidad del proceso. Incluye competencias en legislación ambiental y gestión integral de residuos."
                     </div>
                 </div>
 
                 <div class="icon-card" style="border-left: 6px solid #ef4444;">
                     <h4><i class="fas fa-atom" style="color: #ef4444; margin-right: 10px;"></i> Ejemplo 5: Desarrollo de Producto Químico Industrial</h4>
                     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
-                        "Crea una rúbrica para evaluar desarrollo de un producto químico industrial (surfactante biodegradable) para estudiantes de licenciatura en química industrial. Incluye: investigación de mercado y análisis de competencia, formulación química y síntesis a escala laboratorio, caracterización fisicoquímica del producto (tensión superficial, CMC, biodegradabilidad), evaluación de propiedades de aplicación (poder detergente, espumación, estabilidad), escalamiento del proceso de síntesis a planta piloto, análisis de materias primas y proveedores, estudios de toxicidad y ecocompatibilidad, cumplimiento de regulaciones químicas (REACH, GHS), desarrollo de especificaciones técnicas y hoja de seguridad (SDS), análisis de costos de producción y precios de venta, estrategia de comercialización y canales de distribución, y evaluación de viabilidad comercial del proyecto. Evalúa competencias en desarrollo de productos, innovación química y gestión empresarial."
+                        "Crea una rúbrica para evaluar desarrollo de un producto químico industrial (surfactante biodegradable) para estudiantes de licenciatura en química industrial. Incluye: investigación de mercado y análisis de competencia, formulación química y síntesis
+                        a escala laboratorio, caracterización fisicoquímica del producto (tensión superficial, CMC, biodegradabilidad), evaluación de propiedades de aplicación (poder detergente, espumación, estabilidad), escalamiento del proceso de síntesis
+                        a planta piloto, análisis de materias primas y proveedores, estudios de toxicidad y ecocompatibilidad, cumplimiento de regulaciones químicas (REACH, GHS), desarrollo de especificaciones técnicas y hoja de seguridad (SDS), análisis
+                        de costos de producción y precios de venta, estrategia de comercialización y canales de distribución, y evaluación de viabilidad comercial del proyecto. Evalúa competencias en desarrollo de productos, innovación química y gestión
+                        empresarial."
                     </div>
                 </div>
             </div>
@@ -1105,7 +1124,7 @@
 
     <!-- Slide 14: IA para Retroalimentación Formativa (1/3) - Introducción -->
     <div class="slide">
-        <h2 class="slide-content-title">Retroalimentación Formativa con IA (1/3)</h2>
+        <h2 class="slide-content-title">Retroalimentación Formativa con IA</h2>
         <div class="accent-line"></div>
         <div class="content-card">
             <h3><i class="fas fa-comments"></i> IA como Asistente para el Feedback</h3>
@@ -1128,7 +1147,8 @@
             <div class="split-content">
                 <div>
                     <h3><i class="fas fa-terminal"></i> Estrategias de Prompting para Feedback</h3>
-                    <p>La generación efectiva de retroalimentación formativa con IA requiere prompts estructurados que incluyan criterios específicos, contexto del estudiante y objetivos de aprendizaje claros. Los mejores resultados se obtienen cuando se proporciona la rúbrica o criterios de evaluación directamente en el prompt.</p>
+                    <p>La generación efectiva de retroalimentación formativa con IA requiere prompts estructurados que incluyan criterios específicos, contexto del estudiante y objetivos de aprendizaje claros. Los mejores resultados se obtienen cuando se
+                        proporciona la rúbrica o criterios de evaluación directamente en el prompt.</p>
 
                     <div class="highlight-box">
                         <p><strong>Principio clave:</strong> La IA debe generar feedback constructivo, específico y orientado a la mejora, nunca calificaciones finales.</p>
@@ -1143,21 +1163,24 @@
                 <div class="tool-card" style="border-left: 6px solid #10b981;">
                     <h4><i class="fas fa-edit" style="color: #10b981; margin-right: 10px;"></i> Ejemplo 1: Análisis de Ensayo</h4>
                     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
-                        "Analiza este ensayo argumentativo de 500 palabras sobre [tema]. Basándote en esta rúbrica: [pegar rúbrica], identifica 2 fortalezas específicas y 2 áreas de mejora concretas. Para cada área de mejora, ofrece una sugerencia práctica y un ejemplo específico. Usa un tono constructivo y motivador apropiado para estudiantes de [nivel]."
+                        "Analiza este ensayo argumentativo de 500 palabras sobre [tema]. Basándote en esta rúbrica: [pegar rúbrica], identifica 2 fortalezas específicas y 2 áreas de mejora concretas. Para cada área de mejora, ofrece una sugerencia práctica y un ejemplo específico.
+                        Usa un tono constructivo y motivador apropiado para estudiantes de [nivel]."
                     </div>
                 </div>
 
                 <div class="tool-card" style="border-left: 6px solid #3b82f6;">
                     <h4><i class="fas fa-flask" style="color: #3b82f6; margin-right: 10px;"></i> Ejemplo 2: Proyecto Científico</h4>
                     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
-                        "Evalúa este reporte de laboratorio considerando: 1) Claridad de hipótesis, 2) Diseño experimental, 3) Análisis de datos, 4) Conclusiones. Para cada criterio, proporciona feedback específico incluyendo qué está bien logrado y qué necesita refinamiento. Sugiere pasos concretos para mejorar sin dar las respuestas directamente."
+                        "Evalúa este reporte de laboratorio considerando: 1) Claridad de hipótesis, 2) Diseño experimental, 3) Análisis de datos, 4) Conclusiones. Para cada criterio, proporciona feedback específico incluyendo qué está bien logrado y qué necesita refinamiento.
+                        Sugiere pasos concretos para mejorar sin dar las respuestas directamente."
                     </div>
                 </div>
 
                 <div class="tool-card" style="border-left: 6px solid #8b5cf6;">
                     <h4><i class="fas fa-calculator" style="color: #8b5cf6; margin-right: 10px;"></i> Ejemplo 3: Problema Matemático</h4>
                     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; font-size: 0.9rem;">
-                        "Revisa esta solución de ecuaciones cuadráticas. Identifica: errores de procedimiento, pasos omitidos, y aciertos en el razonamiento. Genera feedback que ayude al estudiante a comprender dónde se desvió del método correcto y cómo puede auto-verificar su trabajo en futuros problemas similares."
+                        "Revisa esta solución de ecuaciones cuadráticas. Identifica: errores de procedimiento, pasos omitidos, y aciertos en el razonamiento. Genera feedback que ayude al estudiante a comprender dónde se desvió del método correcto y cómo puede auto-verificar
+                        su trabajo en futuros problemas similares."
                     </div>
                 </div>
             </div>
@@ -1176,7 +1199,8 @@
                 </div>
                 <div>
                     <h3><i class="fas fa-user-check"></i> El Docente como Curador y Personalizador</h3>
-                    <p>La IA genera borradores de retroalimentación que requieren la intervención experta del educador para asegurar relevancia, sensibilidad contextual y valor pedagógico real. El docente transforma feedback genérico en orientación personalizada y significativa.</p>
+                    <p>La IA genera borradores de retroalimentación que requieren la intervención experta del educador para asegurar relevancia, sensibilidad contextual y valor pedagógico real. El docente transforma feedback genérico en orientación personalizada
+                        y significativa.</p>
 
                     <div class="ethics-alert">
                         <p><strong>Responsabilidad crítica:</strong> El docente debe revisar, personalizar y contextualizar toda retroalimentación generada por IA antes de entregarla al estudiante. La IA optimiza tiempo, no reemplaza el juicio pedagógico.</p>
@@ -1209,7 +1233,8 @@
 
             <div class="highlight-box" style="margin-top: 30px;">
                 <h4><i class="fas fa-lightbulb"></i> Workflow Recomendado:</h4>
-                <p><strong>1. Generar:</strong> Usar IA para borrador inicial → <strong>2. Revisar:</strong> Validar precisión y relevancia → <strong>3. Personalizar:</strong> Agregar contexto del estudiante → <strong>4. Humanizar:</strong> Incluir elementos motivacionales → <strong>5. Entregar:</strong> Acompañar de conversación presencial cuando sea posible</p>
+                <p><strong>1. Generar:</strong> Usar IA para borrador inicial → <strong>2. Revisar:</strong> Validar precisión y relevancia → <strong>3. Personalizar:</strong> Agregar contexto del estudiante → <strong>4. Humanizar:</strong> Incluir elementos
+                    motivacionales → <strong>5. Entregar:</strong> Acompañar de conversación presencial cuando sea posible</p>
             </div>
         </div>
         <div class="slide-number">16 / 22</div>
@@ -1223,7 +1248,8 @@
             <div class="split-content">
                 <div>
                     <h3><i class="fas fa-search"></i> Potencial de Análisis Automatizado</h3>
-                    <p>La IA puede procesar grandes volúmenes de respuestas abiertas para identificar patrones, temas emergentes y tendencias de comprensión en toda una clase o cohorte. Esta capacidad permite a los educadores obtener insights valiosos sobre el aprendizaje colectivo sin inversión masiva de tiempo.</p>
+                    <p>La IA puede procesar grandes volúmenes de respuestas abiertas para identificar patrones, temas emergentes y tendencias de comprensión en toda una clase o cohorte. Esta capacidad permite a los educadores obtener insights valiosos sobre
+                        el aprendizaje colectivo sin inversión masiva de tiempo.</p>
 
                     <div class="highlight-box">
                         <p><strong>Aplicación clave:</strong> Análisis de respuestas en foros de discusión, preguntas de desarrollo corto, reflexiones estudiantiles y evaluaciones formativas abiertas para identificar conceptos mal comprendidos o emergentes.</p>
@@ -1471,8 +1497,9 @@
 
             <div class="activity-card" style="margin-top: 30px;">
                 <h4><i class="fas fa-road"></i> Proyección al Módulo 6: "IA para el Desarrollo Profesional Docente"</h4>
-                <p>La experiencia práctica desarrollada en el Módulo 5 se convierte en la base para explorar cómo la IA puede potenciar el crecimiento profesional continuo: investigación educativa, redacción académica, actualización disciplinar, networking profesional, y diseño de trayectorias de desarrollo personalizado.</p>
-                
+                <p>La experiencia práctica desarrollada en el Módulo 5 se convierte en la base para explorar cómo la IA puede potenciar el crecimiento profesional continuo: investigación educativa, redacción académica, actualización disciplinar, networking
+                    profesional, y diseño de trayectorias de desarrollo personalizado.</p>
+
                 <div class="icon-grid" style="margin-top: 20px;">
                     <div class="tool-card" style="border-left: 6px solid #ef4444;">
                         <h4><i class="fas fa-search" style="color: #ef4444; margin-right: 10px;"></i> Investigación Académica</h4>
