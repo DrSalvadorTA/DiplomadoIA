@@ -1880,9 +1880,10 @@
             const slideElement = img.closest('.slide');
             const slideNumber = slideElement && slideElement.querySelector('.slide-number') ? slideElement.querySelector('.slide-number').textContent : '';
 
-            // Excluir imágenes de la diapositiva 15/26 y las que están dentro de enlaces
+            // Excluir imágenes de las diapositivas 15/26 y 16/26, y las que están dentro de enlaces
             if (!img.classList.contains('modal-content') &&
                 slideNumber !== '15 / 26' &&
+                slideNumber !== '16 / 26' &&
                 !img.closest('a')) {
                 img.classList.add('zoomable');
                 img.onclick = function() {
